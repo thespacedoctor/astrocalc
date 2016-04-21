@@ -20,7 +20,7 @@ setup(name="astrocalc",
           'Programming Language :: Python :: 2.7',
           'Topic :: Utilities',
       ],
-      keywords=[tools, astronomy],
+      keywords=['tools', 'astronomy'],
       url='https://github.com/thespacedoctor/astrocalc',
       download_url='https://github.com/thespacedoctor/astrocalc/archive/v%(__version__)s.zip' % locals(
       ),

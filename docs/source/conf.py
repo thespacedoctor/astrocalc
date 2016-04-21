@@ -249,7 +249,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'astrocalc', u'astrocalc Documentation',
-     u'Dave Young', 'astrocalc', 'An astronomer's calculator used to perform common calculations, conversions and measurements.',
+     u'Dave Young', 'astrocalc', 'An astronomer\'s calculator used to perform common calculations, conversions and measurements.',
      'Miscellaneous'),
 ]
 
