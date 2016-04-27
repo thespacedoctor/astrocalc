@@ -6,9 +6,11 @@ Documentation for astrocalc can be found here: http://astrocalc.readthedocs.org/
 Usage:
     astrocalc coordflip <ra> <dec>
     astrocalc sep <ra1> <dec1> <ra2> <dec2>
+    astrocalc timeflip <datetime>
 
     coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
     sep                   calculate the separation between two locations in the sky.
+    timeflip              flip time between UT and MJD. <datetime> within in MJD or UT
     -h, --help            show this help message
 
 """
@@ -37,7 +39,7 @@ def main(arguments=None):
     su = tools(
         arguments=arguments,
         docString=__doc__,
-        logLevel="ERROR",
+        logLevel="CRITICAL",
         options_first=True,
         projectName="astrocalc",
         tunnel=False
@@ -152,6 +154,17 @@ def main(arguments=None):
         )
         angularSeparation, north, east = calculator.get()
         print """%(angularSeparation)s arcsec (%(north)s N, %(east)s E)""" % locals()
+
+    if timeflip:
+        from astrocalc.times import conversions
+        converter = conversions(
+            log=log
+        )
+        try:
+            mjd = converter.ut_datetime_to_mjd(utDatetime=datetime)
+            print mjd
+        except Exception, e:
+            print e
 
     if "dbConn" in locals() and dbConn:
         dbConn.commit()

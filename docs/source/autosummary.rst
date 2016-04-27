@@ -47,7 +47,6 @@ Functions
    astrocalc.coords_dec_to_sex
    astrocalc.coords_sex_to_dec
    astrocalc.create_cbet_url
-   astrocalc.dec_to_sex
    astrocalc.getAngularSeparation
    astrocalc.getCurrentMJD
    astrocalc.getDateFractionMJD
@@ -56,5 +55,4 @@ Functions
    astrocalc.getSQLDateFromMJD
    astrocalc.luminosity_to_flux
    astrocalc.ra_in_decimal_hours
-   astrocalc.ra_to_sex
    astrocalc.cl_utils.tab_complete 

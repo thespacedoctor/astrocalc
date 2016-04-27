@@ -37,13 +37,16 @@ class test_conversions():
         converter = conversions(
             log=log,
         )
-        converter.ut_datetime_to_mjd(utDatetime="20160426t1446")
-
-        converter.ut_datetime_to_mjd(utDatetime="20160426t144643")
-
-        converter.ut_datetime_to_mjd(utDatetime="20160426t144643.033433")
-
-        converter.ut_datetime_to_mjd(utDatetime="20161231t234643.033433")
+        print converter.ut_datetime_to_mjd(utDatetime="20160426t1446")
+        print converter.ut_datetime_to_mjd(utDatetime="20160426t144643")
+        print converter.ut_datetime_to_mjd(utDatetime="20160426t144643.033433")
+        print converter.ut_datetime_to_mjd(utDatetime="20161231t234643.033433")
+        print converter.ut_datetime_to_mjd(utDatetime="201604261444")
+        print converter.ut_datetime_to_mjd(utDatetime="20160426")
+        print converter.ut_datetime_to_mjd(utDatetime="2016-04-26.33433")
+        print converter.ut_datetime_to_mjd(utDatetime="20160426144444.5452")
+        print converter.ut_datetime_to_mjd(utDatetime="2016-04-26 14:44:44.234")
+        print converter.ut_datetime_to_mjd(utDatetime="20160426 14h44m44.432s")
 
         # x-print-testpage-for-pessto-marshall-web-object
 

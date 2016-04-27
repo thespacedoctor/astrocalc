@@ -8,10 +8,6 @@
 
 :Date Created:
     April 21, 2016
-
-.. todo::
-    
-    @review: when complete pull all general functions and classes into dryxPython
 """
 ################# GLOBAL IMPORTS ####################
 import sys
@@ -41,12 +37,6 @@ class conversions():
         .. code-block:: python 
 
             usage code   
-
-    .. todo::
-
-        - @review: when complete, clean conversions class
-        - @review: when complete add logging
-        - @review: when complete, decide whether to abstract class to another module
     """
     # Initialisation
     # 1. @flagged: what are the unique attrributes for each object? Add them
@@ -56,7 +46,6 @@ class conversions():
             self,
             log,
             settings=False,
-
     ):
         self.log = log
         log.debug("instansiating a new 'conversions' object")
@@ -99,29 +88,33 @@ class conversions():
             utDatetime):
         """*ut datetime to mjd*
 
-        If the date given has no time (e.g. ``20160426``), then the datetime assumed is ``20160426 00:00:00.0``
+        If the date given has no time associated with it (e.g. ``20160426``), then the datetime assumed is ``20160426 00:00:00.0``.
+
+        Precision should be respected. 
 
         **Key Arguments:**
-            - ``utDatetime`` -- UT datetime in format "20160426t1444"
-
+            - ``utDatetime`` -- UT datetime. Can accept various formats e.g. ``201604261444``, ``20160426``, ``20160426144444.5452``, ``2016-04-26 14:44:44.234``, ``20160426 14h44m44.432s`` 
 
         **Return:**
-            - None
+            - ``mjd`` -- the MJD
 
         **Usage:**
-            ..  todo::
-
-                add usage info
-                create a sublime snippet for usage
 
             .. code-block:: python 
 
-                usage code 
+                from astrocalc.times import conversions
+                converter = conversions(
+                    log=log
+                )
+                mjd = converter.ut_datetime_to_mjd(utDatetime="20160426t1446")
+                print mjd
 
-        .. todo::
+                # OUT: 57504.6153
 
-            - @review: when complete, clean methodName method
-            - @review: when complete add logging
+                mjd = converter.ut_datetime_to_mjd(utDatetime="2016-04-26 14:44:44.234")
+                print mjd
+
+                # OUT: 57504.61440
         """
         self.log.info('starting the ``ut_datetime_to_mjd`` method')
 
@@ -132,13 +125,16 @@ class conversions():
         # TRIM WHITESPACE FROM AROUND STRING
         utDatetime = utDatetime.strip()
 
+        # DATETIME REGEX
         matchObject = re.match(
-            r'^(?P<year>\d{4})\D?(?P<month>(0\d|1[0-2]))\D?(?P<day>([0-2]\d|3[0-1]))(\D?(?P<hours>([0-1]\d|2[0-3]))\D?(?P<minutes>\d{2})(\D?(?P<seconds>\d{2}(\.\d*?)?))?)?$', utDatetime)
+            r'^(?P<year>\d{4})\D?(?P<month>(0\d|1[0-2]))\D?(?P<day>([0-2]\d|3[0-1])(\.\d+)?)(\D?(?P<hours>([0-1]\d|2[0-3]))\D?(?P<minutes>\d{2})(\D?(?P<seconds>\d{2}(\.\d*?)?))?)?s?$', utDatetime)
 
+        # RETURN ERROR IF REGEX NOT MATCHED
         if not matchObject:
             self.log.error(
                 'UT Datetime is not in a recognised format. Input value was `%(utDatetime)s`' % locals())
-            sys.exit(0)
+            raise IOError(
+                'UT Datetime is not in a recognised format. Input value was `%(utDatetime)s`' % locals())
 
         year = matchObject.group("year")
         month = matchObject.group("month")
@@ -147,7 +143,15 @@ class conversions():
         minutes = matchObject.group("minutes")
         seconds = matchObject.group("seconds")
 
-        if not hours:
+        # CLEAN NUMBERS AND SET OUTPUT PRECISION
+        if "." in day:
+            fhours = (float(day) - int(float(day))) * 24
+            hours = int(fhours)
+            fminutes = (fhours - hours) * 60
+            minutes = int(fminutes)
+            seconds = fhours - minutes
+            precision = len(str(day).split(".")[-1])
+        elif not hours:
             hours = "00"
             minutes = "00"
             seconds = "00"
@@ -156,35 +160,31 @@ class conversions():
             seconds = "00"
             # PRECISION TO NEAREST MIN i.e. 0.000694444 DAYS
             precision = 4
+        else:
+            precision = 5
 
-        print "datetime", utDatetime
-        print "year", year
-        print "month", month
-        print "day", day
-        print "hours", hours
-        print "minutes", minutes
-        print "seconds", seconds
+        # ONLY GIVE MJD TO NEAREST SEC
+        if precision > 5:
+            precision = 5
 
-        return
+        # CONVERT VALUES TO FLOAT
+        seconds = float(seconds)
+        year = float(year)
+        month = float(month)
+        day = float(day)
+        hours = float(hours)
+        minutes = float(minutes)
 
-        if not len(hours):
-            hours = 0
-        if not len(minutes):
-            minutes = 0
-        if not len(seconds):
-            seconds = 0
-
+        # CONVERT TO UNIXTIME THEN MJD
         t = (int(year), int(month), int(day), int(hours),
              int(minutes), int(seconds), 0, 0, 0)
         unixtime = int(time.mktime(t))
         mjd = unixtime / 86400.0 - 2400000.5 + 2440587.5
 
+        mjd = "%0.*f" % (precision, mjd)
+
         self.log.info('completed the ``ut_datetime_to_mjd`` method')
-        return None
+        return mjd
 
     # use the tab-trigger below for new method
     # xt-class-method
-
-    # 5. @flagged: what actions of the base class(es) need ammending? ammend them here
-    # Override Method Attributes
-    # method-override-tmpx

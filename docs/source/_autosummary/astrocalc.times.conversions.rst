@@ -15,6 +15,7 @@ astrocalc.times.conversions (*class*)
    
       ~conversions.__init__
       ~conversions.get
+      ~conversions.ut_datetime_to_mjd
    
    
 
