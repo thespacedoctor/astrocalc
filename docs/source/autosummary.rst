@@ -8,7 +8,9 @@ Subpackages
    :template: autosummary/subpackage.rst
 
    astrocalc
-   astrocalc.commonutils 
+   astrocalc.commonutils
+   astrocalc.coords
+   astrocalc.times 
 
 Modules
 -----------
@@ -17,8 +19,7 @@ Modules
    :toctree: _autosummary
    :nosignatures:
 
-   astrocalc.cl_utils
-   astrocalc.utKit 
+   astrocalc.cl_utils 
 
 Classes
 -----------
@@ -27,7 +28,10 @@ Classes
    :toctree: _autosummary
    :nosignatures:
 
-   astrocalc.utKit.utKit 
+   astrocalc.coords.separations
+   astrocalc.coords.translate
+   astrocalc.coords.unit_conversion
+   astrocalc.times.conversions 
 
 Functions
 -----------
@@ -36,4 +40,21 @@ Functions
    :toctree: _autosummary
    :nosignatures:
 
+   astrocalc.calculate_cartesians
+   astrocalc.clean_supernova_name
+   astrocalc.convert_mpc_to_redshift
+   astrocalc.convert_redshift_to_distance
+   astrocalc.coords_dec_to_sex
+   astrocalc.coords_sex_to_dec
+   astrocalc.create_cbet_url
+   astrocalc.dec_to_sex
+   astrocalc.getAngularSeparation
+   astrocalc.getCurrentMJD
+   astrocalc.getDateFractionMJD
+   astrocalc.getDateFromMJD
+   astrocalc.getMJDFromSqlDate
+   astrocalc.getSQLDateFromMJD
+   astrocalc.luminosity_to_flux
+   astrocalc.ra_in_decimal_hours
+   astrocalc.ra_to_sex
    astrocalc.cl_utils.tab_complete 

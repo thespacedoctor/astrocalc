@@ -4,10 +4,13 @@
 Documentation for astrocalc can be found here: http://astrocalc.readthedocs.org/en/stable
 
 Usage:
-    astrocalc [-s <pathToSettingsFile>]
+    astrocalc coordflip <ra> <dec>
+    astrocalc sep <ra1> <dec1> <ra2> <dec2>
 
+    coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
+    sep                   calculate the separation between two locations in the sky.
     -h, --help            show this help message
-    -s, --settings        the settings file
+
 """
 ################# GLOBAL IMPORTS ####################
 import sys
@@ -18,6 +21,7 @@ import glob
 import pickle
 from docopt import docopt
 from fundamentals import tools, times
+from astrocalc.coords import unit_conversion
 # from ..__init__ import *
 
 
@@ -33,8 +37,8 @@ def main(arguments=None):
     su = tools(
         arguments=arguments,
         docString=__doc__,
-        logLevel="DEBUG",
-        options_first=False,
+        logLevel="ERROR",
+        options_first=True,
         projectName="astrocalc",
         tunnel=False
     )
@@ -95,6 +99,59 @@ def main(arguments=None):
         pickle.dump(pickleMe, open(pathToPickleFile, "wb"))
 
     # CALL FUNCTIONS/OBJECTS
+    if coordflip:
+        try:
+            ra = float(ra)
+            dec = float(dec)
+            degree = True
+        except Exception, e:
+            degree = False
+
+        if degree is True:
+            converter = unit_conversion(
+                log=log
+            )
+            try:
+                ra = converter.ra_decimal_to_sexegesimal(
+                    ra=ra,
+                    delimiter=":"
+                )
+                dec = converter.dec_decimal_to_sexegesimal(
+                    dec=dec,
+                    delimiter=":"
+                )
+            except Exception, e:
+                print e
+                sys.exit(0)
+
+            print ra, dec
+        else:
+            converter = unit_conversion(
+                log=log
+            )
+            try:
+                ra = converter.ra_sexegesimal_to_decimal(
+                    ra=ra
+                )
+                dec = converter.dec_sexegesimal_to_decimal(
+                    dec=dec
+                )
+            except Exception, e:
+                print e
+                sys.exit(0)
+            print ra, dec
+
+    if sep:
+        from astrocalc.coords import separations
+        calculator = separations(
+            log=log,
+            ra1=ra1,
+            dec1=dec1,
+            ra2=ra2,
+            dec2=dec2,
+        )
+        angularSeparation, north, east = calculator.get()
+        print """%(angularSeparation)s arcsec (%(north)s N, %(east)s E)""" % locals()
 
     if "dbConn" in locals() and dbConn:
         dbConn.commit()

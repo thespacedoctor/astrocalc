@@ -36,7 +36,7 @@ setup(name="astrocalc",
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],
-      # entry_points={
-      #     'console_scripts': ['astrocalc=astrocalc.cl_utils:main'],
-      # },
+      entry_points={
+          'console_scripts': ['astrocalc=astrocalc.cl_utils:main'],
+      },
       zip_safe=False)

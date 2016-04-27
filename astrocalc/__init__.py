@@ -13,23 +13,27 @@ dryx syntax:
 notes:
     - Dave started work on this file on December 10, 2012
     - Dave 'completed' this code on ... not complete yet!
+
+todo:
+
+	- convert all functions in __init__ to modules
 """
 ################# GLOBAL IMPORTS ####################
-import math
+# import math
 
 # SOME USEFUL CONSTANTS
-PARSEC_2_METRES = 3.08567758e16
-PARSEC_2_CMS = PARSEC_2_METRES * 100
+# PARSEC_2_METRES = 3.08567758e16
+# PARSEC_2_CMS = PARSEC_2_METRES * 100
 
-KPC_2_METRES = 1e3 * PARSEC_2_METRES
-KPC_2_CMS = 1e3 * PARSEC_2_CMS
+# KPC_2_METRES = 1e3 * PARSEC_2_METRES
+# KPC_2_CMS = 1e3 * PARSEC_2_CMS
 
-MPC_2_METRES = 1e6 * PARSEC_2_METRES
-MPC_2_CMS = 1e6 * PARSEC_2_CMS
+# MPC_2_METRES = 1e6 * PARSEC_2_METRES
+# MPC_2_CMS = 1e6 * PARSEC_2_CMS
 
-pi = (4 * math.atan(1.0))
-DEG_TO_RAD_FACTOR = pi / 180.0
-RAD_TO_DEG_FACTOR = 180.0 / pi
+# pi = (4 * math.atan(1.0))
+# DEG_TO_RAD_FACTOR = pi / 180.0
+# RAD_TO_DEG_FACTOR = 180.0 / pi
 
 
 ######################################################
@@ -62,6 +66,7 @@ def create_cbet_url(dbConn, log, cbet):
     ################ > VARIABLE SETTINGS ######
 
     ################ >ACTION(S) ################
+    import math
     cbet = int(cbet)
     pcbetNumber = "{0:006.0f}".format(cbet)
     middleNumber = cbet / 100
@@ -91,6 +96,7 @@ def clean_supernova_name(dbConn, log, snName):
     ################ > IMPORTS ################
     ## STANDARD LIB ##
     import re
+    import math
     ## THIRD PARTY ##
     ## LOCAL APPLICATION ##
 
@@ -144,6 +150,7 @@ def luminosity_to_flux(lumErg_S, dist_Mpc):
     ## STANDARD LIB ##
     ## THIRD PARTY ##
     import numpy as np
+    import math
     ## LOCAL APPLICATION ##
 
     ################ > VARIABLE SETTINGS ######
@@ -156,42 +163,46 @@ def luminosity_to_flux(lumErg_S, dist_Mpc):
     return fluxErg_cm2_S
 
 
-def ra_to_sex(ra, delimiter=':'):
-    """Convert ra in decimal degrees to sexigesimal"""
+# def ra_to_sex(ra, delimiter=':'):
+#     """Convert ra in decimal degrees to sexigesimal"""
 
-    # Calculation from Decimal Degrees:
+#     # Calculation from Decimal Degrees:
+#     import math
+#     ra_hh = int(ra / 15)
+#     ra_mm = int((ra / 15 - ra_hh) * 60)
+#     ra_ss = int(((ra / 15 - ra_hh) * 60 - ra_mm) * 60)
+#     ra_ff = int((((ra / 15 - ra_hh) * 60 - ra_mm) * 60 - ra_ss) * 100)
 
-    ra_hh = int(ra / 15)
-    ra_mm = int((ra / 15 - ra_hh) * 60)
-    ra_ss = int(((ra / 15 - ra_hh) * 60 - ra_mm) * 60)
-    ra_ff = int((((ra / 15 - ra_hh) * 60 - ra_mm) * 60 - ra_ss) * 100)
-
-    return ('%02d' % ra_hh + delimiter + '%02d' % ra_mm + delimiter + '%02d' % ra_ss + '.' + '%02d' % ra_ff)
+# return ('%02d' % ra_hh + delimiter + '%02d' % ra_mm + delimiter + '%02d'
+# % ra_ss + '.' + '%02d' % ra_ff)
 
 
-def dec_to_sex(dec, delimiter=':'):
-    """Convert dec in decimal degrees to sexigesimal"""
+# def dec_to_sex(dec, delimiter=':'):
+#     """Convert dec in decimal degrees to sexigesimal"""
 
-    if (dec >= 0):
-        hemisphere = '+'
-    else:
-        # Unicode minus sign - should be treated as non-breaking by browsers
-        hemisphere = '-'
-        dec *= -1
+#     import math
+#     if (dec >= 0):
+#         hemisphere = '+'
+#     else:
+#         # Unicode minus sign - should be treated as non-breaking by browsers
+#         hemisphere = '-'
+#         dec *= -1
 
-    dec_deg = int(dec)
-    dec_mm = int((dec - dec_deg) * 60)
-    dec_ss = int(((dec - dec_deg) * 60 - dec_mm) * 60)
-    dec_f = int(((((dec - dec_deg) * 60 - dec_mm) * 60) - dec_ss) * 10)
+#     dec_deg = int(dec)
+#     dec_mm = int((dec - dec_deg) * 60)
+#     dec_ss = int(((dec - dec_deg) * 60 - dec_mm) * 60)
+#     dec_f = int(((((dec - dec_deg) * 60 - dec_mm) * 60) - dec_ss) * 10)
 
-    return (hemisphere + '%02d' % dec_deg + delimiter + '%02d' % dec_mm + delimiter + '%02d' % dec_ss + '.' + '%01d' % dec_f)
+# return (hemisphere + '%02d' % dec_deg + delimiter + '%02d' % dec_mm +
+# delimiter + '%02d' % dec_ss + '.' + '%01d' % dec_f)
 
 
 def coords_dec_to_sex(ra, dec, delimiter=':'):
     """Convert ra and dec in decimal degrees to sexigesimal"""
+    import math
     import dryxPython.astrotools as dat
     ra = dat.ra_sexegesimal_to_decimal.ra_sexegesimal_to_decimal(ra=ra)
-    dec = dat.declination_sexegesimal_to_decimal.declination_sexegesimal_to_decimal(
+    dec = dat.dec_sexegesimal_to_decimal.dec_sexegesimal_to_decimal(
         dec=dec)
 
     return ra, dec
@@ -199,12 +210,13 @@ def coords_dec_to_sex(ra, dec, delimiter=':'):
 
 def ra_in_decimal_hours(ra):
     """*Convert ra in decimal degrees to hours*"""
-
+    import math
     return(ra / 15.0)
 
 
 def getCurrentMJD():
     """*Get the current MJD*"""
+    import math
     import time
     jd = time.time() / 86400.0 + 2440587.5
     mjd = jd - 2400000.5
@@ -213,6 +225,7 @@ def getCurrentMJD():
 
 def getDateFromMJD(mjd):
     """*convert mjd to a date*"""
+    import math
     from datetime import datetime
     unixtime = (mjd + 2400000.5 - 2440587.5) * 86400.0
     theDate = datetime.utcfromtimestamp(unixtime)
@@ -221,6 +234,7 @@ def getDateFromMJD(mjd):
 
 def getSQLDateFromMJD(mjd):
     """*convert mjd to a date*"""
+    import math
     from datetime import datetime
     unixtime = (mjd + 2400000.5 - 2440587.5) * 86400.0
     theDate = datetime.utcfromtimestamp(unixtime)
@@ -231,6 +245,7 @@ def getSQLDateFromMJD(mjd):
 
 def getMJDFromSqlDate(sqlDate):
     """*convert a sql date to mjd*"""
+    import math
     import time
     mjd = None
     sqlDate = str(sqlDate)
@@ -251,6 +266,7 @@ def getMJDFromSqlDate(sqlDate):
 
 def getDateFractionMJD(mjd):
     """*convert mjd to date fraction*"""
+    import math
     unixtime = (mjd + 2400000.5 - 2440587.5) * 86400.0
     theDate = datetime.utcfromtimestamp(unixtime)
     dateString = theDate.strftime("%Y:%m:%d:%H:%M:%S")
@@ -263,10 +279,10 @@ def getDateFractionMJD(mjd):
 
 def coords_sex_to_dec(ra, dec):
     """*Convert sexagesimal ra and dec to decimal degrees*"""
-    import dryxPython.astrotools.declination_sexegesimal_to_decimal
+    import dryxPython.astrotools.dec_sexegesimal_to_decimal
     import dryxPython.astrotools.ra_sexegesimal_to_decimal
-
-    dec = declination_sexegesimal_to_decimal.declination_sexegesimal_to_decimal(
+    import math
+    dec = dec_sexegesimal_to_decimal.dec_sexegesimal_to_decimal(
         dec)
 
     ra = ra_sexegesimal_to_decimal.ra_sexegesimal_to_decimal(ra)
@@ -276,7 +292,7 @@ def coords_sex_to_dec(ra, dec):
 
 def calculate_cartesians(ra, dec):
     """*Convert decimal degrees ra and dec to cartesians*"""
-
+    import math
     ra = math.radians(ra)
     dec = math.radians(dec)
     cos_dec = math.cos(dec)
@@ -295,16 +311,17 @@ def getAngularSeparation(ra1, dec1, ra2, dec2):
     convert into decimal before doing the calculation.*
     """
     import dryxPython.astrotools as dat
+    import math
 
     if ':' in str(ra1):
         ra1 = dat.ra_sexegesimal_to_decimal.ra_sexegesimal_to_decimal(ra1)
     if ':' in str(dec1):
-        dec1 = dat.declination_sexegesimal_to_decimal.declination_sexegesimal_to_decimal(
+        dec1 = dat.dec_sexegesimal_to_decimal.dec_sexegesimal_to_decimal(
             dec1)
     if ':' in str(ra2):
         ra2 = dat.ra_sexegesimal_to_decimal.ra_sexegesimal_to_decimal(ra2)
     if ':' in str(dec2):
-        dec2 = dat.declination_sexegesimal_to_decimal.declination_sexegesimal_to_decimal(
+        dec2 = dat.dec_sexegesimal_to_decimal.dec_sexegesimal_to_decimal(
             dec2)
 
     angularSeparation = None
@@ -356,6 +373,7 @@ def convert_redshift_to_distance(z):
     ## STANDARD LIB ##
     ## THIRD PARTY ##
     ## LOCAL APPLICATION ##
+    import math
 
     ################ >ACTION(S) ################
     # Cosmological Parameters (to be changed if required)
@@ -481,14 +499,3 @@ def convert_mpc_to_redshift(
 ##########################################################################
 if __name__ == '__main__':
     main()
-
-import declination_sexegesimal_to_decimal
-import ra_sexegesimal_to_decimal
-
-import catalogue_queries
-
-from get_angular_separation import get_angular_separation
-from shift_coordinates import shift_coordinates
-from date_to_mjd import date_to_mjd
-from mjd_to_date import mjd_to_date
-from decimal_day_to_day_hour_min_sec import decimal_day_to_day_hour_min_sec

@@ -1,6 +1,6 @@
 import os
 import nose
-from .. import declination_sexegesimal_to_decimal
+from .. import dec_sexegesimal_to_decimal
 
 # SETUP AND TEARDOWN FIXTURE FUNCTIONS FOR THE ENTIRE MODULE
 
@@ -67,50 +67,50 @@ class test_command_line():
     def test_command_line_method_01(self):
         kwargs = {}
         kwargs["--dec"] = "12  13 13.4554"
-        declination_sexegesimal_to_decimal.main(kwargs)
+        dec_sexegesimal_to_decimal.main(kwargs)
 
     def test_command_line_method_02(self):
         kwargs = {}
         kwargs["--dec"] = "-12-13-13.4554"
-        declination_sexegesimal_to_decimal.main(kwargs)
+        dec_sexegesimal_to_decimal.main(kwargs)
 
     def test_command_line_method_03(self):
         kwargs = {}
         kwargs["--dec"] = "12: 13,13.4554"
-        declination_sexegesimal_to_decimal.main(kwargs)
+        dec_sexegesimal_to_decimal.main(kwargs)
 
     def test_command_line_method_04(self):
         kwargs = {}
         kwargs["--dec"] = "-12_13    13.4"
-        declination_sexegesimal_to_decimal.main(kwargs)
+        dec_sexegesimal_to_decimal.main(kwargs)
 
     def test_command_line_method_05(self):
         kwargs = {}
         kwargs["--dec"] = "12:13:13"
-        declination_sexegesimal_to_decimal.main(kwargs)
+        dec_sexegesimal_to_decimal.main(kwargs)
 
     def test_command_line_method_06(self):
         kwargs = {}
         kwargs["--dec"] = "-0:00:23.334343"
-        declination_sexegesimal_to_decimal.main(kwargs)
+        dec_sexegesimal_to_decimal.main(kwargs)
 
     def test_command_line_method_07(self):
         kwargs = {}
         kwargs["--dec"] = "0:00:23.334343"
-        declination_sexegesimal_to_decimal.main(kwargs)
+        dec_sexegesimal_to_decimal.main(kwargs)
 
     def test_command_line_method_08(self):
         kwargs = {}
         kwargs["dec"] = "-92:12:34.3344"
         nose.tools.assert_raises(
-            IOError, declination_sexegesimal_to_decimal.declination_sexegesimal_to_decimal, **kwargs)
+            IOError, dec_sexegesimal_to_decimal.dec_sexegesimal_to_decimal, **kwargs)
         pass
 
     def test_command_line_method_09(self):
         kwargs = {}
         kwargs["dec"] = "02:67:34.3344"
         nose.tools.assert_raises(
-            IOError, declination_sexegesimal_to_decimal.declination_sexegesimal_to_decimal, **kwargs)
+            IOError, dec_sexegesimal_to_decimal.dec_sexegesimal_to_decimal, **kwargs)
         pass
 
     # x-class-method-to-test-a-command-line-usage

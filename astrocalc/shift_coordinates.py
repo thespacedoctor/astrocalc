@@ -184,7 +184,7 @@ class shift_coordinates():
         try:
             self.dec = float(self.dec)
         except:
-            self.dec = dat.declination_sexegesimal_to_decimal.declination_sexegesimal_to_decimal(
+            self.dec = dat.dec_sexegesimal_to_decimal.dec_sexegesimal_to_decimal(
                 dec=self.dec)
 
         return None

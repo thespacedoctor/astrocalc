@@ -1,5 +1,5 @@
 .. astrocalc documentation master file, created by
-   sphinx-quickstart on Thu Apr 21 11:32:58 2016.
+   sphinx-quickstart on Mon Apr 25 12:50:37 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
