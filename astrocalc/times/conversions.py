@@ -39,8 +39,6 @@ class conversions():
             usage code   
     """
     # Initialisation
-    # 1. @flagged: what are the unique attrributes for each object? Add them
-    # to __init__
 
     def __init__(
             self,
@@ -52,18 +50,8 @@ class conversions():
         self.settings = settings
         # xt-self-arg-tmpx
 
-        # 2. @flagged: what are the default attrributes each object could have? Add them to variable attribute set here
-        # Variable Data Atrributes
-
-        # 3. @flagged: what variable attrributes need overriden in any baseclass(es) used
-        # Override Variable Data Atrributes
-
-        # Initial Actions
-
         return None
 
-    # 4. @flagged: what actions does each object have to be able to perform? Add them here
-    # Method Attributes
     def get(self):
         """
         *get the conversions object*
@@ -150,7 +138,7 @@ class conversions():
             fminutes = (fhours - hours) * 60
             minutes = int(fminutes)
             seconds = fhours - minutes
-            precision = len(str(day).split(".")[-1])
+            precision = len(repr(day).split(".")[-1])
         elif not hours:
             hours = "00"
             minutes = "00"
@@ -161,11 +149,11 @@ class conversions():
             # PRECISION TO NEAREST MIN i.e. 0.000694444 DAYS
             precision = 4
         else:
-            precision = 5
-
-        # ONLY GIVE MJD TO NEAREST SEC
-        if precision > 5:
-            precision = 5
+            if "." not in seconds:
+                precision = 5
+            else:
+                decLen = len(seconds.split(".")[-1])
+                precision = 5 + decLen
 
         # CONVERT VALUES TO FLOAT
         seconds = float(seconds)
@@ -175,16 +163,88 @@ class conversions():
         hours = float(hours)
         minutes = float(minutes)
 
+        # DETERMINE EXTRA TIME (SMALLER THAN A SEC)
+        extraTime = 0.
+        if "." in repr(seconds):
+            extraTime = float("." + repr(seconds).split(".")
+                              [-1]) / (24. * 60. * 60.)
+
         # CONVERT TO UNIXTIME THEN MJD
         t = (int(year), int(month), int(day), int(hours),
              int(minutes), int(seconds), 0, 0, 0)
         unixtime = int(time.mktime(t))
-        mjd = unixtime / 86400.0 - 2400000.5 + 2440587.5
+        mjd = (unixtime / 86400.0 - 2400000.5 + 2440587.5) + extraTime
 
         mjd = "%0.*f" % (precision, mjd)
 
         self.log.info('completed the ``ut_datetime_to_mjd`` method')
         return mjd
+
+    def mjd_to_ut_datetime(
+            self,
+            mjd):
+        """*mjd to ut datetime*
+
+        Precision should be respected. 
+
+        **Key Arguments:**
+            - ``mjd`` -- time in MJD.
+
+        **Return:**
+            - ``utDatetime`` - the UT datetime in string format
+
+        **Usage:**
+
+            .. code-block:: python 
+
+                from astrocalc.times import conversions
+                converter = conversions(
+                    log=log
+                )
+                utDate = converter.mjd_to_ut_datetime(mjd=57504.61577585013)
+                print utDate
+
+                # OUT: 2016-04-26 14:46:43.033
+        """
+        self.log.info('starting the ``mjd_to_ut_datetime`` method')
+
+        from datetime import datetime
+
+        # CONVERT TO UNIXTIME
+        unixtime = (float(mjd) + 2400000.5 - 2440587.5) * 86400.0
+        theDate = datetime.utcfromtimestamp(unixtime)
+
+        # DETERMINE PRECISION
+        strmjd = repr(mjd)
+        if "." not in strmjd:
+            precisionUnit = "day"
+            precision = 0
+            utDatetime = theDate.strftime("%Y-%m-%d")
+        else:
+            lenDec = len(strmjd.split(".")[-1])
+            if lenDec < 2:
+                precisionUnit = "day"
+                precision = 0
+                utDatetime = theDate.strftime("%Y-%m-%d")
+            elif lenDec < 3:
+                precisionUnit = "hour"
+                precision = 0
+                utDatetime = theDate.strftime("%Y-%m-%d")
+            elif lenDec < 5:
+                precisionUnit = "minute"
+                precision = 0
+                utDatetime = theDate.strftime("%Y-%m-%d %H:%M")
+            else:
+                precisionUnit = "second"
+                precision = lenDec - 5
+                if precision > 3:
+                    precision = 3
+                secs = float(theDate.strftime("%S.%f"))
+                secs = "%02.*f" % (precision, secs)
+                utDatetime = theDate.strftime("%Y-%m-%d %H:%M:") + secs
+
+        self.log.info('completed the ``mjd_to_ut_datetime`` method')
+        return utDatetime
 
     # use the tab-trigger below for new method
     # xt-class-method

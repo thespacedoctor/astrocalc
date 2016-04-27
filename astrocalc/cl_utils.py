@@ -156,15 +156,31 @@ def main(arguments=None):
         print """%(angularSeparation)s arcsec (%(north)s N, %(east)s E)""" % locals()
 
     if timeflip:
+        try:
+            inputMjd = float(datetime)
+            if datetime[0] not in ["0", "1", "2"]:
+                inputMjd = True
+            else:
+                inputMjd = False
+        except:
+            inputMjd = False
         from astrocalc.times import conversions
         converter = conversions(
             log=log
         )
-        try:
-            mjd = converter.ut_datetime_to_mjd(utDatetime=datetime)
-            print mjd
-        except Exception, e:
-            print e
+
+        if inputMjd == False:
+            try:
+                mjd = converter.ut_datetime_to_mjd(utDatetime=datetime)
+                print mjd
+            except Exception, e:
+                print e
+        else:
+            try:
+                utDate = converter.mjd_to_ut_datetime(mjd=datetime)
+                print utDate
+            except Exception, e:
+                print e
 
     if "dbConn" in locals() and dbConn:
         dbConn.commit()

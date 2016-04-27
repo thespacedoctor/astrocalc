@@ -150,7 +150,7 @@ class separations():
         precision = 100
         vals = [dec1, dec2, ra1, ra2]
         for v in vals:
-            thisLen = len(str(v * 3600.).split(".")[-1])
+            thisLen = len(repr(v * 3600.).split(".")[-1])
             if thisLen < precision:
                 precision = thisLen
 

@@ -142,7 +142,7 @@ class unit_conversion():
             pass
 
         # REMOVE SURROUNDING WHITESPACE
-        dec = str(dec).strip()
+        dec = repr(dec).strip()
 
         # LOOK FOR A MINUS SIGN.  NOTE THAT -00 IS THE SAME AS 00.
         regex = re.compile(
@@ -166,7 +166,7 @@ class unit_conversion():
             # PRECISION TEST
             # 1s = .000277778 DEGREE
             # THEREFORE REPORT SECONDS TO A PRECISION = INPUT PRECISION + 4
-            decimalLen = len(str(seconds).split(".")[-1])
+            decimalLen = len(repr(seconds).split(".")[-1])
             precision = decimalLen + 4
 
             decDeg = (degrees + (minutes / 60.0)
@@ -235,7 +235,7 @@ class unit_conversion():
             pass
 
         # REMOVE SURROUNDING WHITESPACE
-        ra = str(ra).strip()
+        ra = repr(ra).strip()
 
         regex = re.compile(
             '^(\+?(\d|[0-1]\d|2[0-3]))\D+([0-5]\d)\D+([0-6]?\d(\.\d*?)?)(s)?\s*?$')
@@ -253,7 +253,7 @@ class unit_conversion():
             # PRECISION TEST
             # 1s ARCSEC = .000018519 DEGREE
             # THEREFORE REPORT SECONDS TO A PRECISION = INPUT PRECISION + 5
-            decimalLen = len(str(seconds).split(".")[-1])
+            decimalLen = len(repr(seconds).split(".")[-1])
             precision = decimalLen + 5
 
             decimalDegrees = (degrees + (minutes / 60.0)
@@ -326,7 +326,7 @@ class unit_conversion():
         # PRECISION TEST
         # 1s ARCSEC = .000018519 DEGREE
         # THEREFORE REPORT SECONDS TO A PRECISION = INPUT PRECISION - 5
-        decimalLen = len(str(ra).split(".")[-1])
+        decimalLen = len(repr(ra).split(".")[-1])
         precision = decimalLen - 5
 
         # CALCULATION FROM DECIMAL DEGREES
@@ -337,7 +337,7 @@ class unit_conversion():
         ra_ff = ((ra / 15 - ra_hh) * 60 - ra_mm) * 60 - ra_ss
 
         # SET PRECISION
-        ra_ff = str(ra_ff)[2:]
+        ra_ff = repr(ra_ff)[2:]
         ra_ff = ra_ff[:precision]
         if len(ra_ff):
             ra_ff = "." + ra_ff
@@ -415,7 +415,7 @@ class unit_conversion():
         # PRECISION TEST
         # 1s = .000277778 DEGREE
         # THEREFORE REPORT SECONDS TO A PRECISION = INPUT PRECISION - 4
-        decimalLen = len(str(dec).split(".")[-1])
+        decimalLen = len(repr(dec).split(".")[-1])
         precision = decimalLen - 4
 
         dec_deg = int(dec)
@@ -424,7 +424,7 @@ class unit_conversion():
         dec_f = (((dec - dec_deg) * 60 - dec_mm) * 60) - dec_ss
 
         # SET PRECISION
-        dec_f = str(dec_f)[2:]
+        dec_f = repr(dec_f)[2:]
         dec_f = dec_f[:precision]
         if len(dec_f):
             dec_f = "." + dec_f
