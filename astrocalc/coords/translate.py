@@ -30,6 +30,10 @@ class translate():
         - ``northArcsec`` -- number of arcsecs to move location to the north
         - ``eastArcsec`` -- number of arcsecs to move location to the east
 
+    .. todo::
+
+        - replace shift_coordinates class in all other code
+
     **Usage:**
 
         To shift a set of coordinates north and east by given distances:
