@@ -7,10 +7,12 @@ Usage:
     astrocalc coordflip <ra> <dec>
     astrocalc sep <ra1> <dec1> <ra2> <dec2>
     astrocalc timeflip <datetime>
+    astrocalc trans <ra> <dec> <north> <east>
 
     coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
     sep                   calculate the separation between two locations in the sky.
     timeflip              flip time between UT and MJD. <datetime> within in MJD or UT
+    trans                 translate a location across the sky (north and east in arcsec)
     -h, --help            show this help message
 
 """
@@ -181,6 +183,31 @@ def main(arguments=None):
                 print utDate
             except Exception, e:
                 print e
+
+    if trans:
+        # TRANSLATE COORDINATES ACROSS SKY
+        from astrocalc.coords import translate
+        newRa, newDec = translate(
+            log=log,
+            ra=ra,
+            dec=dec,
+            northArcsec=float(north),
+            eastArcsec=float(east)
+        ).get()
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        ra = converter.ra_decimal_to_sexegesimal(
+            ra=newRa,
+            delimiter=":"
+        )
+        dec = converter.dec_decimal_to_sexegesimal(
+            dec=newDec,
+            delimiter=":"
+        )
+
+        print "%(newRa)s, %(newDec)s (%(ra)s, %(dec)s)" % locals()
 
     if "dbConn" in locals() and dbConn:
         dbConn.commit()
