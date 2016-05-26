@@ -142,7 +142,7 @@ class unit_conversion():
             pass
 
         # REMOVE SURROUNDING WHITESPACE
-        dec = repr(dec).strip()
+        dec = str(dec).strip()
 
         # LOOK FOR A MINUS SIGN.  NOTE THAT -00 IS THE SAME AS 00.
         regex = re.compile(
@@ -235,7 +235,7 @@ class unit_conversion():
             pass
 
         # REMOVE SURROUNDING WHITESPACE
-        ra = repr(ra).strip()
+        ra = str(ra).strip()
 
         regex = re.compile(
             '^(\+?(\d|[0-1]\d|2[0-3]))\D+([0-5]\d)\D+([0-6]?\d(\.\d*?)?)(s)?\s*?$')

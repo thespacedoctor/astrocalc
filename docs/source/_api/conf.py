@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # astrocalc documentation build configuration file, created by
-# sphinx-quickstart on Wed Apr 27 11:17:22 2016.
+# sphinx-quickstart on Thu May 26 14:10:54 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.

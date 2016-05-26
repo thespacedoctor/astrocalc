@@ -2,8 +2,8 @@ import os
 import nose
 import shutil
 import yaml
-from astrocalc.coords import translate, cl_utils
-from astrocalc.coords.utKit import utKit
+from astrocalc.coords import translate
+from astrocalc.utKit import utKit
 
 from fundamentals import tools
 
