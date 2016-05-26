@@ -178,8 +178,11 @@ class unit_conversion():
             raise IOError(
                 "could not convert dec to decimal degrees, could not parse sexegesimal input. Original value was `%(dec)s`" % locals())
 
+        decDeg = float(decDeg)
+        self.log.debug('decDeg: %(decDeg)s' % locals())
         self.log.info(
             'completed the ``dec_sexegesimal_to_decimal`` method')
+
         return float(decDeg)
 
     def ra_sexegesimal_to_decimal(
@@ -265,7 +268,12 @@ class unit_conversion():
             raise IOError(
                 "could not convert ra to decimal degrees, could not parse sexegesimal input. Original value was `%(ra)s`" % locals())
 
-        return float(decimalDegrees)
+        raDeg = decimalDegrees
+        self.log.debug('raDeg: %(decimalDegrees)s' % locals())
+        self.log.info(
+            'completed the ``ra_sexegesimal_to_decimal`` method')
+
+        return float(raDeg)
 
     def ra_decimal_to_sexegesimal(
             self,

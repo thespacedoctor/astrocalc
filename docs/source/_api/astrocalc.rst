@@ -13,7 +13,6 @@ Subpackages
 
     astrocalc.commonutils
     astrocalc.coords
-    astrocalc.tests
     astrocalc.times
 
 Submodules
