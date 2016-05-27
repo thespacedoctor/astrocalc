@@ -246,5 +246,92 @@ class conversions():
         self.log.info('completed the ``mjd_to_ut_datetime`` method')
         return utDatetime
 
+    def decimal_day_to_day_hour_min_sec(
+            self,
+            daysFloat):
+        """*Convert a day from decimal format to hours mins and sec*
+
+        Precision should be respected. 
+
+        **Key Arguments:**
+            - ``daysFloat`` -- the day as a decimal.
+
+        **Return:**
+            - ``daysInt`` -- day as an integer
+            - ``hoursInt`` -- hour as an integer (None if input precsion too low)
+            - ``minsInt`` -- mins as an integer (None if input precsion too low)
+            - ``secFloat`` -- secs as a float (None if input precsion too low)
+
+        **Usage:**
+            ..  todo::
+
+                - replace `decimal_day_to_day_hour_min_sec` in all other code
+
+            .. code-block:: python 
+
+                from astrocalc.times import conversions
+                converter = conversions(
+                    log=log
+                )
+                daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+                    daysFloat=24.2453
+                )
+                print daysInt, hoursInt, minsInt, secFloat
+
+                # OUTPUT: 24, 5, 53, None
+
+                daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+                    daysFloat=24.1232435454
+                )
+                print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
+                # OUTPUT: 24 days, 2 hours, 57 mins, 28.242 sec
+        """
+        self.log.info(
+            'starting the ``decimal_day_to_day_hour_min_sec`` method')
+
+        daysInt = int(daysFloat)
+        hoursFloat = (daysFloat - daysInt) * 24.
+        hoursInt = int(hoursFloat)
+        minsFloat = (hoursFloat - hoursInt) * 60.
+        minsInt = int(minsFloat)
+        secFloat = (minsFloat - minsInt) * 60.
+
+        # DETERMINE PRECISION
+        strday = repr(daysFloat)
+        if "." not in strday:
+            precisionUnit = "day"
+            precision = 0
+            hoursInt = None
+            minsInt = None
+            secFloat = None
+        else:
+            lenDec = len(strday.split(".")[-1])
+            if lenDec < 2:
+                precisionUnit = "day"
+                precision = 0
+                hoursInt = None
+                minsInt = None
+                secFloat = None
+            elif lenDec < 3:
+                precisionUnit = "hour"
+                precision = 0
+                minsInt = None
+                secFloat = None
+            elif lenDec < 5:
+                precisionUnit = "minute"
+                precision = 0
+                secFloat = None
+            else:
+                precisionUnit = "second"
+                precision = lenDec - 5
+                if precision > 3:
+                    precision = 3
+                secFloat = "%02.*f" % (precision, secFloat)
+
+        self.log.info(
+            'completed the ``decimal_day_to_day_hour_min_sec`` method')
+        return daysInt, hoursInt, minsInt, secFloat
+
     # use the tab-trigger below for new method
     # xt-class-method
