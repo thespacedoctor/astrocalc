@@ -97,6 +97,27 @@ class test_conversions():
         print converter.mjd_to_ut_datetime(mjd=57504.61440)
         print converter.mjd_to_ut_datetime(mjd=57504.61440)
 
+    def test_decimal_day_to_day_hour_min_sec_function(self):
+
+        converter = conversions(
+            log=log,
+        )
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.2453)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.12345)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.2)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.1232435454)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
         # x-print-testpage-for-pessto-marshall-web-object
 
     # x-class-to-test-named-worker-function
