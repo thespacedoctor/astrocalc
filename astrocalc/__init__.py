@@ -1,53 +1,3 @@
-#!/usr/local/bin/python
-# encoding: utf-8
-"""
-**astrotools**
-
-| Created by David Young on December 10, 2012
-| If you have any questions requiring this script please email me: davidrobertyoung@gmail.com
-
-dryx syntax:
-    - ``xxx`` = come back here and do some more work
-    - ``_someObject`` = a 'private' object that should only be changed for debugging
-
-notes:
-    - Dave started work on this file on December 10, 2012
-    - Dave 'completed' this code on ... not complete yet!
-
-todo:
-
-	- convert all functions in __init__ to modules
-"""
-################# GLOBAL IMPORTS ####################
-# import math
-
-# SOME USEFUL CONSTANTS
-# PARSEC_2_METRES = 3.08567758e16
-# PARSEC_2_CMS = PARSEC_2_METRES * 100
-
-# KPC_2_METRES = 1e3 * PARSEC_2_METRES
-# KPC_2_CMS = 1e3 * PARSEC_2_CMS
-
-# MPC_2_METRES = 1e6 * PARSEC_2_METRES
-# MPC_2_CMS = 1e6 * PARSEC_2_CMS
-
-# pi = (4 * math.atan(1.0))
-# DEG_TO_RAD_FACTOR = pi / 180.0
-# RAD_TO_DEG_FACTOR = 180.0 / pi
-
-
-######################################################
-# MAIN LOOP - USED FOR DEBUGGING OR WHEN SCRIPTING   #
-######################################################
-
-##########################################################################
-# CLASSES                                                                                   #
-##########################################################################
-
-
-# LAST MODIFIED : March 22, 2013
-# CREATED : March 22, 2013
-# AUTHOR : DRYX
 
 
 def luminosity_to_flux(lumErg_S, dist_Mpc):
@@ -76,15 +26,6 @@ def luminosity_to_flux(lumErg_S, dist_Mpc):
     fluxErg_cm2_S = lumErg_S / (4 * np.pi * distCm ** 2)
 
     return fluxErg_cm2_S
-
-
-def getCurrentMJD():
-    """*Get the current MJD*"""
-    import math
-    import time
-    jd = time.time() / 86400.0 + 2440587.5
-    mjd = jd - 2400000.5
-    return mjd
 
 
 def getDateFromMJD(mjd):
