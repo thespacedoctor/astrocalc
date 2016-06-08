@@ -9,13 +9,32 @@ Usage:
     astrocalc timeflip <datetime>
     astrocalc trans <ra> <dec> <north> <east>
     astrocalc now mjd
+    astrocalc dist (-z | -m) <distVal> [--hc=hVal --wm=OmegaMatter --wv=OmegaVacuum]
 
-    coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
-    sep                   calculate the separation between two locations in the sky.
-    timeflip              flip time between UT and MJD. <datetime> within in MJD or UT
-    trans                 translate a location across the sky (north and east in arcsec)
-    now                   report current time in various formats
+
+    COMMANDS:
+    ========
+        coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
+        sep                   calculate the separation between two locations in the sky.
+        timeflip              flip time between UT and MJD.
+        trans                 translate a location across the sky (north and east in arcsec)
+        now                   report current time in various formats
+        dist                  convert distance between mpc to z
+
+    VARIABLES:
+    ==========
+        ra, ra1, ra2          right-ascension in deciaml degrees or sexegesimal format
+        dec, dec1, dec2       declination in deciaml degrees or sexegesimal format
+        datetime              modified julian date (mjd) or universal time (UT). UT can be formated 20150415113334.343 or "20150415 11:33:34.343" (spaces require quotes)
+        north, east           vector components in arcsec
+        distVal               a distance value in Mpc (-mpc) or redshift (-z)
+        hVal                  hubble constant value. Default=70 km/s/Mpc
+        OmegaMatter           Omega Matter. Default=0.3
+        OmegaVacuum           Omega Vacuum. Default=0.7
+
     -h, --help            show this help message
+    -m, --mpc             distance in mpc
+    -z, --redshift
 
 """
 ################# GLOBAL IMPORTS ####################
@@ -44,7 +63,7 @@ def main(arguments=None):
         arguments=arguments,
         docString=__doc__,
         logLevel="CRITICAL",
-        options_first=True,
+        options_first=False,
         projectName="astrocalc",
         tunnel=False
     )
@@ -217,6 +236,35 @@ def main(arguments=None):
             log=log
         ).get_mjd()
         print mjd
+
+    if dist and redshiftFlag:
+        from astrocalc.distances import converter
+        c = converter(log=log)
+        if not hcFlag:
+            hcFlag = 70.
+        if not wmFlag:
+            wmFlag = 0.3
+        if not wvFlag:
+            wvFlag = 0.7
+        dists = c.redshift_to_distance(
+            z=float(distVal),
+            WM=float(wmFlag),
+            WV=float(wvFlag),
+            H0=float(hcFlag)
+        )
+        print "Distance Modulus: " + str(dists["dmod"]) + " mag"
+        print "Luminousity Distance: " + str(dists["dl_mpc"]) + " Mpc"
+        print "Angular Size Scale: " + str(dists["da_scale"]) + " kpc/arcsec"
+        print "Angular Size Distance: " + str(dists["da_mpc"]) + " Mpc"
+        print "Comoving Radial Distance: " + str(dists["dcmr_mpc"]) + " Mpc"
+
+    if dist and mpcFlag:
+        from astrocalc.distances import converter
+        c = converter(log=log)
+        z = c.distance_to_redshift(
+            mpc=float(distVal)
+        )
+        print "z = %(z)s" % locals()
 
     if "dbConn" in locals() and dbConn:
         dbConn.commit()
