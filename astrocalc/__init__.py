@@ -28,20 +28,6 @@ def luminosity_to_flux(lumErg_S, dist_Mpc):
     return fluxErg_cm2_S
 
 
-def calculate_cartesians(ra, dec):
-    """*Convert decimal degrees ra and dec to cartesians*"""
-    import math
-    ra = math.radians(ra)
-    dec = math.radians(dec)
-    cos_dec = math.cos(dec)
-    cx = math.cos(ra) * cos_dec
-    cy = math.sin(ra) * cos_dec
-    cz = math.sin(dec)
-
-    cartesians = (cx, cy, cz)
-    return cartesians
-
-
 ##########################################################################
 # PRIVATE (HELPER) FUNCTIONS                                                                #
 ##########################################################################

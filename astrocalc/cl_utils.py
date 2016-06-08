@@ -4,7 +4,7 @@
 Documentation for astrocalc can be found here: http://astrocalc.readthedocs.org/en/stable
 
 Usage:
-    astrocalc coordflip <ra> <dec>
+    astrocalc [-c] coordflip <ra> <dec>
     astrocalc sep <ra1> <dec1> <ra2> <dec2>
     astrocalc timeflip <datetime>
     astrocalc trans <ra> <dec> <north> <east>
@@ -34,7 +34,8 @@ Usage:
 
     -h, --help            show this help message
     -m, --mpc             distance in mpc
-    -z, --redshift
+    -z, --redshift        redshift distance
+    -c, --cartesian       convert to cartesian coordinates
 
 """
 ################# GLOBAL IMPORTS ####################
@@ -58,6 +59,7 @@ def main(arguments=None):
     """
     *The main function used when ``cl_utils.py`` is run as a single script from the cl, or when installed as a cl command*
     """
+    from astrocalc.coords import unit_conversion
     # setup the command-line util settings
     su = tools(
         arguments=arguments,
@@ -125,6 +127,18 @@ def main(arguments=None):
 
     # CALL FUNCTIONS/OBJECTS
     if coordflip:
+
+        if cartesianFlag:
+            converter = unit_conversion(
+                log=log
+            )
+            x, y, z = converter.ra_dec_to_cartesian(
+                ra="23 45 21.23232",
+                dec="+01:58:5.45341"
+            )
+            print x, y, z
+            return
+
         try:
             ra = float(ra)
             dec = float(dec)

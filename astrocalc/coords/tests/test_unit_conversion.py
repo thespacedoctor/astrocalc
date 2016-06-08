@@ -130,7 +130,7 @@ class test_unit_conversion():
         print ra
 
         ra = converter.ra_decimal_to_sexegesimal(
-            ra="-363.454676456"
+            ra="63.454676456"
         )
         print ra
 
@@ -160,7 +160,7 @@ class test_unit_conversion():
         print dec
 
         dec = converter.dec_decimal_to_sexegesimal(
-            dec="-93.454676456",
+            dec="-83.454676456",
             delimiter=":"
         )
         print dec
@@ -176,3 +176,35 @@ class test_unit_conversion():
             delimiter=":"
         )
         print dec
+
+    def test_unit_conversion_ra_dec_to_cartesian_functions(self):
+
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        x, y, z = converter.ra_dec_to_cartesian(
+            ra=23.454676456,
+            dec=-3.454676456
+        )
+        print x, y, z
+
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        x, y, z = converter.ra_dec_to_cartesian(
+            ra="23 45 21.23232",
+            dec=-3.454676456
+        )
+        print x, y, z
+
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        cartesians = converter.ra_dec_to_cartesian(
+            ra="23 45 21.23232",
+            dec="+01:58:5.45341"
+        )
+        print cartesians
