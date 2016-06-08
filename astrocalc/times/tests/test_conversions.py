@@ -61,6 +61,7 @@ class test_conversions():
         print converter.mjd_to_ut_datetime(mjd=57504.61577585013)
         print "\nUT = 20161231t234643.033433"
         print converter.ut_datetime_to_mjd(utDatetime="20161231t234643.033433")
+        print converter.ut_datetime_to_mjd(utDatetime="20161231t234643.033433")
         print converter.mjd_to_ut_datetime(mjd="57753.99077585013")
         print "\nUT = 201604261444"
         print converter.ut_datetime_to_mjd(utDatetime="201604261444")
@@ -80,6 +81,12 @@ class test_conversions():
         print "\nUT = 20160426 14h44m44.432s"
         print converter.ut_datetime_to_mjd(utDatetime="20160426 14h44m44.432s")
         print converter.mjd_to_ut_datetime(mjd=57504.61440315)
+        print "\nUT = 2016-04-26T14:44:44.234"
+        print converter.ut_datetime_to_mjd(utDatetime="2016-04-26T14:44:44.234")
+        print converter.mjd_to_ut_datetime(
+            mjd=57504.61440086,
+            sqlDate=True
+        )
 
     def test_mjd_conversions_function(self):
 

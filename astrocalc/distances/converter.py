@@ -100,6 +100,10 @@ class converter():
         **Return:**
             - ``redshift``
 
+        .. todo::
+
+            - replace convert_mpc_to_redshift in all code
+
         **Usage:**
 
             .. code-block:: python
