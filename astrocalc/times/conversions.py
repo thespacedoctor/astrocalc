@@ -86,6 +86,10 @@ class conversions():
         **Return:**
             - ``mjd`` -- the MJD
 
+        .. todo ::
+
+            - replace getMJDFromSqlDate in all code
+
         **Usage:**
 
             .. code-block:: python 
@@ -182,13 +186,20 @@ class conversions():
 
     def mjd_to_ut_datetime(
             self,
-            mjd):
+            mjd,
+            sqlDate=False):
         """*mjd to ut datetime*
 
         Precision should be respected. 
 
         **Key Arguments:**
             - ``mjd`` -- time in MJD.
+            - ``sqlDate`` -- add a 'T' between date and time instead of space
+
+        .. todo::
+
+            - replace getDateFromMJD in all code
+            - replace getSQLDateFromMJD in all code
 
         **Return:**
             - ``utDatetime`` - the UT datetime in string format
@@ -201,10 +212,20 @@ class conversions():
                 converter = conversions(
                     log=log
                 )
-                utDate = converter.mjd_to_ut_datetime(mjd=57504.61577585013)
+                utDate = converter.mjd_to_ut_datetime(
+                    mjd=57504.61577585013
+                )
                 print utDate
 
                 # OUT: 2016-04-26 14:46:43.033
+
+                utDate = converter.mjd_to_ut_datetime(
+                    mjd=57504.61577585013,
+                    sqlDate=True
+                )
+                print utDate
+
+                # OUT: 2016-04-26T14:46:43.033
         """
         self.log.info('starting the ``mjd_to_ut_datetime`` method')
 
@@ -242,6 +263,9 @@ class conversions():
                 secs = float(theDate.strftime("%S.%f"))
                 secs = "%02.*f" % (precision, secs)
                 utDatetime = theDate.strftime("%Y-%m-%d %H:%M:") + secs
+
+        if sqlDate:
+            utDatetime = utDatetime.replace(" ", "T")
 
         self.log.info('completed the ``mjd_to_ut_datetime`` method')
         return utDatetime

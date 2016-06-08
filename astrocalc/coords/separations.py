@@ -33,6 +33,7 @@ class separations():
         .. todo::
 
             - replace get_angular_separation throughout all code using dryxPython
+            - replace getAngularSeparationthroughout all code using dryxPython
 
         You can input sexegesimal coordinates,
 

@@ -112,6 +112,7 @@ class unit_conversion():
             .. todo::
 
                 - replace dryxPython declination_sexegesimal_to_decimal with this version in all my code
+                - replace coords_sex_to_dec in all code
 
             .. code-block:: python
 
