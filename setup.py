@@ -32,7 +32,7 @@ setup(name="astrocalc",
           'resources/*/*', 'resources/*.*']},
       install_requires=[
           'pyyaml',
-          'astrocalc'
+          'fundamentals'
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],
