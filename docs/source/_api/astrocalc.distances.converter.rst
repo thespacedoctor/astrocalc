@@ -1,4 +1,4 @@
-.. automodule:: astrocalc.shift_coordinates
+.. automodule:: astrocalc.distances.converter
     :members:
     :undoc-members:
     :show-inheritance:
