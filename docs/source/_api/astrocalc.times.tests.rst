@@ -12,4 +12,5 @@ Submodules
 .. toctree::
 
    astrocalc.times.tests.test_conversions
+   astrocalc.times.tests.test_now
 

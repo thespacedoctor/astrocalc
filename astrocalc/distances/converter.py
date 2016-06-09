@@ -19,31 +19,23 @@ from fundamentals import tools
 
 class converter():
     """
-    *The worker class for the converter module*
+    *A converter to switch distance between various units of measurement*
 
     **Key Arguments:**
         - ``log`` -- logger
         - ``settings`` -- the settings dictionary
 
     **Usage:**
-        .. todo::
 
-            - add usage info
-            - create a sublime snippet for usage
+        To instantiate a ``converter`` object:
 
         .. code-block:: python
 
-            usage code
+            from astrocalc.distances import converter
+            c = converter(log=log)
 
-    .. todo::
-
-        - @review: when complete, clean converter class
-        - @review: when complete add logging
-        - @review: when complete, decide whether to abstract class to another module
     """
     # Initialisation
-    # 1. @flagged: what are the unique attrributes for each object? Add them
-    # to __init__
 
     def __init__(
             self,
@@ -56,41 +48,14 @@ class converter():
         self.settings = settings
         # xt-self-arg-tmpx
 
-        # 2. @flagged: what are the default attrributes each object could have? Add them to variable attribute set here
-        # Variable Data Atrributes
-
-        # 3. @flagged: what variable attrributes need overriden in any baseclass(es) used
-        # Override Variable Data Atrributes
-
         # Initial Actions
 
         return None
 
-    # 4. @flagged: what actions does each object have to be able to perform? Add them here
-    # Method Attributes
-    def get(self):
-        """
-        *get the converter object*
-
-        **Return:**
-            - ``converter``
-
-        .. todo::
-
-            - @review: when complete, clean get method
-            - @review: when complete add logging
-        """
-        self.log.info('starting the ``get`` method')
-
-        converter = None
-
-        self.log.info('completed the ``get`` method')
-        return converter
-
     def distance_to_redshift(
             self,
             mpc):
-        """*Convert a distance in MPC to a redshift*
+        """*Convert a distance from MPC to redshift*
 
         The code works by iteratively converting a redshift to a distance, correcting itself and honing in on the true answer (within a certain precision)
 
@@ -301,7 +266,3 @@ class converter():
 
     # use the tab-trigger below for new method
     # xt-class-method
-
-    # 5. @flagged: what actions of the base class(es) need ammending? ammend them here
-    # Override Method Attributes
-    # method-override-tmpx
