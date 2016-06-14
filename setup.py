@@ -30,6 +30,7 @@ setup(name="astrocalc",
       packages=find_packages(),
       package_data={'astrocalc': [
           'resources/*/*', 'resources/*.*']},
+      include_package_data=True,
       install_requires=[
           'pyyaml',
           'fundamentals'
