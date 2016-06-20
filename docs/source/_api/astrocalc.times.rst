@@ -19,4 +19,5 @@ Submodules
 .. toctree::
 
    astrocalc.times.conversions
+   astrocalc.times.now
 

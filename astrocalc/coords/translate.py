@@ -8,90 +8,124 @@
 
 :Date Created:
     April 21, 2016
-
-.. todo::
-    
-    @review: when complete pull all general functions and classes into dryxPython
 """
 ################# GLOBAL IMPORTS ####################
 import sys
 import os
+import math
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
+from astrocalc.coords import unit_conversion
 
 
 class translate():
     """
-    *The worker class for the translate module*
+    *Translate a set of coordinates north and east by distances given in arcsecs*
 
     **Key Arguments:**
         - ``log`` -- logger
-        - ``settings`` -- the settings dictionary
-
-    **Usage:**
-        .. todo::
-
-            - add usage info
-            - create a sublime snippet for usage
-
-        .. code-block:: python 
-
-            usage code   
+        - ``settings`` -- the settings dictionary. Default *False*
+        - ``ra`` -- ra (decimal or sexegesimal)
+        - ``dec`` -- dec (decimal or sexegesimal)
+        - ``northArcsec`` -- number of arcsecs to move location to the north
+        - ``eastArcsec`` -- number of arcsecs to move location to the east
 
     .. todo::
 
-        - @review: when complete, clean translate class
-        - @review: when complete add logging
-        - @review: when complete, decide whether to abstract class to another module
+        - replace shift_coordinates class in all other code
+
+    **Usage:**
+
+        To shift a set of coordinates north and east by given distances:
+
+        .. code-block:: python 
+
+            # TRANSLATE COORDINATES ACROSS SKY
+            from astrocalc.coords import translate
+            ra, dec = translate(
+                log=log,
+                settings=settings,
+                ra="14.546438",
+                dec="-45.34232334",
+                northArcsec=4560,
+                eastArcsec=+967800
+            ).get()  
     """
     # Initialisation
-    # 1. @flagged: what are the unique attrributes for each object? Add them
-    # to __init__
 
     def __init__(
             self,
             log,
+            ra,
+            dec,
+            northArcsec,
+            eastArcsec,
             settings=False,
-
     ):
         self.log = log
         log.debug("instansiating a new 'translate' object")
         self.settings = settings
+        self.ra = ra
+        self.dec = dec
+        self.north = northArcsec / 3600.
+        self.east = eastArcsec / 3600.
         # xt-self-arg-tmpx
 
-        # 2. @flagged: what are the default attrributes each object could have? Add them to variable attribute set here
-        # Variable Data Atrributes
+        # CONSTANTS
+        self.pi = (4 * math.atan(1.0))
+        self.DEG_TO_RAD_FACTOR = self.pi / 180.0
+        self.RAD_TO_DEG_FACTOR = 180.0 / self.pi
 
-        # 3. @flagged: what variable attrributes need overriden in any baseclass(es) used
-        # Override Variable Data Atrributes
-
-        # Initial Actions
+        # INITIAL ACTIONS
+        # CONVERT RA AND DEC INTO DECIMAL DEGREES
+        converter = unit_conversion(
+            log=log
+        )
+        self.ra = converter.ra_sexegesimal_to_decimal(
+            ra=self.ra
+        )
+        self.dec = converter.dec_sexegesimal_to_decimal(
+            dec=self.dec
+        )
 
         return None
 
-    # 4. @flagged: what actions does each object have to be able to perform? Add them here
-    # Method Attributes
     def get(self):
         """
-        *get the translate object*
+        *translate the coordinates*
 
         **Return:**
-            - ``translate``
-
-        .. todo::
-
-            - @review: when complete, clean get method
-            - @review: when complete add logging
+            - ``ra`` -- the right-ascension of the translated coordinate
+            - ``dec`` -- the declination of the translated coordinate
         """
         self.log.info('starting the ``get`` method')
 
-        translate = None
+        # PRECISION TEST
+        decprecision = len(repr(self.dec).split(".")[-1])
+        raprecision = len(repr(self.ra).split(".")[-1])
+
+        dec2 = self.dec + self.north
+
+        ra2 = self.ra + \
+            ((self.east) /
+             (math.cos((self.dec + dec2) * self.DEG_TO_RAD_FACTOR / 2.)))
+
+        # FIX VALUES THAT CROSS RA/DEC LIMITS
+        while ra2 > 360. or ra2 < 0.:
+            while ra2 > 360.:
+                ra2 = ra2 - 360.
+            while ra2 < 0.:
+                ra2 = ra2 + 360.
+        while dec2 > 90. or dec2 < -90.:
+            while dec2 > 90.:
+                dec2 = 180. - dec2
+            while dec2 < -90.:
+                dec2 = -180. - dec2
+
+        ra2 = "%0.*f" % (raprecision, ra2)
+        dec2 = "%0.*f" % (decprecision, dec2)
 
         self.log.info('completed the ``get`` method')
-        return translate
+        return ra2, dec2
 
     # xt-class-method
-
-    # 5. @flagged: what actions of the base class(es) need ammending? ammend them here
-    # Override Method Attributes
-    # method-override-tmpx

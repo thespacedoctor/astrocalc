@@ -12,6 +12,7 @@
 ################# GLOBAL IMPORTS ####################
 import sys
 import os
+import math
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
@@ -112,6 +113,7 @@ class unit_conversion():
             .. todo::
 
                 - replace dryxPython declination_sexegesimal_to_decimal with this version in all my code
+                - replace coords_sex_to_dec in all code
 
             .. code-block:: python
 
@@ -178,8 +180,11 @@ class unit_conversion():
             raise IOError(
                 "could not convert dec to decimal degrees, could not parse sexegesimal input. Original value was `%(dec)s`" % locals())
 
+        decDeg = float(decDeg)
+        self.log.debug('decDeg: %(decDeg)s' % locals())
         self.log.info(
             'completed the ``dec_sexegesimal_to_decimal`` method')
+
         return float(decDeg)
 
     def ra_sexegesimal_to_decimal(
@@ -265,7 +270,12 @@ class unit_conversion():
             raise IOError(
                 "could not convert ra to decimal degrees, could not parse sexegesimal input. Original value was `%(ra)s`" % locals())
 
-        return float(decimalDegrees)
+        raDeg = decimalDegrees
+        self.log.debug('raDeg: %(decimalDegrees)s' % locals())
+        self.log.info(
+            'completed the ``ra_sexegesimal_to_decimal`` method')
+
+        return float(raDeg)
 
     def ra_decimal_to_sexegesimal(
             self,
@@ -436,6 +446,61 @@ class unit_conversion():
 
         self.log.info('completed the ``dec_decimal_to_sexegesimal`` method')
         return sexegesimal
+
+    # use the tab-trigger below for new method
+    def ra_dec_to_cartesian(
+            self,
+            ra,
+            dec):
+        """*Convert an RA, DEC coordinate set to x, y, z cartesian coordinates*
+
+        **Key Arguments:**
+            - ``ra`` -- right ascension in sexegesimal or decimal degress.
+            - ``dec`` -- declination in sexegesimal or decimal degress.
+
+        **Return:**
+            - ``cartesians`` -- tuple of (x, y, z) coordinates
+
+        ..  todo::
+
+            - replace calculate_cartesians in all code
+
+        **Usage:**
+
+            .. code-block:: python 
+
+                from astrocalc.coords import unit_conversion
+                converter = unit_conversion(
+                    log=log
+                )
+                x, y, z = converter.ra_dec_to_cartesian(
+                    ra="23 45 21.23232",
+                    dec="+01:58:5.45341"
+                )
+                print x, y, z
+
+                # OUTPUT: 0.9973699780687104, -0.06382462462791459, 0.034344492110465606
+        """
+        self.log.info('starting the ``ra_dec_to_cartesian`` method')
+
+        ra = self.ra_sexegesimal_to_decimal(
+            ra=ra
+        )
+        dec = self.dec_sexegesimal_to_decimal(
+            dec=dec
+        )
+
+        ra = math.radians(ra)
+        dec = math.radians(dec)
+        cos_dec = math.cos(dec)
+        cx = math.cos(ra) * cos_dec
+        cy = math.sin(ra) * cos_dec
+        cz = math.sin(dec)
+
+        cartesians = (cx, cy, cz)
+
+        self.log.info('completed the ``ra_dec_to_cartesian`` method')
+        return cartesians
 
     # use the tab-trigger below for new method
     # xt-class-method

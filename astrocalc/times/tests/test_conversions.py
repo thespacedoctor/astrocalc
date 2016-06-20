@@ -61,6 +61,7 @@ class test_conversions():
         print converter.mjd_to_ut_datetime(mjd=57504.61577585013)
         print "\nUT = 20161231t234643.033433"
         print converter.ut_datetime_to_mjd(utDatetime="20161231t234643.033433")
+        print converter.ut_datetime_to_mjd(utDatetime="20161231t234643.033433")
         print converter.mjd_to_ut_datetime(mjd="57753.99077585013")
         print "\nUT = 201604261444"
         print converter.ut_datetime_to_mjd(utDatetime="201604261444")
@@ -80,6 +81,12 @@ class test_conversions():
         print "\nUT = 20160426 14h44m44.432s"
         print converter.ut_datetime_to_mjd(utDatetime="20160426 14h44m44.432s")
         print converter.mjd_to_ut_datetime(mjd=57504.61440315)
+        print "\nUT = 2016-04-26T14:44:44.234"
+        print converter.ut_datetime_to_mjd(utDatetime="2016-04-26T14:44:44.234")
+        print converter.mjd_to_ut_datetime(
+            mjd=57504.61440086,
+            sqlDate=True
+        )
 
     def test_mjd_conversions_function(self):
 
@@ -96,6 +103,27 @@ class test_conversions():
         print converter.mjd_to_ut_datetime(mjd=57504.61440)
         print converter.mjd_to_ut_datetime(mjd=57504.61440)
         print converter.mjd_to_ut_datetime(mjd=57504.61440)
+
+    def test_decimal_day_to_day_hour_min_sec_function(self):
+
+        converter = conversions(
+            log=log,
+        )
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.2453)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.12345)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.2)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
+
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.1232435454)
+        print "%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals()
 
         # x-print-testpage-for-pessto-marshall-web-object
 

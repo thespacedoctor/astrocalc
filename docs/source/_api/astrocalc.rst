@@ -13,7 +13,7 @@ Subpackages
 
     astrocalc.commonutils
     astrocalc.coords
-    astrocalc.tests
+    astrocalc.distances
     astrocalc.times
 
 Submodules
@@ -22,8 +22,5 @@ Submodules
 .. toctree::
 
    astrocalc.cl_utils
-   astrocalc.decimal_day_to_day_hour_min_sec
-   astrocalc.mjd_to_date
-   astrocalc.shift_coordinates
    astrocalc.utKit
 

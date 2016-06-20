@@ -1,4 +1,4 @@
-.. automodule:: astrocalc.tests.test_shift_coordinates
+.. automodule:: astrocalc.times.tests.test_now
     :members:
     :undoc-members:
     :show-inheritance:

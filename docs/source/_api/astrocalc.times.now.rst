@@ -1,4 +1,4 @@
-.. automodule:: astrocalc.tests.test_mjd_to_date
+.. automodule:: astrocalc.times.now
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: astrocalc.tests.test_date_to_mjd
+.. automodule:: astrocalc.distances.tests.test_converter
     :members:
     :undoc-members:
     :show-inheritance:
