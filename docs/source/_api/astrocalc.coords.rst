@@ -6,13 +6,6 @@ astrocalc.coords package
     :undoc-members:
     :show-inheritance:
 
-Subpackages
------------
-
-.. toctree::
-
-    astrocalc.coords.tests
-
 Submodules
 ----------
 
