@@ -137,7 +137,7 @@ class unit_conversion():
         try:
             dec = float(dec)
             if dec > -90. and dec < 90.:
-                self.log.warning(
+                self.log.info(
                     'declination seems to already be in decimal degrees, returning original value' % locals())
                 return float(dec)
         except:
@@ -233,7 +233,7 @@ class unit_conversion():
         try:
             ra = float(ra)
             if ra > 0. and ra < 360.:
-                self.log.warning(
+                self.log.info(
                     'RA seems to already be in decimal degrees, returning original value' % locals())
                 return float(ra)
         except:
