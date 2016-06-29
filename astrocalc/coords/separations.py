@@ -176,9 +176,9 @@ class separations():
 
         # BE CAREFUL WITH PRECISION PROPAGATION
         thisVal = math.acos(three)
-        thisVal = "%0.*f" % (precision, thisVal)
-
         angularSeparation = float(thisVal) * RAD_TO_DEG_FACTOR * 3600.0
+
+        print angularSeparation
 
         # Now work out N-S, E-W separations (object 1 relative to 2)
         north = -(dec1 - dec2) * 3600.0
