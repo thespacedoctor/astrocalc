@@ -6,13 +6,6 @@ astrocalc.times package
     :undoc-members:
     :show-inheritance:
 
-Subpackages
------------
-
-.. toctree::
-
-    astrocalc.times.tests
-
 Submodules
 ----------
 

@@ -6,13 +6,6 @@ astrocalc.distances package
     :undoc-members:
     :show-inheritance:
 
-Subpackages
------------
-
-.. toctree::
-
-    astrocalc.distances.tests
-
 Submodules
 ----------
 
