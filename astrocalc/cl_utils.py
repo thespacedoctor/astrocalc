@@ -65,7 +65,7 @@ def main(arguments=None):
         arguments=arguments,
         docString=__doc__,
         logLevel="CRITICAL",
-        options_first=False,
+        options_first=True,
         projectName="astrocalc",
         tunnel=False
     )
