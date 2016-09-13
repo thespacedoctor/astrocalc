@@ -187,7 +187,8 @@ class conversions():
     def mjd_to_ut_datetime(
             self,
             mjd,
-            sqlDate=False):
+            sqlDate=False,
+            datetimeObject=False):
         """*mjd to ut datetime*
 
         Precision should be respected. 
@@ -195,6 +196,7 @@ class conversions():
         **Key Arguments:**
             - ``mjd`` -- time in MJD.
             - ``sqlDate`` -- add a 'T' between date and time instead of space
+            - ``datetimeObject`` -- return a datetime object instead of a string. Default *False*
 
         .. todo::
 
@@ -235,37 +237,40 @@ class conversions():
         unixtime = (float(mjd) + 2400000.5 - 2440587.5) * 86400.0
         theDate = datetime.utcfromtimestamp(unixtime)
 
-        # DETERMINE PRECISION
-        strmjd = repr(mjd)
-        if "." not in strmjd:
-            precisionUnit = "day"
-            precision = 0
-            utDatetime = theDate.strftime("%Y-%m-%d")
-        else:
-            lenDec = len(strmjd.split(".")[-1])
-            if lenDec < 2:
+        if datetimeObject == False:
+            # DETERMINE PRECISION
+            strmjd = repr(mjd)
+            if "." not in strmjd:
                 precisionUnit = "day"
                 precision = 0
                 utDatetime = theDate.strftime("%Y-%m-%d")
-            elif lenDec < 3:
-                precisionUnit = "hour"
-                precision = 0
-                utDatetime = theDate.strftime("%Y-%m-%d")
-            elif lenDec < 5:
-                precisionUnit = "minute"
-                precision = 0
-                utDatetime = theDate.strftime("%Y-%m-%d %H:%M")
             else:
-                precisionUnit = "second"
-                precision = lenDec - 5
-                if precision > 3:
-                    precision = 3
-                secs = float(theDate.strftime("%S.%f"))
-                secs = "%02.*f" % (precision, secs)
-                utDatetime = theDate.strftime("%Y-%m-%d %H:%M:") + secs
+                lenDec = len(strmjd.split(".")[-1])
+                if lenDec < 2:
+                    precisionUnit = "day"
+                    precision = 0
+                    utDatetime = theDate.strftime("%Y-%m-%d")
+                elif lenDec < 3:
+                    precisionUnit = "hour"
+                    precision = 0
+                    utDatetime = theDate.strftime("%Y-%m-%d")
+                elif lenDec < 5:
+                    precisionUnit = "minute"
+                    precision = 0
+                    utDatetime = theDate.strftime("%Y-%m-%d %H:%M")
+                else:
+                    precisionUnit = "second"
+                    precision = lenDec - 5
+                    if precision > 3:
+                        precision = 3
+                    secs = float(theDate.strftime("%S.%f"))
+                    secs = "%02.*f" % (precision, secs)
+                    utDatetime = theDate.strftime("%Y-%m-%d %H:%M:") + secs
 
-        if sqlDate:
-            utDatetime = utDatetime.replace(" ", "T")
+            if sqlDate:
+                utDatetime = utDatetime.replace(" ", "T")
+        else:
+            utDatetime = theDate
 
         self.log.info('completed the ``mjd_to_ut_datetime`` method')
         return utDatetime
