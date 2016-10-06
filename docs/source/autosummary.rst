@@ -44,4 +44,5 @@ Functions
    :nosignatures:
 
    astrocalc.luminosity_to_flux
+   astrocalc.coords.coordinates_to_array
    astrocalc.cl_utils.tab_complete 

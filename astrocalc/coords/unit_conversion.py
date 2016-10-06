@@ -232,7 +232,7 @@ class unit_conversion():
         # TEST TO SEE IF DECIMAL DEGREES PASSED
         try:
             ra = float(ra)
-            if ra > 0. and ra < 360.:
+            if ra >= 0. and ra <= 360.:
                 self.log.info(
                     'RA seems to already be in decimal degrees, returning original value' % locals())
                 return float(ra)
