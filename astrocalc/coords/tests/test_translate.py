@@ -12,8 +12,7 @@ su = tools(
     docString=__doc__,
     logLevel="DEBUG",
     options_first=False,
-    projectName="astrocalc.coords",
-    tunnel=False
+    projectName="astrocalc.coords"
 )
 arguments, settings, log, dbConn = su.setup()
 

@@ -1,5 +1,5 @@
-Tutorial
-========
+Command-Line Tutorial
+=====================
 
 .. todo::
 
