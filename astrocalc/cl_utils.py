@@ -66,8 +66,7 @@ def main(arguments=None):
         docString=__doc__,
         logLevel="CRITICAL",
         options_first=True,
-        projectName="astrocalc",
-        tunnel=False
+        projectName="astrocalc"
     )
     arguments, settings, log, dbConn = su.setup()
 
