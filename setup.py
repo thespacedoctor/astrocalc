@@ -33,8 +33,7 @@ setup(name="astrocalc",
       include_package_data=True,
       install_requires=[
           'pyyaml',
-          'fundamentals',
-          'numpy'
+          'fundamentals'
       ],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],
