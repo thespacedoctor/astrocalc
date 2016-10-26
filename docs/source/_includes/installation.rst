@@ -21,3 +21,9 @@ To upgrade to the latest version of astrocalc use the command:
 
     pip install astrocalc --upgrade
 
+Please also install numpy
+
+.. code:: bash
+
+    pip install numpy
+
