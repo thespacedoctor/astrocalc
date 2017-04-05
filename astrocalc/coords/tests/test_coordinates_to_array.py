@@ -46,7 +46,7 @@ if not os.path.exists(pathToOutputDir):
 # xt-setup-unit-testing-files-and-folders
 
 
-class test_coordinates_to_array():
+class test_coordinates_to_array(unittest.TestCase):
 
     def test_coordinates_to_array(self):
 
