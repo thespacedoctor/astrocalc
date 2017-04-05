@@ -29,7 +29,7 @@ log, dbConn, pathToInputDir, pathToOutputDir = utKit.setupModule()
 utKit.tearDownModule()
 
 
-class test_unit_conversion():
+class test_unit_conversion(unittest.TestCase):
 
     def test_unit_conversion_sexe_to_deg_function(self):
         kwargs = {}

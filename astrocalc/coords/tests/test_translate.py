@@ -29,7 +29,7 @@ log, dbConn, pathToInputDir, pathToOutputDir = utKit.setupModule()
 utKit.tearDownModule()
 
 
-class test_translate():
+class test_translate(unittest.TestCase):
 
     def test_translate_function01(self):
 

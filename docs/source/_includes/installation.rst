@@ -1,7 +1,7 @@
 Installation
 ============
 
-The easiest way to install astrocalc us to use ``pip``:
+The easiest way to install astrocalc is to use ``pip``:
 
 .. code:: bash
 

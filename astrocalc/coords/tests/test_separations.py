@@ -29,7 +29,7 @@ log, dbConn, pathToInputDir, pathToOutputDir = utKit.setupModule()
 utKit.tearDownModule()
 
 
-class test_separations():
+class test_separations(unittest.TestCase):
 
     def test_separations_function(self):
         # xt-kwarg_key_and_value

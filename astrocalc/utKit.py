@@ -42,7 +42,7 @@ class utKit(utKit):
         handlers:
             console:
                 class: logging.StreamHandler
-                level: ERROR
+                level: DEBUG
                 formatter: console_style
                 stream: ext://sys.stdout
         root:
