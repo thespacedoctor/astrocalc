@@ -49,24 +49,44 @@ def coordinates_to_array(
     """
     log.info('starting the ``coordinates_to_array`` function')
 
+    if isinstance(ra, np.ndarray) and isinstance(dec, np.ndarray):
+        return ra, dec
+
     # ASTROCALC UNIT CONVERTER OBJECT
     converter = unit_conversion(
         log=log
     )
     # CONVERT RA AND DEC TO NUMPY ARRAYS
-    if isinstance(ra, str) or isinstance(ra, float):
-        ra = converter.ra_sexegesimal_to_decimal(ra=ra)
+    if isinstance(ra, float):
+        pass
+    elif isinstance(ra, str):
+        try:
+            ra = float(ra)
+        except:
+            ra = converter.ra_sexegesimal_to_decimal(ra=ra)
     elif isinstance(ra, list):
-        raList = []
-        raList[:] = [converter.ra_sexegesimal_to_decimal(ra=r) for r in ra]
-        ra = raList
-    if isinstance(dec, str) or isinstance(dec, float):
-        dec = converter.dec_sexegesimal_to_decimal(dec=dec)
+        try:
+            ra = np.array(ra).astype(np.float)
+        except:
+            raList = []
+            raList[:] = [converter.ra_sexegesimal_to_decimal(ra=r) for r in ra]
+            ra = raList
+
+    if isinstance(dec, float):
+        pass
+    elif isinstance(dec, str):
+        try:
+            dec = float(dec)
+        except:
+            dec = converter.dec_sexegesimal_to_decimal(dec=dec)
     elif isinstance(dec, list):
-        decList = []
-        decList[:] = [
-            converter.dec_sexegesimal_to_decimal(dec=d) for d in dec]
-        dec = decList
+        try:
+            dec = np.array(dec).astype(np.float)
+        except:
+            decList = []
+            decList[:] = [
+                converter.dec_sexegesimal_to_decimal(dec=d) for d in dec]
+            dec = decList
 
     raArray = np.array(ra, dtype='f8', ndmin=1, copy=False)
     decArray = np.array(dec, dtype='f8', ndmin=1, copy=False)
