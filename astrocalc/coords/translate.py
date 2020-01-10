@@ -98,7 +98,7 @@ class translate():
             - ``ra`` -- the right-ascension of the translated coordinate
             - ``dec`` -- the declination of the translated coordinate
         """
-        self.log.info('starting the ``get`` method')
+        self.log.debug('starting the ``get`` method')
 
         # PRECISION TEST
         decprecision = len(repr(self.dec).split(".")[-1])
@@ -125,7 +125,7 @@ class translate():
         ra2 = "%0.*f" % (raprecision, ra2)
         dec2 = "%0.*f" % (decprecision, dec2)
 
-        self.log.info('completed the ``get`` method')
+        self.log.debug('completed the ``get`` method')
         return ra2, dec2
 
     # xt-class-method

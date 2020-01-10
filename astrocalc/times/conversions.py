@@ -64,11 +64,11 @@ class conversions():
             - @review: when complete, clean get method
             - @review: when complete add logging
         """
-        self.log.info('starting the ``get`` method')
+        self.log.debug('starting the ``get`` method')
 
         conversions = None
 
-        self.log.info('completed the ``get`` method')
+        self.log.debug('completed the ``get`` method')
         return conversions
 
     def ut_datetime_to_mjd(
@@ -108,7 +108,7 @@ class conversions():
 
                 # OUT: 57504.61440
         """
-        self.log.info('starting the ``ut_datetime_to_mjd`` method')
+        self.log.debug('starting the ``ut_datetime_to_mjd`` method')
 
         import time
         import re
@@ -181,7 +181,7 @@ class conversions():
 
         mjd = "%0.*f" % (precision, mjd)
 
-        self.log.info('completed the ``ut_datetime_to_mjd`` method')
+        self.log.debug('completed the ``ut_datetime_to_mjd`` method')
         return mjd
 
     def mjd_to_ut_datetime(
@@ -229,7 +229,7 @@ class conversions():
 
                 # OUT: 2016-04-26T14:46:43.033
         """
-        self.log.info('starting the ``mjd_to_ut_datetime`` method')
+        self.log.debug('starting the ``mjd_to_ut_datetime`` method')
 
         from datetime import datetime
 
@@ -272,7 +272,7 @@ class conversions():
         else:
             utDatetime = theDate
 
-        self.log.info('completed the ``mjd_to_ut_datetime`` method')
+        self.log.debug('completed the ``mjd_to_ut_datetime`` method')
         return utDatetime
 
     def decimal_day_to_day_hour_min_sec(
@@ -316,8 +316,8 @@ class conversions():
 
                 # OUTPUT: 24 days, 2 hours, 57 mins, 28.242 sec
         """
-        self.log.info(
-            'starting the ``decimal_day_to_day_hour_min_sec`` method')
+        self.log.debug(
+            'completed the ````decimal_day_to_day_hour_min_sec`` method')
 
         daysInt = int(daysFloat)
         hoursFloat = (daysFloat - daysInt) * 24.
@@ -358,7 +358,7 @@ class conversions():
                     precision = 3
                 secFloat = "%02.*f" % (precision, secFloat)
 
-        self.log.info(
+        self.log.debug(
             'completed the ``decimal_day_to_day_hour_min_sec`` method')
         return daysInt, hoursInt, minsInt, secFloat
 

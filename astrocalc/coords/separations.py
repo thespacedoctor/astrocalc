@@ -122,7 +122,7 @@ class separations():
 
         See main class usage for details.
         """
-        self.log.info('starting the ``get_angular_separation`` method')
+        self.log.debug('starting the ``get_angular_separation`` method')
 
         from astrocalc.coords import unit_conversion
 
@@ -187,7 +187,7 @@ class separations():
         north = "%0.*f" % (precision, north)
         east = "%0.*f" % (precision, east)
 
-        self.log.info('completed the ``get_angular_separation`` method')
+        self.log.debug('completed the ``get_angular_separation`` method')
         return angularSeparation, north, east
 
     # use the tab-trigger below for new method

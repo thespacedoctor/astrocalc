@@ -65,12 +65,12 @@ class now():
             ).get_mjd()
 
         """
-        self.log.info('starting the ``get_mjd`` method')
+        self.log.debug('starting the ``get_mjd`` method')
 
         jd = time.time() / 86400.0 + 2440587.5
         mjd = jd - 2400000.5
 
-        self.log.info('completed the ``get_mjd`` method')
+        self.log.debug('completed the ``get_mjd`` method')
         return mjd
 
     # xt-class-method

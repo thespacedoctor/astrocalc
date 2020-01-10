@@ -83,7 +83,7 @@ class converter():
 
                 # OUTPUT: 0.108
         """
-        self.log.info('starting the ``distance_to_redshift`` method')
+        self.log.debug('starting the ``distance_to_redshift`` method')
 
         lowerLimit = 0.
         upperLimit = 30.
@@ -107,7 +107,7 @@ class converter():
 
         redshift = float("%5.4f" % (redshift,))
 
-        self.log.info('completed the ``distance_to_redshift`` method')
+        self.log.debug('completed the ``distance_to_redshift`` method')
         return redshift
 
     def redshift_to_distance(
@@ -182,7 +182,7 @@ class converter():
                 # Comoving Radial Distance: 1352.03 Mpc
 
         """
-        self.log.info('starting the ``redshift_to_distance`` method')
+        self.log.debug('starting the ``redshift_to_distance`` method')
 
         # VARIABLE
         h = H0 / 100.0
@@ -261,7 +261,7 @@ class converter():
                 "z": float(z)
             }
 
-        self.log.info('completed the ``redshift_to_distance`` method')
+        self.log.debug('completed the ``redshift_to_distance`` method')
         return results
 
     # use the tab-trigger below for new method

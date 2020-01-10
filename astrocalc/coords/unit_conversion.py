@@ -80,11 +80,11 @@ class unit_conversion():
             - @review: when complete, clean get method
             - @review: when complete add logging
         """
-        self.log.info('starting the ``get`` method')
+        self.log.debug('starting the ``get`` method')
 
         unit_conversion = None
 
-        self.log.info('completed the ``get`` method')
+        self.log.debug('completed the ``get`` method')
         return unit_conversion
 
     def dec_sexegesimal_to_decimal(
@@ -128,8 +128,8 @@ class unit_conversion():
 
                 # OUTPUT: -23.7558978667
         """
-        self.log.info(
-            'starting the ``dec_sexegesimal_to_decimal`` method')
+        self.log.debug(
+            'completed the ````dec_sexegesimal_to_decimal`` method')
 
         import re
 
@@ -137,7 +137,7 @@ class unit_conversion():
         try:
             dec = float(dec)
             if dec > -90. and dec < 90.:
-                self.log.info(
+                self.log.debug(
                     'declination seems to already be in decimal degrees, returning original value' % locals())
                 return float(dec)
         except:
@@ -182,7 +182,7 @@ class unit_conversion():
 
         decDeg = float(decDeg)
         self.log.debug('decDeg: %(decDeg)s' % locals())
-        self.log.info(
+        self.log.debug(
             'completed the ``dec_sexegesimal_to_decimal`` method')
 
         return float(decDeg)
@@ -233,7 +233,7 @@ class unit_conversion():
         try:
             ra = float(ra)
             if ra >= 0. and ra <= 360.:
-                self.log.info(
+                self.log.debug(
                     'RA seems to already be in decimal degrees, returning original value' % locals())
                 return float(ra)
         except:
@@ -272,7 +272,7 @@ class unit_conversion():
 
         raDeg = decimalDegrees
         self.log.debug('raDeg: %(decimalDegrees)s' % locals())
-        self.log.info(
+        self.log.debug(
             'completed the ``ra_sexegesimal_to_decimal`` method')
 
         return float(raDeg)
@@ -312,7 +312,7 @@ class unit_conversion():
 
                 # OUT: 22:26:10.87
         """
-        self.log.info('starting the ``ra_decimal_to_sexegesimal`` method')
+        self.log.debug('starting the ``ra_decimal_to_sexegesimal`` method')
 
         # CONVERT RA TO FLOAT
         try:
@@ -357,7 +357,7 @@ class unit_conversion():
         sexegesimal = '%02d' % ra_hh + delimiter + '%02d' % ra_mm + \
             delimiter + '%02d' % ra_ss + ra_ff
 
-        self.log.info('completed the ``ra_decimal_to_sexegesimal`` method')
+        self.log.debug('completed the ``ra_decimal_to_sexegesimal`` method')
         return sexegesimal
 
     def dec_decimal_to_sexegesimal(
@@ -395,7 +395,7 @@ class unit_conversion():
 
                 # OUT: -03:27:16.8
         """
-        self.log.info('starting the ``dec_decimal_to_sexegesimal`` method')
+        self.log.debug('starting the ``dec_decimal_to_sexegesimal`` method')
 
         import math
 
@@ -444,7 +444,7 @@ class unit_conversion():
         sexegesimal = hemisphere + '%02d' % dec_deg + delimiter + \
             '%02d' % dec_mm + delimiter + '%02d' % dec_ss + dec_f
 
-        self.log.info('completed the ``dec_decimal_to_sexegesimal`` method')
+        self.log.debug('completed the ``dec_decimal_to_sexegesimal`` method')
         return sexegesimal
 
     # use the tab-trigger below for new method
@@ -481,7 +481,7 @@ class unit_conversion():
 
                 # OUTPUT: 0.9973699780687104, -0.06382462462791459, 0.034344492110465606
         """
-        self.log.info('starting the ``ra_dec_to_cartesian`` method')
+        self.log.debug('starting the ``ra_dec_to_cartesian`` method')
 
         ra = self.ra_sexegesimal_to_decimal(
             ra=ra
@@ -499,7 +499,7 @@ class unit_conversion():
 
         cartesians = (cx, cy, cz)
 
-        self.log.info('completed the ``ra_dec_to_cartesian`` method')
+        self.log.debug('completed the ``ra_dec_to_cartesian`` method')
         return cartesians
 
     # use the tab-trigger below for new method
