@@ -47,7 +47,7 @@ def coordinates_to_array(
                 dec=dec
             )
     """
-    log.info('starting the ``coordinates_to_array`` function')
+    log.debug('starting the ``coordinates_to_array`` function')
 
     if isinstance(ra, np.ndarray) and isinstance(dec, np.ndarray):
         return ra, dec
@@ -59,7 +59,7 @@ def coordinates_to_array(
     # CONVERT RA AND DEC TO NUMPY ARRAYS
     if isinstance(ra, float):
         pass
-    elif isinstance(ra, str):
+    elif isinstance(ra, ("".__class__, u"".__class__)):
         try:
             ra = float(ra)
         except:
@@ -74,7 +74,7 @@ def coordinates_to_array(
 
     if isinstance(dec, float):
         pass
-    elif isinstance(dec, str):
+    elif isinstance(dec, ("".__class__, u"".__class__)):
         try:
             dec = float(dec)
         except:
@@ -91,5 +91,5 @@ def coordinates_to_array(
     raArray = np.array(ra, dtype='f8', ndmin=1, copy=False)
     decArray = np.array(dec, dtype='f8', ndmin=1, copy=False)
 
-    log.info('completed the ``coordinates_to_array`` function')
+    log.debug('completed the ``coordinates_to_array`` function')
     return raArray, decArray

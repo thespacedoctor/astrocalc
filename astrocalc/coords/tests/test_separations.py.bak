@@ -1,4 +1,3 @@
-from __future__ import print_function
 import os
 import unittest
 import shutil
@@ -18,7 +17,7 @@ su = tools(
 arguments, settings, log, dbConn = su.setup()
 
 # load settings
-stream = open(
+stream = file(
     "/Users/Dave/.config/astrocalc/astrocalc.yaml", 'r')
 settings = yaml.load(stream)
 stream.close()
@@ -43,7 +42,7 @@ class test_separations(unittest.TestCase):
             ra2="23:32:34.642",
             dec2="-12:12:34.9334",
         )
-        print(calculator.get())
+        print calculator.get()
 
         from astrocalc.coords import separations
         calculator = separations(
@@ -53,7 +52,7 @@ class test_separations(unittest.TestCase):
             ra2=45.343545345,
             dec2=87.3435435
         )
-        print(calculator.get())
+        print calculator.get()
 
         from astrocalc.coords import separations
         calculator = separations(
@@ -63,7 +62,7 @@ class test_separations(unittest.TestCase):
             ra2="23:32:34.642",
             dec2="89:12:34.9334"
         )
-        print(calculator.get())
+        print calculator.get()
 
         # x-print-testpage-for-pessto-marshall-web-object
 

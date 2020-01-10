@@ -10,7 +10,6 @@
     May 27, 2016
 """
 ################# GLOBAL IMPORTS ####################
-from builtins import object
 import sys
 import os
 import math
@@ -19,7 +18,7 @@ os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
 
-class now(object):
+class now():
     """
     *Report the current time into various formats*
 

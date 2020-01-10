@@ -1,7 +1,5 @@
-from __future__ import division
 
 
-from past.utils import old_div
 def luminosity_to_flux(lumErg_S, dist_Mpc):
     """
     *Convert luminosity to a flux*
@@ -25,7 +23,7 @@ def luminosity_to_flux(lumErg_S, dist_Mpc):
     ################ >ACTION(S) ################
     # Convert the distance to cm
     distCm = dist_Mpc * MPC_2_CMS
-    fluxErg_cm2_S = old_div(lumErg_S, (4 * np.pi * distCm ** 2))
+    fluxErg_cm2_S = lumErg_S / (4 * np.pi * distCm ** 2)
 
     return fluxErg_cm2_S
 

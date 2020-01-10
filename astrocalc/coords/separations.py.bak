@@ -10,7 +10,6 @@
     April 21, 2016
 """
 ################# GLOBAL IMPORTS ####################
-from builtins import object
 import sys
 import os
 import math
@@ -18,7 +17,7 @@ os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
 
-class separations(object):
+class separations():
     """
     *The worker class for the separations module*
 
