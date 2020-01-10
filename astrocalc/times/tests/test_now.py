@@ -1,5 +1,5 @@
 import os
-import nose
+import unittest
 import shutil
 import yaml
 from astrocalc.times import now
@@ -17,7 +17,7 @@ su = tools(
 arguments, settings, log, dbConn = su.setup()
 
 # load settings
-stream = file(
+stream = open(
     "/Users/Dave/.config/astrocalc/astrocalc.yaml", 'r')
 settings = yaml.load(stream)
 stream.close()

@@ -9,11 +9,7 @@
 :Date Created:
     April 21, 2016
 """
-from __future__ import division
 ################# GLOBAL IMPORTS ####################
-from builtins import str
-from builtins import object
-from past.utils import old_div
 import sys
 import os
 import math
@@ -21,7 +17,7 @@ os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
 
-class unit_conversion(object):
+class unit_conversion():
     """
     *The worker class for the unit_conversion module*
 
@@ -345,10 +341,10 @@ class unit_conversion(object):
 
         # CALCULATION FROM DECIMAL DEGREES
         import math
-        ra_hh = int(old_div(ra, 15))
-        ra_mm = int((old_div(ra, 15) - ra_hh) * 60)
-        ra_ss = int(((old_div(ra, 15) - ra_hh) * 60 - ra_mm) * 60)
-        ra_ff = ((old_div(ra, 15) - ra_hh) * 60 - ra_mm) * 60 - ra_ss
+        ra_hh = int(ra / 15)
+        ra_mm = int((ra / 15 - ra_hh) * 60)
+        ra_ss = int(((ra / 15 - ra_hh) * 60 - ra_mm) * 60)
+        ra_ff = ((ra / 15 - ra_hh) * 60 - ra_mm) * 60 - ra_ss
 
         # SET PRECISION
         ra_ff = repr(ra_ff)[2:]

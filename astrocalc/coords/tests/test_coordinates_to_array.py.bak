@@ -1,5 +1,4 @@
 from __future__ import print_function
-from builtins import str
 import os
 import unittest
 import shutil
@@ -18,7 +17,7 @@ su = tools(
 arguments, settings, log, dbConn = su.setup()
 
 # # load settings
-# stream = open(
+# stream = file(
 #     "/Users/Dave/.config/astrocalc/astrocalc.yaml", 'r')
 # settings = yaml.load(stream)
 # stream.close()
@@ -30,7 +29,7 @@ log, dbConn, pathToInputDir, pathToOutputDir = utKit.setupModule()
 utKit.tearDownModule()
 
 # load settings
-stream = open(
+stream = file(
     pathToInputDir + "/example_settings.yaml", 'r')
 settings = yaml.load(stream)
 stream.close()

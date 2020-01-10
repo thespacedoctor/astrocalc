@@ -59,7 +59,7 @@ def coordinates_to_array(
     # CONVERT RA AND DEC TO NUMPY ARRAYS
     if isinstance(ra, float):
         pass
-    elif isinstance(ra, str):
+    elif isinstance(ra, ("".__class__, u"".__class__)):
         try:
             ra = float(ra)
         except:
@@ -74,7 +74,7 @@ def coordinates_to_array(
 
     if isinstance(dec, float):
         pass
-    elif isinstance(dec, str):
+    elif isinstance(dec, ("".__class__, u"".__class__)):
         try:
             dec = float(dec)
         except:

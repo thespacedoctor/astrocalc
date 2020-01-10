@@ -10,14 +10,13 @@
     April 21, 2016
 """
 ################# GLOBAL IMPORTS ####################
-from builtins import object
 import sys
 import os
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
 
-class conversions(object):
+class conversions():
     """
     *The worker class for the conversions module*
 

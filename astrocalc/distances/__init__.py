@@ -1,4 +1,5 @@
 """
 *Tools to work with and manipulate astronomical distances*
 """
-from converter import converter
+from __future__ import absolute_import
+from .converter import converter

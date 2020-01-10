@@ -9,10 +9,7 @@
 :Date Created:
     April 21, 2016
 """
-from __future__ import division
 ################# GLOBAL IMPORTS ####################
-from builtins import object
-from past.utils import old_div
 import sys
 import os
 import math
@@ -21,7 +18,7 @@ from fundamentals import tools
 from astrocalc.coords import unit_conversion
 
 
-class translate(object):
+class translate():
     """
     *Translate a set of coordinates north and east by distances given in arcsecs*
 
@@ -110,8 +107,8 @@ class translate(object):
         dec2 = self.dec + self.north
 
         ra2 = self.ra + \
-            (old_div((self.east),
-             (math.cos((self.dec + dec2) * self.DEG_TO_RAD_FACTOR / 2.))))
+            ((self.east) /
+             (math.cos((self.dec + dec2) * self.DEG_TO_RAD_FACTOR / 2.)))
 
         # FIX VALUES THAT CROSS RA/DEC LIMITS
         while ra2 > 360. or ra2 < 0.:
