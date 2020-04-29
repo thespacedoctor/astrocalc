@@ -5,8 +5,8 @@ astrocalc
     :target: http://astrocalc.readthedocs.io/en/latest/?badge
     :alt: Documentation Status
 
-.. image:: https://cdn.rawgit.com/thespacedoctor/astrocalc/master/coverage.svg
-    :target: https://cdn.rawgit.com/thespacedoctor/astrocalc/master/htmlcov/index.html
+.. image:: https://cdn.jsdelivr.net/gh/thespacedoctor/astrocalc@master/coverage.svg
+    :target: https://cdn.jsdelivr.net/gh/thespacedoctor/astrocalc@master/htmlcov/index.html
     :alt: Coverage Status
 
 *An astronomer's calculator used to perform common calculations, conversions and measurements.*.
