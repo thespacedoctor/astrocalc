@@ -1,27 +1,26 @@
 from __future__ import print_function
+from builtins import str
 import os
 import unittest
 import shutil
+import unittest
 import yaml
-from astrocalc.times import conversions
 from astrocalc.utKit import utKit
-
 from fundamentals import tools
+from os.path import expanduser
+home = expanduser("~")
 
+packageDirectory = utKit("").get_project_root()
+settingsFile = packageDirectory + "/test_settings.yaml"
 su = tools(
-    arguments={"settingsFile": None},
+    arguments={"settingsFile": settingsFile},
     docString=__doc__,
-    logLevel="WARNING",
+    logLevel="DEBUG",
     options_first=False,
-    projectName="astrocalc"
+    projectName=None,
+    defaultSettingsFile=False
 )
 arguments, settings, log, dbConn = su.setup()
-
-# load settings
-stream = open(
-    "/Users/Dave/.config/astrocalc/astrocalc.yaml", 'r')
-settings = yaml.load(stream)
-stream.close()
 
 # SETUP AND TEARDOWN FIXTURE FUNCTIONS FOR THE ENTIRE MODULE
 moduleDirectory = os.path.dirname(__file__)
@@ -29,11 +28,23 @@ utKit = utKit(moduleDirectory)
 log, dbConn, pathToInputDir, pathToOutputDir = utKit.setupModule()
 utKit.tearDownModule()
 
+try:
+    shutil.rmtree(pathToOutputDir)
+except:
+    pass
+# COPY INPUT TO OUTPUT DIR
+shutil.copytree(pathToInputDir, pathToOutputDir)
+
+# Recursively create missing directories
+if not os.path.exists(pathToOutputDir):
+    os.makedirs(pathToOutputDir)
+
 
 class test_conversions(unittest.TestCase):
 
     def test_utdatetime_conversions_function(self):
 
+        from astrocalc.times import conversions
         converter = conversions(
             log=log,
         )
@@ -99,6 +110,7 @@ class test_conversions(unittest.TestCase):
 
     def test_mjd_conversions_function(self):
 
+        from astrocalc.times import conversions
         converter = conversions(
             log=log,
         )
@@ -115,6 +127,7 @@ class test_conversions(unittest.TestCase):
 
     def test_decimal_day_to_day_hour_min_sec_function(self):
 
+        from astrocalc.times import conversions
         converter = conversions(
             log=log,
         )

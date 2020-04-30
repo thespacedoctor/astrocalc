@@ -1,7 +1,7 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 # encoding: utf-8
 """
-Documentation for astrocalc can be found here: http://astrocalc.readthedocs.org/en/stable
+Documentation for astrocalc can be found here: http://astrocalc.readthedocs.org
 
 Usage:
     astrocalc [-c] coordflip <ra> <dec>
@@ -11,35 +11,35 @@ Usage:
     astrocalc now mjd
     astrocalc dist (-z | -m) <distVal> [--hc=hVal --wm=OmegaMatter --wv=OmegaVacuum]
 
+Commands:
+    coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
+    sep                   calculate the separation between two locations in the sky.
+    timeflip              flip time between UT and MJD.
+    trans                 translate a location across the sky (north and east in arcsec)
+    now                   report current time in various formats
+    dist                  convert distance between mpc to z
 
-    COMMANDS:
-    ========
-        coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
-        sep                   calculate the separation between two locations in the sky.
-        timeflip              flip time between UT and MJD.
-        trans                 translate a location across the sky (north and east in arcsec)
-        now                   report current time in various formats
-        dist                  convert distance between mpc to z
+Variables:
+    ra, ra1, ra2          right-ascension in deciaml degrees or sexegesimal format
+    dec, dec1, dec2       declination in deciaml degrees or sexegesimal format
+    datetime              modified julian date (mjd) or universal time (UT). UT can be formated 20150415113334.343 or "20150415 11:33:34.343" (spaces require quotes)
+    north, east           vector components in arcsec
+    distVal               a distance value in Mpc (-mpc) or redshift (-z)
+    hVal                  hubble constant value. Default=70 km/s/Mpc
+    OmegaMatter           Omega Matter. Default=0.3
+    OmegaVacuum           Omega Vacuum. Default=0.7
 
-    VARIABLES:
-    ==========
-        ra, ra1, ra2          right-ascension in deciaml degrees or sexegesimal format
-        dec, dec1, dec2       declination in deciaml degrees or sexegesimal format
-        datetime              modified julian date (mjd) or universal time (UT). UT can be formated 20150415113334.343 or "20150415 11:33:34.343" (spaces require quotes)
-        north, east           vector components in arcsec
-        distVal               a distance value in Mpc (-mpc) or redshift (-z)
-        hVal                  hubble constant value. Default=70 km/s/Mpc
-        OmegaMatter           Omega Matter. Default=0.3
-        OmegaVacuum           Omega Vacuum. Default=0.7
-
-    -h, --help            show this help message
-    -m, --mpc             distance in mpc
-    -z, --redshift        redshift distance
-    -c, --cartesian       convert to cartesian coordinates
-
+Options:
+    init                                    setup the astrocalc settings file for the first time
+    -v, --version                           show version
+    -h, --help                              show this help message
+    -m, --mpc                               distance in mpc
+    -z, --redshift                          redshift distance
+    -c, --cartesian                         convert to cartesian coordinates
+    -s, --settings <pathToSettingsFile>     the settings file
 """
-from __future__ import print_function
 ################# GLOBAL IMPORTS ####################
+from __future__ import print_function
 from builtins import str
 import sys
 import os
@@ -50,7 +50,6 @@ import pickle
 from docopt import docopt
 from fundamentals import tools, times
 from astrocalc.coords import unit_conversion
-# from ..__init__ import *
 
 
 def tab_complete(text, state):
@@ -59,7 +58,7 @@ def tab_complete(text, state):
 
 def main(arguments=None):
     """
-    *The main function used when ``cl_utils.py`` is run as a single script from the cl, or when installed as a cl command*
+    *The main function used when `cl_utils.py` is run as a single script from the cl, or when installed as a cl command*
     """
     from astrocalc.coords import unit_conversion
     # setup the command-line util settings
@@ -68,7 +67,8 @@ def main(arguments=None):
         docString=__doc__,
         logLevel="CRITICAL",
         options_first=True,
-        projectName="astrocalc"
+        projectName="astrocalc",
+        defaultSettingsFile=True
     )
     arguments, settings, log, dbConn = su.setup()
 
@@ -77,19 +77,18 @@ def main(arguments=None):
     readline.parse_and_bind("tab: complete")
     readline.set_completer(tab_complete)
 
-    # unpack remaining cl arguments using `exec` to setup the variable names
-    # automatically
+    # UNPACK REMAINING CL ARGUMENTS USING `EXEC` TO SETUP THE VARIABLE NAMES
+    # AUTOMATICALLY
+    a = {}
     for arg, val in list(arguments.items()):
         if arg[0] == "-":
             varname = arg.replace("-", "") + "Flag"
         else:
             varname = arg.replace("<", "").replace(">", "")
-        if isinstance(val, ("".__class__, u"".__class__)):
-            exec(varname + " = '%s'" % (val,))
-        else:
-            exec(varname + " = %s" % (val,))
+        a[varname] = val
         if arg == "--dbConn":
             dbConn = val
+            a["dbConn"] = val
         log.debug('%s = %s' % (varname, val,))
 
     ## START LOGGING ##
@@ -99,7 +98,7 @@ def main(arguments=None):
         (startTime,))
 
     # set options interactively if user requests
-    if "interactiveFlag" in locals() and interactiveFlag:
+    if "interactiveFlag" in a and a["interactiveFlag"]:
 
         # load previous settings
         moduleDirectory = os.path.dirname(__file__) + "/resources"
@@ -125,6 +124,44 @@ def main(arguments=None):
         for k in pickleMeObjects:
             pickleMe[k] = theseLocals[k]
         pickle.dump(pickleMe, open(pathToPickleFile, "wb"))
+
+    if a["init"]:
+        from os.path import expanduser
+        home = expanduser("~")
+        filepath = home + "/.config/astrocalc/astrocalc.yaml"
+        try:
+            cmd = """open %(filepath)s""" % locals()
+            p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
+        except:
+            pass
+        try:
+            cmd = """start %(filepath)s""" % locals()
+            p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
+        except:
+            pass
+        return
+
+    coordflip = a["coordflip"]
+    sep = a["sep"]
+    timeflip = a["timeflip"]
+    trans = a["trans"]
+    now = a["now"]
+    dist = a["dist"]
+    ra = a["ra"]
+    ra1 = a["ra1"]
+    ra2 = a["ra2"]
+    dec = a["dec"]
+    dec1 = a["dec1"]
+    dec2 = a["dec2"]
+    datetime = a["datetime"]
+    north = a["north"], east
+    distVal = a["distVal"]
+    hVal = a["hVal"]
+    OmegaMatter = a["OmegaMatter"]
+    OmegaVacuum = a["OmegaVacuum"]
+    mpcFlag = a["mpcFlag"]
+    redshiftFlag = a["redshiftFlag"]
+    cartesianFlag = a["cartesianFlag"]
 
     # CALL FUNCTIONS/OBJECTS
     if coordflip:
