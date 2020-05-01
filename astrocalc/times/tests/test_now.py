@@ -23,6 +23,7 @@ su = tools(
 )
 arguments, settings, log, dbConn = su.setup()
 
+
 # SETUP AND TEARDOWN FIXTURE FUNCTIONS FOR THE ENTIRE MODULE
 moduleDirectory = os.path.dirname(__file__)
 utKit = utKit(moduleDirectory)
@@ -39,6 +40,7 @@ shutil.copytree(pathToInputDir, pathToOutputDir)
 # Recursively create missing directories
 if not os.path.exists(pathToOutputDir):
     os.makedirs(pathToOutputDir)
+
 
 class test_now(unittest.TestCase):
 
