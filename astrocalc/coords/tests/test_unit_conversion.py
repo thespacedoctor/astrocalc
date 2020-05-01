@@ -22,11 +22,10 @@ su = tools(
 )
 arguments, settings, log, dbConn = su.setup()
 
-# SETUP AND TEARDOWN FIXTURE FUNCTIONS FOR THE ENTIRE MODULE
+# SETUP PATHS TO COMMON DIRECTORIES FOR TEST DATA
 moduleDirectory = os.path.dirname(__file__)
-utKit = utKit(moduleDirectory)
-log, dbConn, pathToInputDir, pathToOutputDir = utKit.setupModule()
-utKit.tearDownModule()
+pathToInputDir = moduleDirectory + "/input/"
+pathToOutputDir = moduleDirectory + "/output/"
 
 try:
     shutil.rmtree(pathToOutputDir)
@@ -38,6 +37,7 @@ shutil.copytree(pathToInputDir, pathToOutputDir)
 # Recursively create missing directories
 if not os.path.exists(pathToOutputDir):
     os.makedirs(pathToOutputDir)
+
 
 class test_unit_conversion(unittest.TestCase):
 

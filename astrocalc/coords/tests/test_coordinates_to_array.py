@@ -23,6 +23,7 @@ su = tools(
 arguments, settings, log, dbConn = su.setup()
 
 # SETUP PATHS TO COMMON DIRECTORIES FOR TEST DATA
+moduleDirectory = os.path.dirname(__file__)
 pathToInputDir = moduleDirectory + "/input/"
 pathToOutputDir = moduleDirectory + "/output/"
 
