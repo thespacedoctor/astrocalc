@@ -152,7 +152,7 @@ class unit_conversion(object):
 
         # LOOK FOR A MINUS SIGN.  NOTE THAT -00 IS THE SAME AS 00.
         regex = re.compile(
-            '^([\+\-]?(\d|[0-8]\d))\D+([0-5]\d)\D+([0-6]?\d(\.\d+)?)$')
+            r'^([\+\-]?(\d|[0-8]\d))\D+([0-5]\d)\D+([0-6]?\d(\.\d+)?)$')
         decMatch = regex.match(dec)
 
         if decMatch:
@@ -247,7 +247,7 @@ class unit_conversion(object):
         ra = str(ra).strip()
 
         regex = re.compile(
-            '^(\+?(\d|[0-1]\d|2[0-3]))\D+([0-5]\d)\D+([0-6]?\d(\.\d*?)?)(s)?\s*?$')
+            r'^(\+?(\d|[0-1]\d|2[0-3]))\D+([0-5]\d)\D+([0-6]?\d(\.\d*?)?)(s)?\s*?$')
         raMatch = regex.match(ra)
 
         if raMatch:
