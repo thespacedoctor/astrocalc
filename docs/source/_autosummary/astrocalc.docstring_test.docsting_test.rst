@@ -1,5 +1,5 @@
-docsting_test
-===================================================================
+docsting_test (*function*)
+===================================================
 
 .. currentmodule:: astrocalc.docstring_test
 

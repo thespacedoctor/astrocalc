@@ -1,9 +1,9 @@
-commonutils *(module)*
-================================
+coords *(module)*
+===========================
 
 
 
-.. automodule:: astrocalc.commonutils
+.. automodule:: astrocalc.coords
     :members:
     :undoc-members:
     :show-inheritance:
@@ -38,8 +38,24 @@ commonutils *(module)*
     
     
     
+    
         
-            ~getpackagepath (nice)
+            ~coordinates_to_array (nice)
+       
+    
+    
+        
+            ~separations (nice)
+       
+    
+    
+        
+            ~translate (nice)
+       
+    
+    
+        
+            ~unit_conversion (nice)
        
     
     

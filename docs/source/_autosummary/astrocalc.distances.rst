@@ -1,9 +1,9 @@
-docstring_test *(module)*
-===================================
+distances *(module)*
+==============================
 
 
 
-.. automodule:: astrocalc.docstring_test
+.. automodule:: astrocalc.distances
     :members:
     :undoc-members:
     :show-inheritance:
@@ -15,12 +15,6 @@ docstring_test *(module)*
     
 
     
-    
-    .. rubric:: Functions
-
-    .. autosummary::
-    
-      ~docsting_test
     
     
 
@@ -43,7 +37,11 @@ docstring_test *(module)*
     
     
     
+    
+    
         
+            ~converter (nice)
+       
     
     
     

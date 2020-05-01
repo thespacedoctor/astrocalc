@@ -1,9 +1,9 @@
-docstring_test *(module)*
-===================================
+getpackagepath *(module)*
+===============================================
 
 
 
-.. automodule:: astrocalc.docstring_test
+.. automodule:: astrocalc.commonutils.getpackagepath
     :members:
     :undoc-members:
     :show-inheritance:
@@ -20,7 +20,7 @@ docstring_test *(module)*
 
     .. autosummary::
     
-      ~docsting_test
+      ~getpackagepath
     
     
 
@@ -44,6 +44,13 @@ docstring_test *(module)*
     
     
         
+            ~getpackagepath (nice)
+       
+    
+    
+        
+            ~os (nice)
+       
     
     
     
