@@ -5,11 +5,9 @@
 
 :Author:
     David Young
-
-:Date Created:
-    April 21, 2016
 """
-################# GLOBAL IMPORTS ####################
+from __future__ import division
+from past.utils import old_div
 from builtins import object
 import sys
 import os
@@ -17,75 +15,78 @@ import math
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
-
 class separations(object):
     """
     *The worker class for the separations module*
 
-    **Key Arguments:**
-        - ``log`` -- logger
-        - ``settings`` -- the settings dictionary
-        - ``ra1`` -- the right-ascension of the first location. Decimal degrees or sexegesimal.
-        - ``dec1`` -- the declination of the first location. Decimal degrees or sexegesimal.
-        - ``ra2`` -- the right-ascension of the second location. Decimal degrees or sexegesimal.
-        - ``dec2`` -- the declination of the second location. Decimal degrees or sexegesimal.
+    **Key Arguments**
 
-    **Usage:**
-        .. todo::
+    - ``log`` -- logger
+    - ``settings`` -- the settings dictionary
+    - ``ra1`` -- the right-ascension of the first location. Decimal degrees or sexegesimal.
+    - ``dec1`` -- the declination of the first location. Decimal degrees or sexegesimal.
+    - ``ra2`` -- the right-ascension of the second location. Decimal degrees or sexegesimal.
+    - ``dec2`` -- the declination of the second location. Decimal degrees or sexegesimal.
+    
 
-            - replace get_angular_separation throughout all code using dryxPython
-            - replace getAngularSeparationthroughout all code using dryxPython
+    **Usage**
 
-        You can input sexegesimal coordinates,
+    .. todo::
 
-        .. code-block:: python
+        - replace get_angular_separation throughout all code using dryxPython
+        - replace getAngularSeparationthroughout all code using dryxPython
 
-            from astrocalc.coords import separations
-            calculator = separations(
-                log=log,
-                ra1="23:32:23.2324",
-                dec1="-13:32:45.43553",
-                ra2="23:32:34.642",
-                dec2="-12:12:34.9334",
-            )
-            angularSeparation, north, east = calculator.get()
-            print(angularSeparation, north, east)
+    You can input sexegesimal coordinates,
 
-            # OUT: '4813.39431', '4810.50214', '166.83941'
+    ```python
+    from astrocalc.coords import separations
+    calculator = separations(
+        log=log,
+        ra1="23:32:23.2324",
+        dec1="-13:32:45.43553",
+        ra2="23:32:34.642",
+        dec2="-12:12:34.9334",
+    )
+    angularSeparation, north, east = calculator.get()
+    print(angularSeparation, north, east)
 
-        or decimal degrees,
+    # OUT: '4813.39431', '4810.50214', '166.83941'
+    ```
 
-        .. code-block:: python
+    or decimal degrees,
 
-            from astrocalc.coords import separations
-            calculator = separations(
-                log=log,
-                ra1=2.3342343,
-                dec1=89.23244233,
-                ra2=45.343545345,
-                dec2=87.3435435
-            )
-            angularSeparation, north, east = calculator.get()
-            print(angularSeparation, north, east)
+    ```python
+    from astrocalc.coords import separations
+    calculator = separations(
+        log=log,
+        ra1=2.3342343,
+        dec1=89.23244233,
+        ra2=45.343545345,
+        dec2=87.3435435
+    )
+    angularSeparation, north, east = calculator.get()
+    print(angularSeparation, north, east)
 
-            # OUT: '7774.4375', '-6800.0358', '4625.7620'
+    # OUT: '7774.4375', '-6800.0358', '4625.7620'
+    ```
 
-        or even a mix of both
+    or even a mix of both
 
-        .. code-block:: python
+    ```python
+    from astrocalc.coords import separations
+    calculator = separations(
+        log=log,
+        ra1=352.5342343,
+        dec1=89.23,
+        ra2="23:32:34.642",
+        dec2="89:12:34.9334"
+    )
+    angularSeparation, north, east = calculator.get()
+    print(angularSeparation, north, east)
 
-            from astrocalc.coords import separations
-            calculator = separations(
-                log=log,
-                ra1=352.5342343,
-                dec1=89.23,
-                ra2="23:32:34.642",
-                dec2="89:12:34.9334"
-            )
-            angularSeparation, north, east = calculator.get()
-            print(angularSeparation, north, east)
-
-            # OUT: '78.9', '-73.1', '29.9')
+    # OUT: '78.9', '-73.1', '29.9')
+    ```
+    
     """
     # Initialisation
 
@@ -114,12 +115,16 @@ class separations(object):
 
         Input precision should be respected.
 
-        **Key Arguments:**
+        **Key Arguments**
 
-        **Return:**
-            - ``angularSeparation`` -- total angular separation between coordinates (arcsec)
-            - ``north`` -- north-south separation between coordinates (arcsec)
-            - ``east`` -- east-west separation between coordinates (arcsec)
+        
+
+        **Return**
+
+        - ``angularSeparation`` -- total angular separation between coordinates (arcsec)
+        - ``north`` -- north-south separation between coordinates (arcsec)
+        - ``east`` -- east-west separation between coordinates (arcsec)
+        
 
         See main class usage for details.
         """
@@ -129,8 +134,8 @@ class separations(object):
 
         # CONSTANTS
         pi = (4 * math.atan(1.0))
-        DEG_TO_RAD_FACTOR = pi / 180.0
-        RAD_TO_DEG_FACTOR = 180.0 / pi
+        DEG_TO_RAD_FACTOR = old_div(pi, 180.0)
+        RAD_TO_DEG_FACTOR = old_div(180.0, pi)
 
         converter = unit_conversion(
             log=self.log

@@ -39,7 +39,6 @@ shutil.copytree(pathToInputDir, pathToOutputDir)
 if not os.path.exists(pathToOutputDir):
     os.makedirs(pathToOutputDir)
 
-
 class test_unit_conversion(unittest.TestCase):
 
     def test_unit_conversion_sexe_to_deg_function(self):

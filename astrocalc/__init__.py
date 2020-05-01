@@ -3,19 +3,21 @@ from . import cl_utils
 from . import docstring_test
 from past.utils import old_div
 
-
 def luminosity_to_flux(lumErg_S, dist_Mpc):
     """
     *Convert luminosity to a flux*
 
-    **Key Arguments:**
-        - ``lumErg_S`` -- luminosity in ergs/sec
-        - ``dist_Mpc`` -- distance in Mpc
+    **Key Arguments**
 
-    **Return:**
-        - ``fluxErg_cm2_S`` -- flux in ergs/cm2/s
+    - ``lumErg_S`` -- luminosity in ergs/sec
+    - ``dist_Mpc`` -- distance in Mpc
+    
+
+    **Return**
+
+    - ``fluxErg_cm2_S`` -- flux in ergs/cm2/s
+    
     """
-    ################ > IMPORTS ################
     ## STANDARD LIB ##
     ## THIRD PARTY ##
     import numpy as np
@@ -30,7 +32,6 @@ def luminosity_to_flux(lumErg_S, dist_Mpc):
     fluxErg_cm2_S = old_div(lumErg_S, (4 * np.pi * distCm ** 2))
 
     return fluxErg_cm2_S
-
 
 ##########################################################################
 # PRIVATE (HELPER) FUNCTIONS                                                                #

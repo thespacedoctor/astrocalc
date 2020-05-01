@@ -5,39 +5,40 @@
 
 :Author:
     David Young
-
-:Date Created:
-    April 21, 2016
 """
-################# GLOBAL IMPORTS ####################
+from __future__ import division
+from past.utils import old_div
 from builtins import object
 import sys
 import os
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
-
 class conversions(object):
     """
     *The worker class for the conversions module*
 
-    **Key Arguments:**
-        - ``log`` -- logger
-        - ``settings`` -- the settings dictionary
+    **Key Arguments**
 
-    **Usage:**
-        .. todo::
+    - ``log`` -- logger
+    - ``settings`` -- the settings dictionary
+    
 
-            - add usage info
-            - create a sublime snippet for usage
-            - add mjd_to_date
-            - add decimal_day_to_day_hour_min_sec
-            - add date_to_mjd
-            - convert all functions in __init__ to modules
+    **Usage**
 
-        .. code-block:: python 
+    .. todo::
 
-            usage code   
+        - add usage info
+        - create a sublime snippet for usage
+        - add mjd_to_date
+        - add decimal_day_to_day_hour_min_sec
+        - add date_to_mjd
+        - convert all functions in __init__ to modules
+
+    ```python
+    usage code   
+    ```
+    
     """
     # Initialisation
 
@@ -57,8 +58,10 @@ class conversions(object):
         """
         *get the conversions object*
 
-        **Return:**
-            - ``conversions``
+        **Return**
+
+        - ``conversions``
+        
 
         .. todo::
 
@@ -81,33 +84,38 @@ class conversions(object):
 
         Precision should be respected. 
 
-        **Key Arguments:**
-            - ``utDatetime`` -- UT datetime. Can accept various formats e.g. ``201604261444``, ``20160426``, ``20160426144444.5452``, ``2016-04-26 14:44:44.234``, ``20160426 14h44m44.432s`` 
+        **Key Arguments**
 
-        **Return:**
-            - ``mjd`` -- the MJD
+        - ``utDatetime`` -- UT datetime. Can accept various formats e.g. ``201604261444``, ``20160426``, ``20160426144444.5452``, ``2016-04-26 14:44:44.234``, ``20160426 14h44m44.432s`` 
+        
+
+        **Return**
+
+        - ``mjd`` -- the MJD
+        
 
         .. todo ::
 
             - replace getMJDFromSqlDate in all code
 
-        **Usage:**
+        **Usage**
 
-            .. code-block:: python 
+        ```python
+        from astrocalc.times import conversions
+        converter = conversions(
+            log=log
+        )
+        mjd = converter.ut_datetime_to_mjd(utDatetime="20160426t1446")
+        print(mjd)
 
-                from astrocalc.times import conversions
-                converter = conversions(
-                    log=log
-                )
-                mjd = converter.ut_datetime_to_mjd(utDatetime="20160426t1446")
-                print(mjd)
+        # OUT: 57504.6153
 
-                # OUT: 57504.6153
+        mjd = converter.ut_datetime_to_mjd(utDatetime="2016-04-26 14:44:44.234")
+        print(mjd)
 
-                mjd = converter.ut_datetime_to_mjd(utDatetime="2016-04-26 14:44:44.234")
-                print(mjd)
-
-                # OUT: 57504.61440
+        # OUT: 57504.61440
+        ```
+        
         """
         self.log.debug('starting the ``ut_datetime_to_mjd`` method')
 
@@ -171,14 +179,14 @@ class conversions(object):
         # DETERMINE EXTRA TIME (SMALLER THAN A SEC)
         extraTime = 0.
         if "." in repr(seconds):
-            extraTime = float("." + repr(seconds).split(".")
-                              [-1]) / (24. * 60. * 60.)
+            extraTime = old_div(float("." + repr(seconds).split(".")
+                              [-1]), (24. * 60. * 60.))
 
         # CONVERT TO UNIXTIME THEN MJD
         t = (int(year), int(month), int(day), int(hours),
              int(minutes), int(seconds), 0, 0, 0)
         unixtime = int(time.mktime(t))
-        mjd = (unixtime / 86400.0 - 2400000.5 + 2440587.5) + extraTime
+        mjd = (old_div(unixtime, 86400.0) - 2400000.5 + 2440587.5) + extraTime
 
         mjd = "%0.*f" % (precision, mjd)
 
@@ -194,41 +202,46 @@ class conversions(object):
 
         Precision should be respected. 
 
-        **Key Arguments:**
-            - ``mjd`` -- time in MJD.
-            - ``sqlDate`` -- add a 'T' between date and time instead of space
-            - ``datetimeObject`` -- return a datetime object instead of a string. Default *False*
+        **Key Arguments**
+
+        - ``mjd`` -- time in MJD.
+        - ``sqlDate`` -- add a 'T' between date and time instead of space
+        - ``datetimeObject`` -- return a datetime object instead of a string. Default *False*
+        
 
         .. todo::
 
             - replace getDateFromMJD in all code
             - replace getSQLDateFromMJD in all code
 
-        **Return:**
-            - ``utDatetime`` - the UT datetime in string format
+        **Return**
 
-        **Usage:**
+        - ``utDatetime`` - the UT datetime in string format
+        
 
-            .. code-block:: python 
+        **Usage**
 
-                from astrocalc.times import conversions
-                converter = conversions(
-                    log=log
-                )
-                utDate = converter.mjd_to_ut_datetime(
-                    mjd=57504.61577585013
-                )
-                print(utDate)
+        ```python
+        from astrocalc.times import conversions
+        converter = conversions(
+            log=log
+        )
+        utDate = converter.mjd_to_ut_datetime(
+            mjd=57504.61577585013
+        )
+        print(utDate)
 
-                # OUT: 2016-04-26 14:46:43.033
+        # OUT: 2016-04-26 14:46:43.033
 
-                utDate = converter.mjd_to_ut_datetime(
-                    mjd=57504.61577585013,
-                    sqlDate=True
-                )
-                print(utDate)
+        utDate = converter.mjd_to_ut_datetime(
+            mjd=57504.61577585013,
+            sqlDate=True
+        )
+        print(utDate)
 
-                # OUT: 2016-04-26T14:46:43.033
+        # OUT: 2016-04-26T14:46:43.033
+        ```
+        
         """
         self.log.debug('starting the ``mjd_to_ut_datetime`` method')
 
@@ -283,39 +296,45 @@ class conversions(object):
 
         Precision should be respected. 
 
-        **Key Arguments:**
-            - ``daysFloat`` -- the day as a decimal.
+        **Key Arguments**
 
-        **Return:**
-            - ``daysInt`` -- day as an integer
-            - ``hoursInt`` -- hour as an integer (None if input precsion too low)
-            - ``minsInt`` -- mins as an integer (None if input precsion too low)
-            - ``secFloat`` -- secs as a float (None if input precsion too low)
+        - ``daysFloat`` -- the day as a decimal.
+        
 
-        **Usage:**
-            ..  todo::
+        **Return**
 
-                - replace `decimal_day_to_day_hour_min_sec` in all other code
+        - ``daysInt`` -- day as an integer
+        - ``hoursInt`` -- hour as an integer (None if input precsion too low)
+        - ``minsInt`` -- mins as an integer (None if input precsion too low)
+        - ``secFloat`` -- secs as a float (None if input precsion too low)
+        
 
-            .. code-block:: python 
+        **Usage**
 
-                from astrocalc.times import conversions
-                converter = conversions(
-                    log=log
-                )
-                daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
-                    daysFloat=24.2453
-                )
-                print(daysInt, hoursInt, minsInt, secFloat)
+        ..  todo::
 
-                # OUTPUT: 24, 5, 53, None
+            - replace `decimal_day_to_day_hour_min_sec` in all other code
 
-                daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
-                    daysFloat=24.1232435454
-                )
-                print("%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals())
+        ```python
+        from astrocalc.times import conversions
+        converter = conversions(
+            log=log
+        )
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.2453
+        )
+        print(daysInt, hoursInt, minsInt, secFloat)
 
-                # OUTPUT: 24 days, 2 hours, 57 mins, 28.242 sec
+        # OUTPUT: 24, 5, 53, None
+
+        daysInt, hoursInt, minsInt, secFloat = converter.decimal_day_to_day_hour_min_sec(
+            daysFloat=24.1232435454
+        )
+        print("%(daysInt)s days, %(hoursInt)s hours, %(minsInt)s mins, %(secFloat)s sec" % locals())
+
+        # OUTPUT: 24 days, 2 hours, 57 mins, 28.242 sec
+        ```
+        
         """
         self.log.debug(
             'completed the ````decimal_day_to_day_hour_min_sec`` method')

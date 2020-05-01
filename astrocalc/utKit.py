@@ -5,9 +5,7 @@ from fundamentals import utKit
 
 # OVERRIDES
 
-
 class utKit(utKit):
-
     """
     *Override dryx utKit*        
     """
@@ -64,8 +62,10 @@ class utKit(utKit):
         """
         *Get the root of the `python` package - useful for getting files in the root directory of a project*
 
-        **Return:**
-            - ``rootPath`` -- the root path of a project
+        **Return**
+
+        - ``rootPath`` -- the root path of a project
+        
         """
         import os
         rootPath = os.path.dirname(__file__)

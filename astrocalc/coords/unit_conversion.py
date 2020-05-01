@@ -5,12 +5,8 @@
 
 :Author:
     David Young
-
-:Date Created:
-    April 21, 2016
 """
 from __future__ import division
-################# GLOBAL IMPORTS ####################
 from builtins import str
 from builtins import object
 from past.utils import old_div
@@ -20,25 +16,28 @@ import math
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
-
 class unit_conversion(object):
     """
     *The worker class for the unit_conversion module*
 
-    **Key Arguments:**
-        - ``log`` -- logger
-        - ``settings`` -- the settings dictionary (prob not required)
+    **Key Arguments**
 
-    **Usage:**
-        .. todo::
+    - ``log`` -- logger
+    - ``settings`` -- the settings dictionary (prob not required)
+    
 
-            - add usage info
-            - create a sublime snippet for usage
-            - add ra_sexegesimal_to_decimal
+    **Usage**
 
-        .. code-block:: python
+    .. todo::
 
-            usage code
+        - add usage info
+        - create a sublime snippet for usage
+        - add ra_sexegesimal_to_decimal
+
+    ```python
+    usage code
+    ```
+    
 
     .. todo::
 
@@ -76,8 +75,10 @@ class unit_conversion(object):
         """
         *get the unit_conversion object*
 
-        **Return:**
-            - ``unit_conversion``
+        **Return**
+
+        - ``unit_conversion``
+        
 
         .. todo::
 
@@ -106,31 +107,36 @@ class unit_conversion(object):
         - ``+1 58 05.45341``
         - ``-23h53m05s``
 
-        **Key Arguments:**
-            - ``dec`` - DEC in sexegesimal format.
+        **Key Arguments**
 
-        **Return:**
-            - ``decDeg`` -- declination converted to decimal degrees
+        - ``dec`` - DEC in sexegesimal format.
+        
 
-        **Usage:**
+        **Return**
 
-            .. todo::
+        - ``decDeg`` -- declination converted to decimal degrees
+        
 
-                - replace dryxPython declination_sexegesimal_to_decimal with this version in all my code
-                - replace coords_sex_to_dec in all code
+        **Usage**
 
-            .. code-block:: python
+        .. todo::
 
-                from astrocalc.coords import unit_conversion
-                converter = unit_conversion(
-                    log=log
-                )
-                dec = converter.dec_sexegesimal_to_decimal(
-                    dec="-23:45:21.23232"
-                )
-                print(dec)
+            - replace dryxPython declination_sexegesimal_to_decimal with this version in all my code
+            - replace coords_sex_to_dec in all code
 
-                # OUTPUT: -23.7558978667
+        ```python
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        dec = converter.dec_sexegesimal_to_decimal(
+            dec="-23:45:21.23232"
+        )
+        print(dec)
+
+        # OUTPUT: -23.7558978667
+        ```
+        
         """
         self.log.debug(
             'completed the ````dec_sexegesimal_to_decimal`` method')
@@ -208,28 +214,33 @@ class unit_conversion(object):
         - ``2 04 21.23232``
         - ``04:45  21``
 
-        **Key Arguments:**
-            - ``ra`` -- ra in sexegesimal units
+        **Key Arguments**
 
-        **Return:**
-            - ``decimalDegrees``
+        - ``ra`` -- ra in sexegesimal units
+        
 
-        **Usage:**
+        **Return**
 
-            .. code-block:: python
+        - ``decimalDegrees``
+        
 
-                - replace dryxPython ra_sexegesimal_to_decimal with this version in all my code
+        **Usage**
 
-                from astrocalc.coords import unit_conversion
-                converter = unit_conversion(
-                    log=log
-                )
-                ra = converter.ra_sexegesimal_to_decimal(
-                    ra="04:45  21"
-                )
-                print(ra)
+        ```python
+        - replace dryxPython ra_sexegesimal_to_decimal with this version in all my code
 
-                # OUTPUT: 71.3375
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        ra = converter.ra_sexegesimal_to_decimal(
+            ra="04:45  21"
+        )
+        print(ra)
+
+        # OUTPUT: 71.3375
+        ```
+        
         """
         import re
 
@@ -290,31 +301,37 @@ class unit_conversion(object):
 
         Precision should be respected.
 
-        **Key Arguments:**
-            - ``ra`` -- RA in decimal degrees. Will try and convert to float before performing calculation.
-            - ``delimiter`` -- how to delimit the RA units. Default *:*
+        **Key Arguments**
 
-        **Return:**
-            - ``sexegesimal`` -- ra in sexegesimal units
+        - ``ra`` -- RA in decimal degrees. Will try and convert to float before performing calculation.
+        - ``delimiter`` -- how to delimit the RA units. Default *:*
+        
 
-        **Usage:**
-            ..  todo::
+        **Return**
 
-                - replace ra_to_sex from dryxPython in all code
+        - ``sexegesimal`` -- ra in sexegesimal units
+        
 
-            .. code-block:: python 
+        **Usage**
 
-                from astrocalc.coords import unit_conversion
-                converter = unit_conversion(
-                    log=log
-                )
-                ra = converter.ra_decimal_to_sexegesimal(
-                    ra="-23.454676456",
-                    delimiter=":"
-                )
-                print(ra)
+        ..  todo::
 
-                # OUT: 22:26:10.87
+            - replace ra_to_sex from dryxPython in all code
+
+        ```python
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        ra = converter.ra_decimal_to_sexegesimal(
+            ra="-23.454676456",
+            delimiter=":"
+        )
+        print(ra)
+
+        # OUT: 22:26:10.87
+        ```
+        
         """
         self.log.debug('starting the ``ra_decimal_to_sexegesimal`` method')
 
@@ -373,31 +390,37 @@ class unit_conversion(object):
 
         Precision should be respected.
 
-        **Key Arguments:**
-            - ``dec`` -- DEC in decimal degrees. Will try and convert to float before performing calculation.
-            - ``delimiter`` -- how to delimit the RA units. Default *:*
+        **Key Arguments**
 
-        **Return:**
-            - ``sexegesimal`` -- ra in sexegesimal units
+        - ``dec`` -- DEC in decimal degrees. Will try and convert to float before performing calculation.
+        - ``delimiter`` -- how to delimit the RA units. Default *:*
+        
 
-        **Usage:**
-            ..  todo::
+        **Return**
 
-                - replace dec_to_sex in dryxPython in all code
+        - ``sexegesimal`` -- ra in sexegesimal units
+        
 
-            .. code-block:: python 
+        **Usage**
 
-                from astrocalc.coords import unit_conversion
-                converter = unit_conversion(
-                    log=log
-                )
-                dec = converter.dec_decimal_to_sexegesimal(
-                    dec="-3.454676456",
-                    delimiter=":"
-                )
-                print(dec)
+        ..  todo::
 
-                # OUT: -03:27:16.8
+            - replace dec_to_sex in dryxPython in all code
+
+        ```python
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        dec = converter.dec_decimal_to_sexegesimal(
+            dec="-3.454676456",
+            delimiter=":"
+        )
+        print(dec)
+
+        # OUT: -03:27:16.8
+        ```
+        
         """
         self.log.debug('starting the ``dec_decimal_to_sexegesimal`` method')
 
@@ -458,32 +481,37 @@ class unit_conversion(object):
             dec):
         """*Convert an RA, DEC coordinate set to x, y, z cartesian coordinates*
 
-        **Key Arguments:**
-            - ``ra`` -- right ascension in sexegesimal or decimal degress.
-            - ``dec`` -- declination in sexegesimal or decimal degress.
+        **Key Arguments**
 
-        **Return:**
-            - ``cartesians`` -- tuple of (x, y, z) coordinates
+        - ``ra`` -- right ascension in sexegesimal or decimal degress.
+        - ``dec`` -- declination in sexegesimal or decimal degress.
+        
+
+        **Return**
+
+        - ``cartesians`` -- tuple of (x, y, z) coordinates
+        
 
         ..  todo::
 
             - replace calculate_cartesians in all code
 
-        **Usage:**
+        **Usage**
 
-            .. code-block:: python 
+        ```python
+        from astrocalc.coords import unit_conversion
+        converter = unit_conversion(
+            log=log
+        )
+        x, y, z = converter.ra_dec_to_cartesian(
+            ra="23 45 21.23232",
+            dec="+01:58:5.45341"
+        )
+        print(x, y, z)
 
-                from astrocalc.coords import unit_conversion
-                converter = unit_conversion(
-                    log=log
-                )
-                x, y, z = converter.ra_dec_to_cartesian(
-                    ra="23 45 21.23232",
-                    dec="+01:58:5.45341"
-                )
-                print(x, y, z)
-
-                # OUTPUT: 0.9973699780687104, -0.06382462462791459, 0.034344492110465606
+        # OUTPUT: 0.9973699780687104, -0.06382462462791459, 0.034344492110465606
+        ```
+        
         """
         self.log.debug('starting the ``ra_dec_to_cartesian`` method')
 

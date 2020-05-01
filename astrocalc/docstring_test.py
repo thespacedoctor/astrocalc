@@ -4,7 +4,6 @@
 Check the API output here: file:///Users/Dave/git_repos/_templates_/python-package-template/astrocalc/docs/build/html/_api/astrocalc.docstring_test.html
 """
 
-
 def docsting_test(self):
     """
     *the database object for sherlock, setting up ssh tunnels and various database connections*
@@ -15,29 +14,34 @@ def docsting_test(self):
         - ``catalogues`` -- connection to the database hosting the contextual catalogues the transients are to be crossmatched against
         - ``marshall`` -- connection to the PESSTO Marshall database
 
-    **Key Arguments:**
-        - ``log`` -- logger
-        - ``settings`` -- the settings dictionary
+    **Key Arguments**
 
-    **Return:**
-        - ``dbConns`` -- a dictionary of the database connections required by sherlock
+    - ``log`` -- logger
+    - ``settings`` -- the settings dictionary
+    
 
-    **Usage:**
+    **Return**
 
-        To setup the sherlock database connections, run the following:
+    - ``dbConns`` -- a dictionary of the database connections required by sherlock
+    
 
-        .. code-block:: python 
+    **Usage**
 
-            # SETUP ALL DATABASE CONNECTIONS
-            from sherlock import database
-            db = database(
-                log=log,
-                settings=settings
-            )
-            dbConns, dbVersions = db.connect()
-            transientsDbConn = dbConns["transients"]
-            cataloguesDbConn = dbConns["catalogues"]
-            pmDbConn = dbConns["marshall"]
+    To setup the sherlock database connections, run the following:
+
+    ```python
+    # SETUP ALL DATABASE CONNECTIONS
+    from sherlock import database
+    db = database(
+        log=log,
+        settings=settings
+    )
+    dbConns, dbVersions = db.connect()
+    transientsDbConn = dbConns["transients"]
+    cataloguesDbConn = dbConns["catalogues"]
+    pmDbConn = dbConns["marshall"]
+    ```
+    
 
     .. todo ::
 
@@ -48,7 +52,6 @@ def docsting_test(self):
         - check sublime snippet exists
         - clip any useful text to docs mindmap
         - regenerate the docs and check redendering of this docstring
-
 
     **Embed reStructuredText**
 
@@ -150,7 +153,6 @@ def docsting_test(self):
 
     C~6~H~12~O~6
 
-
     **Citations**
 
     Cite a source.[p. 42][#source]
@@ -181,7 +183,6 @@ def docsting_test(self):
     Strikethrough ~~deleted~~.
 
     **Lists**
-
 
     1. First ordered list item
     2. Another item
@@ -229,7 +230,6 @@ def docsting_test(self):
 
     *[HTML]: Hyper Text Markup Language
     *[W3C]:  World Wide Web Consortium
-
 
     **Horizontal Rule**
 

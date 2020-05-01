@@ -5,12 +5,8 @@
 
 :Author:
     David Young
-
-:Date Created:
-    April 21, 2016
 """
 import os
-
 
 def getpackagepath():
     """

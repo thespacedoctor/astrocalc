@@ -5,12 +5,8 @@
 
 :Author:
     David Young
-
-:Date Created:
-    May 27, 2016
 """
 from __future__ import division
-################# GLOBAL IMPORTS ####################
 from builtins import range
 from builtins import object
 from past.utils import old_div
@@ -20,24 +16,25 @@ import math
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 
-
 class converter(object):
     """
     *A converter to switch distance between various units of measurement*
 
-    **Key Arguments:**
-        - ``log`` -- logger
-        - ``settings`` -- the settings dictionary
+    **Key Arguments**
 
-    **Usage:**
+    - ``log`` -- logger
+    - ``settings`` -- the settings dictionary
+    
 
-        To instantiate a ``converter`` object:
+    **Usage**
 
-        .. code-block:: python
+    To instantiate a ``converter`` object:
 
-            from astrocalc.distances import converter
-            c = converter(log=log)
-
+    ```python
+    from astrocalc.distances import converter
+    c = converter(log=log)
+    ```
+    
     """
     # Initialisation
 
@@ -63,29 +60,34 @@ class converter(object):
 
         The code works by iteratively converting a redshift to a distance, correcting itself and honing in on the true answer (within a certain precision)
 
-        **Key Arguments:**
-            - ``mpc`` -- distance in MPC (assumes a luminousity distance).
+        **Key Arguments**
 
-        **Return:**
-            - ``redshift``
+        - ``mpc`` -- distance in MPC (assumes a luminousity distance).
+        
+
+        **Return**
+
+        - ``redshift``
+        
 
         .. todo::
 
             - replace convert_mpc_to_redshift in all code
 
-        **Usage:**
+        **Usage**
 
-            .. code-block:: python
+        ```python
+        from astrocalc.distances import converter
+        c = converter(log=log)
+        z = c.distance_to_redshift(
+            mpc=500
+        )
 
-                from astrocalc.distances import converter
-                c = converter(log=log)
-                z = c.distance_to_redshift(
-                    mpc=500
-                )
+        print(z)
 
-                print(z)
-
-                # OUTPUT: 0.108
+        # OUTPUT: 0.108
+        ```
+        
         """
         self.log.debug('starting the ``distance_to_redshift`` method')
 
@@ -122,69 +124,73 @@ class converter(object):
             H0=70.0):
         """*convert redshift to various distance measurements*
 
-        **Key Arguments:**
-            - ``z`` -- redshift measurement.
-            - ``WM`` -- Omega_matter. Default *0.3*
-            - ``WV`` -- Omega_vacuum. Default *0.7*
-            - ``H0`` -- Hubble constant. (km s-1 Mpc-1) Default *70.0*
+        **Key Arguments**
 
-        **Return:**
-            - ``results`` -- result dictionary including
-                - ``dcmr_mpc`` -- co-moving radius distance
-                - ``da_mpc`` -- angular distance
-                - ``da_scale`` -- angular distance scale
-                - ``dl_mpc`` -- luminosity distance (usually use this one)
-                - ``dmod`` -- distance modulus (determined from luminosity distance)
+        - ``z`` -- redshift measurement.
+        - ``WM`` -- Omega_matter. Default *0.3*
+        - ``WV`` -- Omega_vacuum. Default *0.7*
+        - ``H0`` -- Hubble constant. (km s-1 Mpc-1) Default *70.0*
+        
+
+        **Return**
+
+        - ``results`` -- result dictionary including
+            - ``dcmr_mpc`` -- co-moving radius distance
+            - ``da_mpc`` -- angular distance
+            - ``da_scale`` -- angular distance scale
+            - ``dl_mpc`` -- luminosity distance (usually use this one)
+            - ``dmod`` -- distance modulus (determined from luminosity distance)
+        
 
         ..  todo::
 
                 - replace convert_redshift_to_distance in all other code
 
-        **Usage:**
+        **Usage**
 
-            .. code-block:: python
+        ```python
+        from astrocalc.distances import converter
+        c = converter(log=log)
+        dists = c.redshift_to_distance(
+            z=0.343
+        )
 
-                from astrocalc.distances import converter
-                c = converter(log=log)
-                dists = c.redshift_to_distance(
-                    z=0.343
-                )
+        print("Distance Modulus: " + str(dists["dmod"]) + " mag")
+        print("Luminousity Distance: " + str(dists["dl_mpc"]) + " Mpc")
+        print("Angular Size Scale: " + str(dists["da_scale"]) + " kpc/arcsec")
+        print("Angular Size Distance: " + str(dists["da_mpc"]) + " Mpc")
+        print("Comoving Radial Distance: " + str(dists["dcmr_mpc"]) + " Mpc")
 
-                print("Distance Modulus: " + str(dists["dmod"]) + " mag")
-                print("Luminousity Distance: " + str(dists["dl_mpc"]) + " Mpc")
-                print("Angular Size Scale: " + str(dists["da_scale"]) + " kpc/arcsec")
-                print("Angular Size Distance: " + str(dists["da_mpc"]) + " Mpc")
-                print("Comoving Radial Distance: " + str(dists["dcmr_mpc"]) + " Mpc")
+        # OUTPUT :
+        # Distance Modulus: 41.27 mag
+        # Luminousity Distance: 1795.16 Mpc
+        # Angular Size Scale: 4.85 kpc/arcsec
+        # Angular Size Distance: 999.76 Mpc
+        # Comoving Radial Distance: 1339.68 Mpc
 
-                # OUTPUT :
-                # Distance Modulus: 41.27 mag
-                # Luminousity Distance: 1795.16 Mpc
-                # Angular Size Scale: 4.85 kpc/arcsec
-                # Angular Size Distance: 999.76 Mpc
-                # Comoving Radial Distance: 1339.68 Mpc
+        from astrocalc.distances import converter
+        c = converter(log=log)
+        dists = c.redshift_to_distance(
+            z=0.343,
+            WM=0.286,
+            WV=0.714,
+            H0=69.6
+        )
 
-                from astrocalc.distances import converter
-                c = converter(log=log)
-                dists = c.redshift_to_distance(
-                    z=0.343,
-                    WM=0.286,
-                    WV=0.714,
-                    H0=69.6
-                )
+        print("Distance Modulus: " + str(dists["dmod"]) + " mag")
+        print("Luminousity Distance: " + str(dists["dl_mpc"]) + " Mpc")
+        print("Angular Size Scale: " + str(dists["da_scale"]) + " kpc/arcsec")
+        print("Angular Size Distance: " + str(dists["da_mpc"]) + " Mpc")
+        print("Comoving Radial Distance: " + str(dists["dcmr_mpc"]) + " Mpc")
 
-                print("Distance Modulus: " + str(dists["dmod"]) + " mag")
-                print("Luminousity Distance: " + str(dists["dl_mpc"]) + " Mpc")
-                print("Angular Size Scale: " + str(dists["da_scale"]) + " kpc/arcsec")
-                print("Angular Size Distance: " + str(dists["da_mpc"]) + " Mpc")
-                print("Comoving Radial Distance: " + str(dists["dcmr_mpc"]) + " Mpc")
-
-                # OUTPUT :
-                # Distance Modulus: 41.29 mag
-                # Luminousity Distance: 1811.71 Mpc
-                # Angular Size Scale: 4.89 kpc/arcsec
-                # Angular Size Distance: 1008.97 Mpc
-                # Comoving Radial Distance: 1352.03 Mpc
-
+        # OUTPUT :
+        # Distance Modulus: 41.29 mag
+        # Luminousity Distance: 1811.71 Mpc
+        # Angular Size Scale: 4.89 kpc/arcsec
+        # Angular Size Distance: 1008.97 Mpc
+        # Comoving Radial Distance: 1352.03 Mpc
+        ```
+        
         """
         self.log.debug('starting the ``redshift_to_distance`` method')
 

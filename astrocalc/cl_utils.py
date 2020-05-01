@@ -38,7 +38,6 @@ Options:
     -c, --cartesian                         convert to cartesian coordinates
     -s, --settings <pathToSettingsFile>     the settings file
 """
-################# GLOBAL IMPORTS ####################
 from __future__ import print_function
 from builtins import str
 import sys
@@ -51,10 +50,8 @@ from docopt import docopt
 from fundamentals import tools, times
 from astrocalc.coords import unit_conversion
 
-
 def tab_complete(text, state):
     return (glob.glob(text + '*') + [None])[state]
-
 
 def main(arguments=None):
     """
@@ -328,7 +325,6 @@ def main(arguments=None):
              (endTime, runningTime, ))
 
     return
-
 
 if __name__ == '__main__':
     main()

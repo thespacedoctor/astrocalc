@@ -5,12 +5,8 @@
 
 :Author:
     David Young
-
-:Date Created:
-    April 21, 2016
 """
 from __future__ import division
-################# GLOBAL IMPORTS ####################
 from builtins import object
 from past.utils import old_div
 import sys
@@ -20,39 +16,41 @@ os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 from astrocalc.coords import unit_conversion
 
-
 class translate(object):
     """
     *Translate a set of coordinates north and east by distances given in arcsecs*
 
-    **Key Arguments:**
-        - ``log`` -- logger
-        - ``settings`` -- the settings dictionary. Default *False*
-        - ``ra`` -- ra (decimal or sexegesimal)
-        - ``dec`` -- dec (decimal or sexegesimal)
-        - ``northArcsec`` -- number of arcsecs to move location to the north
-        - ``eastArcsec`` -- number of arcsecs to move location to the east
+    **Key Arguments**
+
+    - ``log`` -- logger
+    - ``settings`` -- the settings dictionary. Default *False*
+    - ``ra`` -- ra (decimal or sexegesimal)
+    - ``dec`` -- dec (decimal or sexegesimal)
+    - ``northArcsec`` -- number of arcsecs to move location to the north
+    - ``eastArcsec`` -- number of arcsecs to move location to the east
+    
 
     .. todo::
 
         - replace shift_coordinates class in all other code
 
-    **Usage:**
+    **Usage**
 
-        To shift a set of coordinates north and east by given distances:
+    To shift a set of coordinates north and east by given distances:
 
-        .. code-block:: python 
-
-            # TRANSLATE COORDINATES ACROSS SKY
-            from astrocalc.coords import translate
-            ra, dec = translate(
-                log=log,
-                settings=settings,
-                ra="14.546438",
-                dec="-45.34232334",
-                northArcsec=4560,
-                eastArcsec=+967800
-            ).get()  
+    ```python
+    # TRANSLATE COORDINATES ACROSS SKY
+    from astrocalc.coords import translate
+    ra, dec = translate(
+        log=log,
+        settings=settings,
+        ra="14.546438",
+        dec="-45.34232334",
+        northArcsec=4560,
+        eastArcsec=+967800
+    ).get()  
+    ```
+    
     """
     # Initialisation
 
@@ -97,9 +95,11 @@ class translate(object):
         """
         *translate the coordinates*
 
-        **Return:**
-            - ``ra`` -- the right-ascension of the translated coordinate
-            - ``dec`` -- the declination of the translated coordinate
+        **Return**
+
+        - ``ra`` -- the right-ascension of the translated coordinate
+        - ``dec`` -- the declination of the translated coordinate
+        
         """
         self.log.debug('starting the ``get`` method')
 

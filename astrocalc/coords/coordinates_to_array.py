@@ -5,11 +5,7 @@
 
 :Author:
     David Young
-
-:Date Created:
-    October  6, 2016
 """
-################# GLOBAL IMPORTS ####################
 import sys
 import os
 os.environ['TERM'] = 'vt100'
@@ -17,35 +13,40 @@ from fundamentals import tools
 import numpy as np
 from astrocalc.coords import unit_conversion
 
-
 def coordinates_to_array(
         log,
         ra,
         dec):
     """*Convert a single value RA, DEC or list of RA and DEC to numpy arrays*
 
-    **Key Arguments:**
-        - ``ra`` -- list, numpy array or single ra value
-        - ``dec`` --list, numpy array or single dec value
-        - ``log`` -- logger
+    **Key Arguments**
 
-    **Return:**
-        - ``raArray`` -- input RAs as a numpy array of decimal degree values
-        - ``decArray`` -- input DECs as a numpy array of decimal degree values
+    - ``ra`` -- list, numpy array or single ra value
+    - ``dec`` --list, numpy array or single dec value
+    - ``log`` -- logger
+    
 
-    **Usage:**
-        .. todo::
+    **Return**
 
-            add usage info
-            create a sublime snippet for usage
+    - ``raArray`` -- input RAs as a numpy array of decimal degree values
+    - ``decArray`` -- input DECs as a numpy array of decimal degree values
+    
 
-        .. code-block:: python
+    **Usage**
 
-            ra, dec = coordinates_to_array(
-                log=log,
-                ra=ra,
-                dec=dec
-            )
+    .. todo::
+
+        add usage info
+        create a sublime snippet for usage
+
+    ```python
+    ra, dec = coordinates_to_array(
+        log=log,
+        ra=ra,
+        dec=dec
+    )
+    ```
+    
     """
     log.debug('starting the ``coordinates_to_array`` function')
 
