@@ -1,7 +1,7 @@
 from __future__ import division
 from . import cl_utils
-from . import docstring_test
 from past.utils import old_div
+
 
 def luminosity_to_flux(lumErg_S, dist_Mpc):
     """
@@ -11,12 +11,12 @@ def luminosity_to_flux(lumErg_S, dist_Mpc):
 
     - ``lumErg_S`` -- luminosity in ergs/sec
     - ``dist_Mpc`` -- distance in Mpc
-    
+
 
     **Return**
 
     - ``fluxErg_cm2_S`` -- flux in ergs/cm2/s
-    
+
     """
     ## STANDARD LIB ##
     ## THIRD PARTY ##
