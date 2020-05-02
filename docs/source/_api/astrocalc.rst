@@ -26,7 +26,6 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
-   astrocalc.bk_cl_utils
    astrocalc.cl_utils
    astrocalc.docstring_test
    astrocalc.utKit

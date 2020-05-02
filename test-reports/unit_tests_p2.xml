@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skipped="0" tests="18" time="1.238"><testcase classname="astrocalc.coords.tests.test_coordinates_to_array.test_coordinates_to_array" file="astrocalc/coords/tests/test_coordinates_to_array.py" line="43" name="test_coordinates_to_array" time="0.006"><system-out>[200.   200.   200.   175.23  21.36] [ 24.3   24.3   24.3  -28.25 -15.32]
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skipped="0" tests="18" time="1.121"><testcase classname="astrocalc.coords.tests.test_coordinates_to_array.test_coordinates_to_array" file="astrocalc/coords/tests/test_coordinates_to_array.py" line="43" name="test_coordinates_to_array" time="0.004"><system-out>[200.   200.   200.   175.23  21.36] [ 24.3   24.3   24.3  -28.25 -15.32]
 [200.] [24.3]
 </system-out></testcase><testcase classname="astrocalc.coords.tests.test_coordinates_to_array.test_coordinates_to_array" file="astrocalc/coords/tests/test_coordinates_to_array.py" line="66" name="test_coordinates_to_array_function_exception" time="0.001"><system-out>coordinates_to_array() got an unexpected keyword argument &apos;settings&apos;
 </system-out></testcase><testcase classname="astrocalc.coords.tests.test_separations.test_separations" file="astrocalc/coords/tests/test_separations.py" line="43" name="test_separations_function" time="0.002"><system-out>(&apos;4813.394307&apos;, &apos;4810.502138&apos;, &apos;166.839407&apos;)
@@ -9,8 +9,8 @@
 </system-out></testcase><testcase classname="astrocalc.coords.tests.test_translate.test_translate" file="astrocalc/coords/tests/test_translate.py" line="43" name="test_translate_function01" time="0.001"><system-out>221.41174453 -45.56065094
 </system-out></testcase><testcase classname="astrocalc.coords.tests.test_translate.test_translate" file="astrocalc/coords/tests/test_translate.py" line="57" name="test_translate_function02" time="0.001"><system-out>12.327 -44.07565667
 </system-out></testcase><testcase classname="astrocalc.coords.tests.test_translate.test_translate" file="astrocalc/coords/tests/test_translate.py" line="71" name="test_translate_ra_gt_360" time="0.001"><system-out>32.817778 -44.07565
-</system-out></testcase><testcase classname="astrocalc.coords.tests.test_translate.test_translate" file="astrocalc/coords/tests/test_translate.py" line="85" name="test_translate_ra_lt_360" time="0.002"><system-out>356.275076 -44.07565667
-</system-out></testcase><testcase classname="astrocalc.coords.tests.test_unit_conversion.test_unit_conversion" file="astrocalc/coords/tests/test_unit_conversion.py" line="124" name="test_unit_conversion_deg_to_sex_functions" time="0.002"><system-out>22/26/10.8776
+</system-out></testcase><testcase classname="astrocalc.coords.tests.test_translate.test_translate" file="astrocalc/coords/tests/test_translate.py" line="85" name="test_translate_ra_lt_360" time="0.001"><system-out>356.275076 -44.07565667
+</system-out></testcase><testcase classname="astrocalc.coords.tests.test_unit_conversion.test_unit_conversion" file="astrocalc/coords/tests/test_unit_conversion.py" line="124" name="test_unit_conversion_deg_to_sex_functions" time="0.001"><system-out>22/26/10.8776
 04:13:49.1223
 00:01:49.1223
 23:01:48
@@ -19,7 +19,7 @@
 -83:27:16.83524
 -03:27:16.83524
 +50:00:00
-</system-out></testcase><testcase classname="astrocalc.coords.tests.test_unit_conversion.test_unit_conversion" file="astrocalc/coords/tests/test_unit_conversion.py" line="188" name="test_unit_conversion_ra_dec_to_cartesian_functions" time="0.002"><system-out>0.915708141735 0.397300211421 -0.0602589509036
+</system-out></testcase><testcase classname="astrocalc.coords.tests.test_unit_conversion.test_unit_conversion" file="astrocalc/coords/tests/test_unit_conversion.py" line="188" name="test_unit_conversion_ra_dec_to_cartesian_functions" time="0.001"><system-out>0.915708141735 0.397300211421 -0.0602589509036
 0.99614520764 -0.0637462479828 -0.0602589509036
 (0.9973699780687104, -0.06382462462791459, 0.034344492110465606)
 </system-out></testcase><testcase classname="astrocalc.coords.tests.test_unit_conversion.test_unit_conversion" file="astrocalc/coords/tests/test_unit_conversion.py" line="43" name="test_unit_conversion_sexe_to_deg_function" time="0.002"><system-out>-23.755897867
@@ -36,8 +36,8 @@
 12.3234234234
 334.323423423
 </system-out></testcase><testcase classname="astrocalc.distances.tests.test_converter.test_converter" file="astrocalc/distances/tests/test_converter.py" line="43" name="test_converter_function01" time="0.009"><system-out>{&apos;dmod&apos;: 38.494, &apos;dl_mpc&apos;: 499.78, &apos;da_scale&apos;: 1.974, &apos;da_mpc&apos;: 407.099, &apos;z&apos;: 0.108, &apos;dcmr_mpc&apos;: 451.065}
-</system-out></testcase><testcase classname="astrocalc.distances.tests.test_converter.test_converter" file="astrocalc/distances/tests/test_converter.py" line="57" name="test_converter_function02" time="0.154"><system-out>0.108
-</system-out></testcase><testcase classname="astrocalc.times.tests.test_conversions.test_conversions" file="astrocalc/times/tests/test_conversions.py" line="126" name="test_decimal_day_to_day_hour_min_sec_function" time="0.005"><system-out>24 days, 5 hours, 53 mins, None sec
+</system-out></testcase><testcase classname="astrocalc.distances.tests.test_converter.test_converter" file="astrocalc/distances/tests/test_converter.py" line="57" name="test_converter_function02" time="0.161"><system-out>0.108
+</system-out></testcase><testcase classname="astrocalc.times.tests.test_conversions.test_conversions" file="astrocalc/times/tests/test_conversions.py" line="126" name="test_decimal_day_to_day_hour_min_sec_function" time="0.006"><system-out>24 days, 5 hours, 53 mins, None sec
 24 days, 2 hours, 57 mins, 46 sec
 24 days, None hours, None mins, None sec
 24 days, 2 hours, 57 mins, 28.242 sec

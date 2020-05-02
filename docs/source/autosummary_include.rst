@@ -9,7 +9,6 @@
    astrocalc.distances
    astrocalc.times 
    astrocalc.commonutils.getpackagepath
-   astrocalc.docstring_test
 
 **Classes**
 
@@ -30,5 +29,4 @@
 
    astrocalc.commonutils.getpackagepath.getpackagepath
    astrocalc.coords.coordinates_to_array
-   astrocalc.docstring_test.docsting_test
    astrocalc.luminosity_to_flux 
