@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">79%</span>
+        </h1>
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+<div id="index">
+    <table class="index">
+        <thead>
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>1195</td>
+                <td>255</td>
+                <td>0</td>
+                <td class="right" data-ratio="940 1195">79%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc___init___py.html">astrocalc/__init__.py</a></td>
+                <td>11</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="5 11">45%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_cl_utils_py.html">astrocalc/cl_utils.py</a></td>
+                <td>183</td>
+                <td>168</td>
+                <td>0</td>
+                <td class="right" data-ratio="15 183">8%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords___init___py.html">astrocalc/coords/__init__.py</a></td>
+                <td>5</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="5 5">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_coordinates_to_array_py.html">astrocalc/coords/coordinates_to_array.py</a></td>
+                <td>44</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="41 44">93%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_separations_py.html">astrocalc/coords/separations.py</a></td>
+                <td>56</td>
+                <td>2</td>
+                <td>0</td>
+                <td class="right" data-ratio="54 56">96%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_tests_test_coordinates_to_array_py.html">astrocalc/coords/tests/test_coordinates_to_array.py</a></td>
+                <td>44</td>
+                <td>5</td>
+                <td>0</td>
+                <td class="right" data-ratio="39 44">89%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_tests_test_separations_py.html">astrocalc/coords/tests/test_separations.py</a></td>
+                <td>34</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="31 34">91%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_tests_test_translate_py.html">astrocalc/coords/tests/test_translate.py</a></td>
+                <td>50</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="47 50">94%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_tests_test_unit_conversion_py.html">astrocalc/coords/tests/test_unit_conversion.py</a></td>
+                <td>97</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="94 97">97%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_translate_py.html">astrocalc/coords/translate.py</a></td>
+                <td>46</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="46 46">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_coords_unit_conversion_py.html">astrocalc/coords/unit_conversion.py</a></td>
+                <td>156</td>
+                <td>16</td>
+                <td>0</td>
+                <td class="right" data-ratio="140 156">90%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_distances___init___py.html">astrocalc/distances/__init__.py</a></td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="2 2">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_distances_converter_py.html">astrocalc/distances/converter.py</a></td>
+                <td>84</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="81 84">96%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_distances_tests_test_converter_py.html">astrocalc/distances/tests/test_converter.py</a></td>
+                <td>36</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="33 36">92%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_docstring_test_py.html">astrocalc/docstring_test.py</a></td>
+                <td>4</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="1 4">25%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_tests_test_cl_utils_py.html">astrocalc/tests/test_cl_utils.py</a></td>
+                <td>30</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="27 30">90%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_times___init___py.html">astrocalc/times/__init__.py</a></td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="3 3">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_times_conversions_py.html">astrocalc/times/conversions.py</a></td>
+                <td>143</td>
+                <td>22</td>
+                <td>0</td>
+                <td class="right" data-ratio="121 143">85%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_times_now_py.html">astrocalc/times/now.py</a></td>
+                <td>22</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="right" data-ratio="22 22">100%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_times_tests_test_conversions_py.html">astrocalc/times/tests/test_conversions.py</a></td>
+                <td>96</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="93 96">97%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_times_tests_test_now_py.html">astrocalc/times/tests/test_now.py</a></td>
+                <td>29</td>
+                <td>3</td>
+                <td>0</td>
+                <td class="right" data-ratio="26 29">90%</td>
+            </tr>
+            <tr class="file">
+                <td class="name left"><a href="astrocalc_utKit_py.html">astrocalc/utKit.py</a></td>
+                <td>20</td>
+                <td>6</td>
+                <td>0</td>
+                <td class="right" data-ratio="14 20">70%</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.1</a>,
+            created at 2020-05-24 16:18
+        </p>
+    </div>
+</div>
+</body>
+</html>
