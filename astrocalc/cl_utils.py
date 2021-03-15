@@ -30,7 +30,6 @@ Variables:
     OmegaVacuum           Omega Vacuum. Default=0.7
 
 Options:
-    init                                    setup the astrocalc settings file for the first time
     -v, --version                           show version
     -h, --help                              show this help message
     -m, --mpc                               distance in mpc
@@ -50,8 +49,10 @@ from docopt import docopt
 from fundamentals import tools, times
 from astrocalc.coords import unit_conversion
 
+
 def tab_complete(text, state):
     return (glob.glob(text + '*') + [None])[state]
+
 
 def main(arguments=None):
     """
@@ -122,22 +123,6 @@ def main(arguments=None):
             pickleMe[k] = theseLocals[k]
         pickle.dump(pickleMe, open(pathToPickleFile, "wb"))
 
-    if a["init"]:
-        from os.path import expanduser
-        home = expanduser("~")
-        filepath = home + "/.config/astrocalc/astrocalc.yaml"
-        try:
-            cmd = """open %(filepath)s""" % locals()
-            p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
-        except:
-            pass
-        try:
-            cmd = """start %(filepath)s""" % locals()
-            p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
-        except:
-            pass
-        return
-
     coordflip = a["coordflip"]
     sep = a["sep"]
     timeflip = a["timeflip"]
@@ -151,11 +136,12 @@ def main(arguments=None):
     dec1 = a["dec1"]
     dec2 = a["dec2"]
     datetime = a["datetime"]
-    north = a["north"], east
+    north = a["north"]
+    east = a["east"]
     distVal = a["distVal"]
-    hVal = a["hVal"]
-    OmegaMatter = a["OmegaMatter"]
-    OmegaVacuum = a["OmegaVacuum"]
+    hVal = a["hcFlag"]
+    OmegaMatter = a["wmFlag"]
+    OmegaVacuum = a["wvFlag"]
     mpcFlag = a["mpcFlag"]
     redshiftFlag = a["redshiftFlag"]
     cartesianFlag = a["cartesianFlag"]

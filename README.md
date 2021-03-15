@@ -9,9 +9,8 @@
 
 <!-- STATUS BADGES -->  
 
-
-[![](http://167.71.135.11:8080/buildStatus/icon?job=astrocalc%2Fmaster&subject=build%20master)](http://167.71.135.11:8080/blue/organizations/jenkins/astrocalc/activity?branch=master)  
-[![](http://167.71.135.11:8080/buildStatus/icon?job=astrocalc%2Fdevelop&subject=build%20dev)](http://167.71.135.11:8080/blue/organizations/jenkins/astrocalc/activity?branch=develop)  
+[![](http://157.245.42.153:8080/buildStatus/icon?job=astrocalc%2Fmaster&subject=build%20master)](http://157.245.42.153:8080/blue/organizations/jenkins/astrocalc/activity?branch=master)  
+[![](http://157.245.42.153:8080/buildStatus/icon?job=astrocalc%2Fdevelop&subject=build%20dev)](http://157.245.42.153:8080/blue/organizations/jenkins/astrocalc/activity?branch=develop)  
 [![](https://cdn.jsdelivr.net/gh/thespacedoctor/astrocalc@master/coverage.svg)](https://raw.githack.com/thespacedoctor/astrocalc/master/htmlcov/index.html)  
 [![](https://readthedocs.org/projects/astrocalc/badge/?version=master)](https://astrocalc.readthedocs.io/en/master/)  
 [![](https://img.shields.io/github/issues/thespacedoctor/astrocalc/type:%20bug?label=bug%20issues)](https://github.com/thespacedoctor/astrocalc/issues?q=is%3Aissue+is%3Aopen+label%3A%22type%3A+bug%22+)  
