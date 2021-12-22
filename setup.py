@@ -11,8 +11,9 @@ def readme():
 
 install_requires = [
     'pyyaml',
-    'astrocalc',
+    'numpy',
     'fundamentals'
+
 ]
 
 # READ THE DOCS SERVERS

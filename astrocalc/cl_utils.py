@@ -9,7 +9,7 @@ Usage:
     astrocalc timeflip <datetime>
     astrocalc trans <ra> <dec> <north> <east>
     astrocalc now mjd
-    astrocalc dist (-z | -m) <distVal> [--hc=hVal --wm=OmegaMatter --wv=OmegaVacuum]
+    astrocalc dist <distVal> (z|mpc) [--hc=<hVal> --wm=<OmegaMatter> --wv=<OmegaVacuum>]
 
 Commands:
     coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
@@ -139,11 +139,11 @@ def main(arguments=None):
     north = a["north"]
     east = a["east"]
     distVal = a["distVal"]
-    hVal = a["hcFlag"]
-    OmegaMatter = a["wmFlag"]
-    OmegaVacuum = a["wvFlag"]
-    mpcFlag = a["mpcFlag"]
-    redshiftFlag = a["redshiftFlag"]
+    hcFlag = a["hcFlag"]
+    wmFlag = a["wmFlag"]
+    wvFlag = a["wvFlag"]
+    mpcFlag = a["mpc"]
+    redshiftFlag = a["z"]
     cartesianFlag = a["cartesianFlag"]
 
     # CALL FUNCTIONS/OBJECTS
