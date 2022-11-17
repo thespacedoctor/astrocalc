@@ -1,4 +1,4 @@
-coordinates_to_array (*function*)
+﻿coordinates_to_array (*function*)
 ==================================================
 
 .. currentmodule:: astrocalc.coords

@@ -1,4 +1,4 @@
-luminosity_to_flux (*function*)
+﻿luminosity_to_flux (*function*)
 =========================================
 
 .. currentmodule:: astrocalc

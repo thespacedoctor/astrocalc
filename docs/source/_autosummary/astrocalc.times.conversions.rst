@@ -1,4 +1,4 @@
-conversions *(class)*
+﻿conversions *(class)*
 =====================================
 
 .. currentmodule:: astrocalc.times

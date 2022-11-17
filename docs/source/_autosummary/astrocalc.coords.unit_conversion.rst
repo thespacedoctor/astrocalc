@@ -1,4 +1,4 @@
-unit_conversion *(class)*
+﻿unit_conversion *(class)*
 ==========================================
 
 .. currentmodule:: astrocalc.coords

@@ -1,4 +1,4 @@
-translate *(class)*
+﻿translate *(class)*
 ====================================
 
 .. currentmodule:: astrocalc.coords

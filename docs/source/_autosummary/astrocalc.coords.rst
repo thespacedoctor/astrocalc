@@ -1,4 +1,4 @@
-coords *(module)*
+﻿coords *(module)*
 ===========================
 
 
@@ -12,9 +12,23 @@ coords *(module)*
     
     
     
+    .. rubric:: Classes
+
+    .. autosummary::
+    
+      ~separations
+      ~translate
+      ~unit_conversion
+    
     
 
     
+    
+    .. rubric:: Functions
+
+    .. autosummary::
+    
+      ~coordinates_to_array
     
     
 

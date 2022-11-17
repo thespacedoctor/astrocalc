@@ -1,4 +1,4 @@
-now *(class)*
+﻿now *(class)*
 =============================
 
 .. currentmodule:: astrocalc.times

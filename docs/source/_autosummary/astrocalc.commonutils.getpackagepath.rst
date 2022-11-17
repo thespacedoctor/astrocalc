@@ -1,4 +1,4 @@
-getpackagepath *(module)*
+﻿getpackagepath *(module)*
 ===============================================
 
 

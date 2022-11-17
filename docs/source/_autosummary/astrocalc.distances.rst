@@ -1,4 +1,4 @@
-distances *(module)*
+﻿distances *(module)*
 ==============================
 
 
@@ -11,6 +11,12 @@ distances *(module)*
     :member-order: groupwise
     
     
+    
+    .. rubric:: Classes
+
+    .. autosummary::
+    
+      ~converter
     
     
 

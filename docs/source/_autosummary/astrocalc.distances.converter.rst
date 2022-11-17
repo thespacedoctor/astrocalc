@@ -1,4 +1,4 @@
-converter *(class)*
+﻿converter *(class)*
 =======================================
 
 .. currentmodule:: astrocalc.distances

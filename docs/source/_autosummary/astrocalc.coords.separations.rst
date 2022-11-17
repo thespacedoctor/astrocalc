@@ -1,4 +1,4 @@
-separations *(class)*
+﻿separations *(class)*
 ======================================
 
 .. currentmodule:: astrocalc.coords

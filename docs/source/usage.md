@@ -10,7 +10,7 @@
         astrocalc timeflip <datetime>
         astrocalc trans <ra> <dec> <north> <east>
         astrocalc now mjd
-        astrocalc dist (-z | -m) <distVal> [--hc=hVal --wm=OmegaMatter --wv=OmegaVacuum]
+        astrocalc dist <distVal> (z|mpc) [--hc=<hVal> --wm=<OmegaMatter> --wv=<OmegaVacuum>]
     
     Commands:
         coordflip             flip coordinates between decimal degrees and sexegesimal and vice-versa
@@ -31,7 +31,6 @@
         OmegaVacuum           Omega Vacuum. Default=0.7
     
     Options:
-        init                                    setup the astrocalc settings file for the first time
         -v, --version                           show version
         -h, --help                              show this help message
         -m, --mpc                               distance in mpc
