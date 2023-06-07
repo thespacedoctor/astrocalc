@@ -30,7 +30,7 @@ Documentation for astrocalc is hosted by [Read the Docs](https://astrocalc.readt
 
 If you use `astrocalc` in your work, please cite using the following BibTeX entry: 
 
-\\\bibtex
+```bibtex
 @software{Young_astrocalc,
 author = {Young, David R.},
 doi = {10.5281/zenodo.8014736},
@@ -38,6 +38,7 @@ license = {GPL-3.0-only},
 title = {{astrocalc}},
 url = {https://github.com/thespacedoctor/astrocalc}
 }
-\\\
+```
+
  
 
