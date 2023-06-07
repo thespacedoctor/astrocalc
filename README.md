@@ -2,6 +2,8 @@
 
 <!-- INFO BADGES -->  
 
+[![](https://zenodo.org/badge/56762426.svg)](https://zenodo.org/badge/latestdoi/56762426)  
+
 [![](https://img.shields.io/pypi/pyversions/astrocalc)](https://pypi.org/project/astrocalc/)  
 [![](https://img.shields.io/pypi/v/astrocalc)](https://pypi.org/project/astrocalc/)  
 [![](https://img.shields.io/github/license/thespacedoctor/astrocalc)](https://github.com/thespacedoctor/astrocalc)  
@@ -24,5 +26,18 @@ Documentation for astrocalc is hosted by [Read the Docs](https://astrocalc.readt
 
 * 
 
+## How to cite astrocalc
 
+If you use `astrocalc` in your work, please cite using the following BibTeX entry: 
+
+\\\bibtex
+@software{Young_astrocalc,
+author = {Young, David R.},
+doi = {10.5281/zenodo.8014736},
+license = {GPL-3.0-only},
+title = {{astrocalc}},
+url = {https://github.com/thespacedoctor/astrocalc}
+}
+\\\
+ 
 
