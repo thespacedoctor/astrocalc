@@ -2,7 +2,7 @@
 
 <!-- INFO BADGES -->  
 
-[![](https://zenodo.org/badge/56762426.svg)](https://zenodo.org/badge/latestdoi/56762426)  
+[![](https://zenodo.org/badge/DOI/10.5281/zenodo.8014735.svg)](https://zenodo.org/doi/10.5281/zenodo.8014735) 
 
 [![](https://img.shields.io/pypi/pyversions/astrocalc)](https://pypi.org/project/astrocalc/)  
 [![](https://img.shields.io/pypi/v/astrocalc)](https://pypi.org/project/astrocalc/)  
@@ -32,11 +32,11 @@ If you use `astrocalc` in your work, please cite using the following BibTeX entr
 
 ```bibtex
 @software{Young_astrocalc,
-author = {Young, David R.},
-doi = {10.5281/zenodo.8014736},
-license = {GPL-3.0-only},
-title = {{astrocalc}},
-url = {https://github.com/thespacedoctor/astrocalc}
+ author = {Young, David R.},
+ doi = {10.5281/zenodo.8014735},
+ license = {GPL-3.0-only},
+ title = {{astrocalc. Perform common astronomy-related calculations, conversions and measurements within python scripts or from the command-line}},
+ url = {https://zenodo.org/doi/10.5281/zenodo.8014735}
 }
 ```
 
