@@ -14,7 +14,6 @@ install_requires = [
     'pyyaml',
     'numpy',
     'fundamentals'
-
 ]
 
 # READ THE DOCS SERVERS
