@@ -3,15 +3,14 @@
 """
 *Convert single values of RA, DEC or list of RA and DEC to numpy arrays*
 
-:Author:
-    David Young
+Author
+: David Young
 """
+from astrocalc.coords import unit_conversion
 import sys
 import os
 os.environ['TERM'] = 'vt100'
-from fundamentals import tools
-import numpy as np
-from astrocalc.coords import unit_conversion
+
 
 def coordinates_to_array(
         log,
@@ -24,13 +23,13 @@ def coordinates_to_array(
     - ``ra`` -- list, numpy array or single ra value
     - ``dec`` --list, numpy array or single dec value
     - ``log`` -- logger
-    
+
 
     **Return**
 
     - ``raArray`` -- input RAs as a numpy array of decimal degree values
     - ``decArray`` -- input DECs as a numpy array of decimal degree values
-    
+
 
     **Usage**
 
@@ -46,9 +45,11 @@ def coordinates_to_array(
         dec=dec
     )
     ```
-    
+
     """
     log.debug('starting the ``coordinates_to_array`` function')
+
+    import numpy as np
 
     if isinstance(ra, np.ndarray) and isinstance(dec, np.ndarray):
         return ra, dec

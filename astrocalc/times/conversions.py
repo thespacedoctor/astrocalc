@@ -3,8 +3,8 @@
 """
 *Convert times between various epochs and units*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from past.utils import old_div
@@ -12,7 +12,7 @@ from builtins import object
 import sys
 import os
 os.environ['TERM'] = 'vt100'
-from fundamentals import tools
+
 
 class conversions(object):
     """
@@ -22,7 +22,7 @@ class conversions(object):
 
     - ``log`` -- logger
     - ``settings`` -- the settings dictionary
-    
+
 
     **Usage**
 
@@ -38,7 +38,7 @@ class conversions(object):
     ```python
     usage code   
     ```
-    
+
     """
     # Initialisation
 
@@ -61,7 +61,7 @@ class conversions(object):
         **Return**
 
         - ``conversions``
-        
+
 
         .. todo::
 
@@ -87,12 +87,12 @@ class conversions(object):
         **Key Arguments**
 
         - ``utDatetime`` -- UT datetime. Can accept various formats e.g. ``201604261444``, ``20160426``, ``20160426144444.5452``, ``2016-04-26 14:44:44.234``, ``20160426 14h44m44.432s`` 
-        
+
 
         **Return**
 
         - ``mjd`` -- the MJD
-        
+
 
         .. todo ::
 
@@ -115,7 +115,7 @@ class conversions(object):
 
         # OUT: 57504.61440
         ```
-        
+
         """
         self.log.debug('starting the ``ut_datetime_to_mjd`` method')
 
@@ -180,7 +180,7 @@ class conversions(object):
         extraTime = 0.
         if "." in repr(seconds):
             extraTime = old_div(float("." + repr(seconds).split(".")
-                              [-1]), (24. * 60. * 60.))
+                                      [-1]), (24. * 60. * 60.))
 
         # CONVERT TO UNIXTIME THEN MJD
         t = (int(year), int(month), int(day), int(hours),
@@ -207,7 +207,7 @@ class conversions(object):
         - ``mjd`` -- time in MJD.
         - ``sqlDate`` -- add a 'T' between date and time instead of space
         - ``datetimeObject`` -- return a datetime object instead of a string. Default *False*
-        
+
 
         .. todo::
 
@@ -217,7 +217,7 @@ class conversions(object):
         **Return**
 
         - ``utDatetime`` - the UT datetime in string format
-        
+
 
         **Usage**
 
@@ -241,7 +241,7 @@ class conversions(object):
 
         # OUT: 2016-04-26T14:46:43.033
         ```
-        
+
         """
         self.log.debug('starting the ``mjd_to_ut_datetime`` method')
 
@@ -299,7 +299,7 @@ class conversions(object):
         **Key Arguments**
 
         - ``daysFloat`` -- the day as a decimal.
-        
+
 
         **Return**
 
@@ -307,7 +307,7 @@ class conversions(object):
         - ``hoursInt`` -- hour as an integer (None if input precsion too low)
         - ``minsInt`` -- mins as an integer (None if input precsion too low)
         - ``secFloat`` -- secs as a float (None if input precsion too low)
-        
+
 
         **Usage**
 
@@ -334,7 +334,7 @@ class conversions(object):
 
         # OUTPUT: 24 days, 2 hours, 57 mins, 28.242 sec
         ```
-        
+
         """
         self.log.debug(
             'completed the ````decimal_day_to_day_hour_min_sec`` method')

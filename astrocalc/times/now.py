@@ -3,8 +3,8 @@
 """
 *Report current time in various formats*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from past.utils import old_div
@@ -14,7 +14,7 @@ import os
 import math
 import time
 os.environ['TERM'] = 'vt100'
-from fundamentals import tools
+
 
 class now(object):
     """
@@ -24,7 +24,7 @@ class now(object):
 
     - ``log`` -- logger
     - ``settings`` -- the settings dictionary
-    
+
     """
     # Initialisation
 
@@ -50,11 +50,11 @@ class now(object):
         **Return**
 
         - ``mjd`` -- the current MJD as a float
-        
+
 
         **Usage**
 
-        
+
         .. todo::
 
             - add clutil

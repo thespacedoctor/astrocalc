@@ -3,8 +3,8 @@
 """
 *Calculations to translate coordinates across the sky*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from builtins import object
@@ -13,8 +13,7 @@ import sys
 import os
 import math
 os.environ['TERM'] = 'vt100'
-from fundamentals import tools
-from astrocalc.coords import unit_conversion
+
 
 class translate(object):
     """
@@ -28,7 +27,7 @@ class translate(object):
     - ``dec`` -- dec (decimal or sexegesimal)
     - ``northArcsec`` -- number of arcsecs to move location to the north
     - ``eastArcsec`` -- number of arcsecs to move location to the east
-    
+
 
     .. todo::
 
@@ -50,7 +49,7 @@ class translate(object):
         eastArcsec=+967800
     ).get()  
     ```
-    
+
     """
     # Initialisation
 
@@ -79,6 +78,7 @@ class translate(object):
 
         # INITIAL ACTIONS
         # CONVERT RA AND DEC INTO DECIMAL DEGREES
+        from astrocalc.coords import unit_conversion
         converter = unit_conversion(
             log=log
         )
@@ -99,7 +99,7 @@ class translate(object):
 
         - ``ra`` -- the right-ascension of the translated coordinate
         - ``dec`` -- the declination of the translated coordinate
-        
+
         """
         self.log.debug('starting the ``get`` method')
 
@@ -111,7 +111,7 @@ class translate(object):
 
         ra2 = self.ra + \
             (old_div((self.east),
-             (math.cos((self.dec + dec2) * self.DEG_TO_RAD_FACTOR / 2.))))
+                     (math.cos((self.dec + dec2) * self.DEG_TO_RAD_FACTOR / 2.))))
 
         # FIX VALUES THAT CROSS RA/DEC LIMITS
         while ra2 > 360. or ra2 < 0.:
