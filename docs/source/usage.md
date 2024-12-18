@@ -1,6 +1,6 @@
 
 
-```bash 
+```bash
     
     Documentation for astrocalc can be found here: http://astrocalc.readthedocs.org
     

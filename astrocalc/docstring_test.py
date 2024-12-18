@@ -55,11 +55,9 @@ def docsting_test(self):
 
     **Embed reStructuredText**
 
-    ```eval_rst
-    .. todo::
-
+    :::{todo}
         - nice!
-    ```
+    :::
 
     **Code and Syntax Highlighting**
 

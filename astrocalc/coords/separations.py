@@ -3,8 +3,8 @@
 """
 *Calculate separations between sky-coordinates*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from past.utils import old_div
@@ -13,7 +13,7 @@ import sys
 import os
 import math
 os.environ['TERM'] = 'vt100'
-from fundamentals import tools
+
 
 class separations(object):
     """
@@ -27,7 +27,7 @@ class separations(object):
     - ``dec1`` -- the declination of the first location. Decimal degrees or sexegesimal.
     - ``ra2`` -- the right-ascension of the second location. Decimal degrees or sexegesimal.
     - ``dec2`` -- the declination of the second location. Decimal degrees or sexegesimal.
-    
+
 
     **Usage**
 
@@ -86,7 +86,7 @@ class separations(object):
 
     # OUT: '78.9', '-73.1', '29.9')
     ```
-    
+
     """
     # Initialisation
 
@@ -117,14 +117,14 @@ class separations(object):
 
         **Key Arguments**
 
-        
+
 
         **Return**
 
         - ``angularSeparation`` -- total angular separation between coordinates (arcsec)
         - ``north`` -- north-south separation between coordinates (arcsec)
         - ``east`` -- east-west separation between coordinates (arcsec)
-        
+
 
         See main class usage for details.
         """
