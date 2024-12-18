@@ -1,37 +1,35 @@
 
-
 :::{include} ../../README.md
 :::
 
 :::{toctree}
+:hidden:
 :maxdepth: 4
-:caption: Table of Contents
 
 install
-initialisation
-todolist
+quickstart
+:::
+
+
+:::{toctree}
+:hidden:
+:caption: " "
+
+faq
 changes_link
-:::
-
-## API Reference
-
-:::{toctree}
-:hidden:
-:maxdepth: 30
-:caption: API reference
-
-autosummary
-:::
-
-:::{toctree}
-:hidden:
-
+references
 apidocs/index
 :::
 
-
-:::{include} ../../CHANGES.md
+:::{toctree}
+:hidden:
+:caption: " "
 :::
 
+:::{toctree}
+:hidden:
+:caption: " "
 
+todolist
+:::
 
