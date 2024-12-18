@@ -1,43 +1,37 @@
 
 
-{{../../README.md}}
+:::{include} ../../README.md
+:::
 
-```eval_rst
-.. toctree::
-   :maxdepth: 4
-   :caption: Table of Contents
+:::{toctree}
+:maxdepth: 4
+:caption: Table of Contents
 
-   install
-   initialisation
-   todolist
-   changes_link
-```
+install
+initialisation
+todolist
+changes_link
+:::
 
 ## API Reference
 
-```eval_rst
-.. toctree::
-   :hidden:
-   :maxdepth: 30
-   :caption: API reference
+:::{toctree}
+:hidden:
+:maxdepth: 30
+:caption: API reference
 
-   autosummary
-```
+autosummary
+:::
 
-```eval_rst
-.. toctree::
-   :hidden:
+:::{toctree}
+:hidden:
 
-   genindex
-```
+apidocs/index
+:::
 
 
-```eval_rst
-.. include:: /autosummary_include.rst
-```
+:::{include} ../../CHANGES.md
+:::
 
-```eval_rst
-.. include:: /genindex.rst
-```
 
-{{../../CHANGES.md}}
+

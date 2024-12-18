@@ -3,8 +3,8 @@
 """
 *Convert single values of RA, DEC or list of RA and DEC to numpy arrays*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from astrocalc.coords import unit_conversion
 import sys

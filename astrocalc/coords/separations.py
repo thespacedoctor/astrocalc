@@ -3,8 +3,8 @@
 """
 *Calculate separations between sky-coordinates*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from past.utils import old_div

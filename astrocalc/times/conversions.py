@@ -3,8 +3,8 @@
 """
 *Convert times between various epochs and units*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from past.utils import old_div

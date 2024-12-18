@@ -3,8 +3,8 @@
 """
 *Convert coordinates from decimal to sexagesimal units and vice-versa*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from builtins import str

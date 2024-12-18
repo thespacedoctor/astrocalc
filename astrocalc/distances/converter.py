@@ -3,8 +3,8 @@
 """
 *Convert distances between measurement scales*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from builtins import range
@@ -135,11 +135,11 @@ class converter(object):
         **Return**
 
         - ``results`` -- result dictionary including
-            - ``dcmr_mpc`` -- co-moving radius distance
-            - ``da_mpc`` -- angular distance
-            - ``da_scale`` -- angular distance scale
-            - ``dl_mpc`` -- luminosity distance (usually use this one)
-            - ``dmod`` -- distance modulus (determined from luminosity distance)
+        - ``dcmr_mpc`` -- co-moving radius distance
+        - ``da_mpc`` -- angular distance
+        - ``da_scale`` -- angular distance scale
+        - ``dl_mpc`` -- luminosity distance (usually use this one)
+        - ``dmod`` -- distance modulus (determined from luminosity distance)
 
 
         ..  todo::

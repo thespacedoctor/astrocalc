@@ -3,8 +3,8 @@
 """
 *Calculations to translate coordinates across the sky*
 
-:Author:
-    David Young
+Author
+: David Young
 """
 from __future__ import division
 from builtins import object
