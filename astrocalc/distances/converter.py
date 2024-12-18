@@ -14,7 +14,7 @@ import sys
 import os
 import math
 os.environ['TERM'] = 'vt100'
-from fundamentals import tools
+
 
 class converter(object):
     """
@@ -24,7 +24,7 @@ class converter(object):
 
     - ``log`` -- logger
     - ``settings`` -- the settings dictionary
-    
+
 
     **Usage**
 
@@ -34,7 +34,7 @@ class converter(object):
     from astrocalc.distances import converter
     c = converter(log=log)
     ```
-    
+
     """
     # Initialisation
 
@@ -63,12 +63,12 @@ class converter(object):
         **Key Arguments**
 
         - ``mpc`` -- distance in MPC (assumes a luminousity distance).
-        
+
 
         **Return**
 
         - ``redshift``
-        
+
 
         .. todo::
 
@@ -87,7 +87,7 @@ class converter(object):
 
         # OUTPUT: 0.108
         ```
-        
+
         """
         self.log.debug('starting the ``distance_to_redshift`` method')
 
@@ -130,7 +130,7 @@ class converter(object):
         - ``WM`` -- Omega_matter. Default *0.3*
         - ``WV`` -- Omega_vacuum. Default *0.7*
         - ``H0`` -- Hubble constant. (km s-1 Mpc-1) Default *70.0*
-        
+
 
         **Return**
 
@@ -140,7 +140,7 @@ class converter(object):
             - ``da_scale`` -- angular distance scale
             - ``dl_mpc`` -- luminosity distance (usually use this one)
             - ``dmod`` -- distance modulus (determined from luminosity distance)
-        
+
 
         ..  todo::
 
@@ -190,7 +190,7 @@ class converter(object):
         # Angular Size Distance: 1008.97 Mpc
         # Comoving Radial Distance: 1352.03 Mpc
         ```
-        
+
         """
         self.log.debug('starting the ``redshift_to_distance`` method')
 

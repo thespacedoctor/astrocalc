@@ -7,7 +7,6 @@
     David Young
 """
 from astrocalc.coords import unit_conversion
-
 import sys
 import os
 os.environ['TERM'] = 'vt100'

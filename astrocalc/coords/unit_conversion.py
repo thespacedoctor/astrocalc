@@ -14,7 +14,7 @@ import sys
 import os
 import math
 os.environ['TERM'] = 'vt100'
-from fundamentals import tools
+
 
 class unit_conversion(object):
     """
@@ -24,7 +24,7 @@ class unit_conversion(object):
 
     - ``log`` -- logger
     - ``settings`` -- the settings dictionary (prob not required)
-    
+
 
     **Usage**
 
@@ -37,7 +37,7 @@ class unit_conversion(object):
     ```python
     usage code
     ```
-    
+
 
     .. todo::
 
@@ -78,7 +78,7 @@ class unit_conversion(object):
         **Return**
 
         - ``unit_conversion``
-        
+
 
         .. todo::
 
@@ -110,12 +110,12 @@ class unit_conversion(object):
         **Key Arguments**
 
         - ``dec`` - DEC in sexegesimal format.
-        
+
 
         **Return**
 
         - ``decDeg`` -- declination converted to decimal degrees
-        
+
 
         **Usage**
 
@@ -136,7 +136,7 @@ class unit_conversion(object):
 
         # OUTPUT: -23.7558978667
         ```
-        
+
         """
         self.log.debug(
             'completed the ````dec_sexegesimal_to_decimal`` method')
@@ -217,12 +217,12 @@ class unit_conversion(object):
         **Key Arguments**
 
         - ``ra`` -- ra in sexegesimal units
-        
+
 
         **Return**
 
         - ``decimalDegrees``
-        
+
 
         **Usage**
 
@@ -240,7 +240,7 @@ class unit_conversion(object):
 
         # OUTPUT: 71.3375
         ```
-        
+
         """
         import re
 
@@ -305,12 +305,12 @@ class unit_conversion(object):
 
         - ``ra`` -- RA in decimal degrees. Will try and convert to float before performing calculation.
         - ``delimiter`` -- how to delimit the RA units. Default *:*
-        
+
 
         **Return**
 
         - ``sexegesimal`` -- ra in sexegesimal units
-        
+
 
         **Usage**
 
@@ -331,7 +331,7 @@ class unit_conversion(object):
 
         # OUT: 22:26:10.87
         ```
-        
+
         """
         self.log.debug('starting the ``ra_decimal_to_sexegesimal`` method')
 
@@ -394,12 +394,12 @@ class unit_conversion(object):
 
         - ``dec`` -- DEC in decimal degrees. Will try and convert to float before performing calculation.
         - ``delimiter`` -- how to delimit the RA units. Default *:*
-        
+
 
         **Return**
 
         - ``sexegesimal`` -- ra in sexegesimal units
-        
+
 
         **Usage**
 
@@ -420,7 +420,7 @@ class unit_conversion(object):
 
         # OUT: -03:27:16.8
         ```
-        
+
         """
         self.log.debug('starting the ``dec_decimal_to_sexegesimal`` method')
 
@@ -485,12 +485,12 @@ class unit_conversion(object):
 
         - ``ra`` -- right ascension in sexegesimal or decimal degress.
         - ``dec`` -- declination in sexegesimal or decimal degress.
-        
+
 
         **Return**
 
         - ``cartesians`` -- tuple of (x, y, z) coordinates
-        
+
 
         ..  todo::
 
@@ -511,7 +511,7 @@ class unit_conversion(object):
 
         # OUTPUT: 0.9973699780687104, -0.06382462462791459, 0.034344492110465606
         ```
-        
+
         """
         self.log.debug('starting the ``ra_dec_to_cartesian`` method')
 
