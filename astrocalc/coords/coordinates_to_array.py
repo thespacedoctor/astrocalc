@@ -90,8 +90,8 @@ def coordinates_to_array(
                 converter.dec_sexegesimal_to_decimal(dec=d) for d in dec]
             dec = decList
 
-    raArray = np.array(ra, dtype='f8', ndmin=1, copy=False)
-    decArray = np.array(dec, dtype='f8', ndmin=1, copy=False)
+    raArray = np.array(ra, dtype='f8', ndmin=1, copy=True)
+    decArray = np.array(dec, dtype='f8', ndmin=1, copy=True)
 
     log.debug('completed the ``coordinates_to_array`` function')
     return raArray, decArray
