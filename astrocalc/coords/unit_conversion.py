@@ -138,21 +138,17 @@ class unit_conversion(object):
         ```
 
         """
-        self.log.debug(
-            'completed the ````dec_sexegesimal_to_decimal`` method')
-
-        import re
 
         # TEST TO SEE IF DECIMAL DEGREES PASSED
         try:
             dec = float(dec)
-            if dec > -90. and dec < 90.:
-                self.log.debug(
-                    'declination seems to already be in decimal degrees, returning original value' % locals())
-                return float(dec)
-        except:
+        except (ValueError, TypeError):
             pass
+        else:
+            if -90. < dec < 90.:
+                return dec
 
+        import re
         # REMOVE SURROUNDING WHITESPACE
         dec = str(dec).strip()
 
@@ -242,18 +238,17 @@ class unit_conversion(object):
         ```
 
         """
-        import re
 
         # TEST TO SEE IF DECIMAL DEGREES PASSED
         try:
             ra = float(ra)
-            if ra >= 0. and ra <= 360.:
-                self.log.debug(
-                    'RA seems to already be in decimal degrees, returning original value' % locals())
-                return float(ra)
-        except:
+        except (ValueError, TypeError):
             pass
+        else:
+            if 0. <= ra <= 360.:
+                return ra
 
+        import re
         # REMOVE SURROUNDING WHITESPACE
         ra = str(ra).strip()
 
