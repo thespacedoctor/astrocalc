@@ -194,11 +194,14 @@ class converter(object):
         """
         self.log.debug('starting the ``redshift_to_distance`` method')
 
+        from scipy.integrate import quad
+
         # VARIABLE
         h = H0 / 100.0
-        WR = old_div(4.165E-5, (h * h))     # Omega_radiation
+        WR = 4.165E-5/(h * h)     # Omega_radiation
         WK = 1.0 - WM - WV - WR       # Omega_curvature = 1 - Omega(Total)
         c = 299792.458          # speed of light (km/s)
+        factor = c / H0  # Precompute conversion factor
 
         # Arbitrarily set the values of these variables to zero just so we can
         # define them.
@@ -216,38 +219,35 @@ class converter(object):
 
         az = 1.0 / (1.0 + z)        # 1/(1+z), for the given redshift
 
-        # Compute the integral over a=1/(1+z) from az to 1 in n steps
-        n = 1000
-        for i in range(n):
-            a = az + old_div((1.0 - az) * (i + 0.5), n)
-            adot = math.sqrt(WK + (old_div(WM, a)) + (old_div(WR, (math.pow(a, 2))))
-                             + (WV * math.pow(a, 2)))
-            DCMR = DCMR + 1.0 / (a * adot)
+        # Compute the integral over a=1/(1+z) from az to 1 using scipy.integrate.quad
+        def integrand(a):
+            adot = math.sqrt(WK + (WM / a) + (WR / (a ** 2)) + (WV * a ** 2))
+            return 1.0 / (a * adot)
 
-        # comoving radial distance in units of c/H0
-        DCMR = old_div((1.0 - az) * DCMR, n)
+        DCMR, _ = quad(integrand, az, 1.0, epsabs=1e-10, epsrel=1e-10)
         # comoving radial distance in units of Mpc
-        DCMR_Mpc = (old_div(c, H0)) * DCMR
+        DCMR_Mpc = (factor) * DCMR
 
-        # Tangental comoving radial distance
+        # Tangential comoving radial distance (optimized)
         x = math.sqrt(abs(WK)) * DCMR
         if x > 0.1:
             if WK > 0.0:
-                ratio = old_div(0.5 * (math.exp(x) - math.exp(-x)), x)
+                ratio = math.sinh(x) / x
             else:
-                ratio = old_div(math.sin(x), x)
+                ratio = math.sin(x) / x
         else:
-            y = math.pow(x, 2)
+            y = x * x
             if WK < 0.0:
                 y = -y
-            ratio = 1 + y / 6.0 + math.pow(y, 2) / 120.0
+            ratio = 1 + y / 6.0 + y * y / 120.0
 
         DA = az * ratio * DCMR  # angular size distance in units of c/H0
-        DA_Mpc = (old_div(c, H0)) * DA  # angular size distance in units of Mpc
+        DA_Mpc = factor * DA  # angular size distance in units of Mpc
         # scale at angular size distance in units of Kpc / arcsec
         DA_scale = DA_Mpc / 206.264806
-        DL = old_div(DA, math.pow(az, 2))  # luminosity distance in units of c/H0
-        DL_Mpc = (old_div(c, H0)) * DL  # luminosity distance in units of Mpc
+        # luminosity distance in units of c/H0
+        DL = DA / (az ** 2)
+        DL_Mpc = factor * DL  # luminosity distance in units of Mpc
         # Distance modulus determined from luminosity distance
         DMOD = 5 * math.log10(DL_Mpc * 1e6) - 5
 
