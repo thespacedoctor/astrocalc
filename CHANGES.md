@@ -1,7 +1,7 @@
 
 ## Release Notes
 
-**v0.4.5 - September 23, 2025**
+**v0.4.6 - September 23, 2025**
 
 * **FIXED:** setup.py typo
 

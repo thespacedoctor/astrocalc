@@ -36,7 +36,7 @@ setup(name="astrocalc",
       classifiers=[
           'Development Status :: 4 - Beta',
           'License :: OSI Approved :: MIT License',
-          'Programming Language :: Python :: 3.7',
+          'Programming Language :: Python :: 3.13',
           'Topic :: Utilities',
       ],
       keywords=['astronomy, calculate, convert'],
