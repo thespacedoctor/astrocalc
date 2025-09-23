@@ -13,7 +13,7 @@ def readme():
 install_requires = [
     'pyyaml',
     'numpy',
-    'scipy'
+    'scipy',
     'fundamentals'
 ]
 
