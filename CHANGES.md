@@ -1,6 +1,10 @@
 
 ## Release Notes
 
+**v0.4.5 - September 23, 2025**
+
+* **FIXED:** setup.py typo
+
 **v0.4.4 - September 22, 2025**
 
 * **REFACTOR** speed improvements.
