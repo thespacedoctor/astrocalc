@@ -7,6 +7,7 @@ Author
 : David Young
 """
 from __future__ import division
+from line_profiler import profile
 from builtins import range
 from builtins import object
 from past.utils import old_div
@@ -116,6 +117,7 @@ class converter(object):
         self.log.debug('completed the ``distance_to_redshift`` method')
         return redshift
 
+    @profile
     def redshift_to_distance(
             self,
             z,
